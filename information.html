@@ -14,16 +14,363 @@
     <link rel="icon" href="assets/images/logo.png">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    
-    <!-- GSAP & ScrollMagic Libraries -->
-    <script src="js/plugins/gsap.min.js"></script>
-    <script src="js/plugins/ScrollMagic.min.js"></script>
+    <!-- CSS Styles -->
+    <style>
+        /* Reset & Global Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #3a2e2a;
+            line-height: 1.6;
+            background-color: #fbf8ef;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(254, 250, 224, 0.9);
+            padding: 20px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(254, 250, 224, 0.95);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo img {
+            width: 80px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #3a2e2a;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background-color: #d4a373;
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #d4a373;
+        }
+
+        /* Burger Menu Styles */
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: #3a2e2a;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Toggle animation for burger menu */
+        .burger.toggle .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .burger.toggle .line2 {
+            opacity: 0;
+        }
+
+        .burger.toggle .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('assets/images/massage-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fefae0;
+            text-align: center;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(58, 46, 42, 0.6);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-family: 'Noto Serif', serif;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Information Section */
+        .information {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .information .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .information h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #3a2e2a;
+            font-family: 'Noto Serif', serif;
+        }
+
+        .information p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            justify-items: center;
+        }
+
+        .benefit-item {
+            background-color: #fbf8ef;
+            border-radius: 10px;
+            padding: 30px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: -75px;
+            right: -75px;
+            width: 150px;
+            height: 150px;
+            background-color: #d4a373;
+            border-radius: 50%;
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover::before {
+            top: -100px;
+            right: -100px;
+            width: 200px;
+            height: 200px;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .benefit-item i {
+            font-size: 3em;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #3a2e2a;
+        }
+
+        .benefit-item p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #d4a373;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: #b5835a;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #3a2e2a;
+            color: #fefae0;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            color: #fefae0;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #d4a373;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: 0;
+                height: 100vh;
+                top: 0;
+                background-color: rgba(254, 250, 224, 0.95);
+                flex-direction: column;
+                align-items: center;
+                width: 70%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                z-index: 999;
+            }
+
+            .nav-links.open {
+                transform: translateX(0%);
+            }
+
+            .nav-links li {
+                margin: 30px 0;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .hero {
+                height: 50vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2em;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .information h2 {
+                font-size: 2em;
+            }
+
+            .information p {
+                font-size: 1em;
+            }
+
+            .benefit-item {
+                max-width: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -49,32 +396,50 @@
         </nav>
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover the Healing Power of Honey</h1>
+            <p>Delve into the ancient art of Mongolian Honey Massage and its numerous benefits.</p>
+        </div>
+    </section>
+
     <!-- Information Content -->
     <section class="information">
         <div class="container">
-            <h1 class="fade-in">The Art of Mongolian Honey Massage</h1>
-            <p class="fade-in delay">
+            <h2>The Art of Mongolian Honey Massage</h2>
+            <p>
                 Our massage therapy is rooted in ancient Mongolian traditions, harnessing the natural properties of honey to detoxify and nourish your skin. Combined with the warmth of hot towels and the richness of virgin olive oil, our treatments provide a holistic approach to wellness.
             </p>
             <div class="benefits">
-                <div class="benefit-item fade-in">
+                <div class="benefit-item">
                     <i class="fas fa-leaf"></i>
                     <h3>Detoxification</h3>
                     <p>Honey's natural enzymes help cleanse the skin and body.</p>
                 </div>
-                <div class="benefit-item fade-in delay-1">
-                    <i class="fas fa-heartbeat"></i>
+                <div class="benefit-item">
+                    <i class="fas fa-spa"></i>
                     <h3>Relaxation</h3>
                     <p>Warm towels soothe muscles and promote relaxation.</p>
                 </div>
-                <div class="benefit-item fade-in delay-2">
-                    <i class="fas fa-oil-can"></i>
+                <div class="benefit-item">
+                    <i class="fas fa-tint"></i>
                     <h3>Hydration</h3>
                     <p>Virgin olive oil deeply moisturizes and revitalizes the skin.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Stress Relief</h3>
+                    <p>Experience mental tranquility and reduce stress levels.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -90,7 +455,77 @@
 
     <!-- JavaScript Files -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Responsive Navigation Menu
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            burger.classList.toggle('toggle');
+        });
+
+        // Navigation Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            // Back to Top Button Visibility
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        // Back to Top Functionality
+        const backToTop = document.querySelector('.back-to-top');
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Animation on Scroll
+        const faders = document.querySelectorAll('.benefit-item');
+        const options = {
+            threshold: 0.3,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appear');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
+
+    <!-- CSS Animations -->
+    <style>
+        .benefit-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .benefit-item.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </body>
 </html>

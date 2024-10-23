@@ -14,16 +14,325 @@
     <link rel="icon" href="assets/images/logo.png">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    
-    <!-- GSAP & ScrollMagic Libraries -->
-    <script src="js/plugins/gsap.min.js"></script>
-    <script src="js/plugins/ScrollMagic.min.js"></script>
+    <!-- CSS Styles -->
+    <style>
+        /* Reset & Global Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #3a2e2a;
+            line-height: 1.6;
+            background-color: #fbf8ef;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(254, 250, 224, 0.9);
+            padding: 20px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(254, 250, 224, 0.95);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo img {
+            width: 80px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #3a2e2a;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background-color: #d4a373;
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #d4a373;
+        }
+
+        /* Burger Menu Styles */
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: #3a2e2a;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Toggle animation for burger menu */
+        .burger.toggle .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .burger.toggle .line2 {
+            opacity: 0;
+        }
+
+        .burger.toggle .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 20px 80px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .services .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services h1 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #3a2e2a;
+            font-family: 'Noto Serif', serif;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            justify-items: center;
+        }
+
+        .service-card {
+            background-color: #fbf8ef;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .service-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #3a2e2a;
+        }
+
+        .service-card p {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-card .price {
+            font-size: 1.2em;
+            color: #d4a373;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .service-card .btn {
+            background-color: #d4a373;
+            color: #fefae0;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .service-card .btn:hover {
+            background-color: #b5835a;
+        }
+
+        /* Booking Section */
+        .booking {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #fbf8ef;
+        }
+
+        .booking .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .booking h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #3a2e2a;
+            font-family: 'Noto Serif', serif;
+        }
+
+        .booking p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .booking .btn {
+            background-color: #d4a373;
+            color: #fefae0;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .booking .btn:hover {
+            background-color: #b5835a;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #3a2e2a;
+            color: #fefae0;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            color: #fefae0;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #d4a373;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: 0;
+                height: 100vh;
+                top: 0;
+                background-color: rgba(254, 250, 224, 0.95);
+                flex-direction: column;
+                align-items: center;
+                width: 70%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                z-index: 999;
+            }
+
+            .nav-links.open {
+                transform: translateX(0%);
+            }
+
+            .nav-links li {
+                margin: 30px 0;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .services h1 {
+                font-size: 2em;
+            }
+
+            .service-card {
+                max-width: none;
+            }
+
+            .booking h2 {
+                font-size: 2em;
+            }
+
+            .booking p {
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -52,26 +361,42 @@
     <!-- Services Content -->
     <section class="services">
         <div class="container">
-            <h1 class="fade-in">Our Services</h1>
+            <h1>Our Services</h1>
             <div class="service-cards">
-                <div class="service-card fade-in">
-                    <img src="assets/images/massage.jpg" alt="Signature Honey Massage">
-                    <h3>Signature Honey Massage</h3>
-                    <p>Experience our exclusive Mongolian honey massage combining natural honey, hot towels, and virgin olive oil for deep relaxation and detoxification.</p>
+                <!-- Service 1: Hand Massage with No Honey -->
+                <div class="service-card">
+                    <img src="assets/images/hand-massage.jpg" alt="Hand Massage">
+                    <h3>Hand Massage (No Honey)</h3>
+                    <p>Indulge in a soothing hand massage without the use of honey. Perfect for those seeking relaxation and stress relief focused on the hands.</p>
+                    <p class="price">$40 + tax CAD</p>
+                    <a href="#booking" class="btn">Book Now</a>
+                </div>
+                <!-- Service 2: Massage with Honey and Hot Towel -->
+                <div class="service-card">
+                    <img src="assets/images/honey-massage.jpg" alt="Honey Massage with Hot Towel">
+                    <h3>Honey Massage with Hot Towel</h3>
+                    <p>Experience the healing properties of natural honey combined with warm towels to detoxify and rejuvenate your skin and muscles.</p>
+                    <p class="price">$60 + tax CAD</p>
+                    <a href="#booking" class="btn">Book Now</a>
+                </div>
+                <!-- Service 3: Complete Package Service -->
+                <div class="service-card">
+                    <img src="assets/images/complete-package.jpg" alt="Complete Package Service">
+                    <h3>Complete Package Service</h3>
+                    <p>Enjoy the ultimate relaxation with our complete package, including honey massage, hot towels, and virgin olive oil for deep hydration and rejuvenation.</p>
                     <p class="price">$80 + tax CAD</p>
                     <a href="#booking" class="btn">Book Now</a>
                 </div>
-                <!-- Add more service cards as needed -->
             </div>
         </div>
     </section>
 
-    <!-- Booking Section (Placeholder) -->
+    <!-- Booking Section -->
     <section id="booking" class="booking">
         <div class="container">
-            <h2 class="fade-in">Book Your Session</h2>
-            <p class="fade-in delay">Contact us to schedule your personalized honey massage experience.</p>
-            <a href="contact.html" class="btn fade-in delay-1">Contact Us</a>
+            <h2>Book Your Session</h2>
+            <p>Contact us to schedule your personalized massage experience. Our team is ready to provide you with exceptional service.</p>
+            <a href="contact.html" class="btn">Contact Us</a>
         </div>
     </section>
 
@@ -89,7 +414,74 @@
 
     <!-- JavaScript Files -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Responsive Navigation Menu
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            burger.classList.toggle('toggle');
+        });
+
+        // Navigation Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <!-- CSS Animations -->
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.delay-1 {
+            transition-delay: 0.3s;
+        }
+
+        .fade-in.delay-2 {
+            transition-delay: 0.6s;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+
+    <!-- Animation on Scroll -->
+    <script>
+        // Animation on Scroll
+        const faders = document.querySelectorAll('.fade-in');
+        const options = {
+            threshold: 0.3,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appear');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
 </body>
 </html>

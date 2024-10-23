@@ -14,16 +14,236 @@
     <link rel="icon" href="assets/images/logo.png">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    
-    <!-- GSAP & ScrollMagic Libraries -->
-    <script src="js/plugins/gsap.min.js"></script>
-    <script src="js/plugins/ScrollMagic.min.js"></script>
+    <!-- CSS Styles -->
+    <style>
+        /* Reset & Global Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #3a2e2a;
+            line-height: 1.6;
+            background-color: #fbf8ef;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(254, 250, 224, 0.9);
+            padding: 20px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(254, 250, 224, 0.95);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo img {
+            width: 80px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #3a2e2a;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background-color: #d4a373;
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #d4a373;
+        }
+
+        /* Burger Menu Styles */
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: #3a2e2a;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Toggle animation for burger menu */
+        .burger.toggle .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .burger.toggle .line2 {
+            opacity: 0;
+        }
+
+        .burger.toggle .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Location Section */
+        .location {
+            padding: 120px 20px 80px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .location .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .location h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #3a2e2a;
+            font-family: 'Noto Serif', serif;
+        }
+
+        .location p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .map-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .map-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #3a2e2a;
+            color: #fefae0;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            color: #fefae0;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #d4a373;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: 0;
+                height: 100vh;
+                top: 0;
+                background-color: rgba(254, 250, 224, 0.95);
+                flex-direction: column;
+                align-items: center;
+                width: 70%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                z-index: 999;
+            }
+
+            .nav-links.open {
+                transform: translateX(0%);
+            }
+
+            .nav-links li {
+                margin: 30px 0;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .location h1 {
+                font-size: 2em;
+            }
+
+            .location p {
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -52,16 +272,25 @@
     <!-- Location Content -->
     <section class="location">
         <div class="container">
-            <h1 class="fade-in">Our Location</h1>
-            <p class="fade-in delay">
-                Nestled in the heart of Ulaanbaatar, our center offers a peaceful retreat from the bustling city life. Easily accessible by public transport and ample parking available.
+            <h1>Our Location</h1>
+            <p>
+                Nestled in the heart of Ulaanbaatar, our center offers a peaceful retreat from the bustling city life. Easily accessible by public transport with ample parking available.
             </p>
             <!-- Google Map Embed -->
-            <div class="map-container fade-in delay-1">
+            <div class="map-container">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.998338338659!2d106.91466901531508!3d47.88639877919203!2m3!1f0!2f0!3f0!3m2!
-                        1i1024!2i768!4f13.1!3m3!1m2!1s0x5d8b1442bfa36b5b%3A0x6c3f9e0e3bf4f13c!2sUlaanbaatar%2C%20Mongolia!5e0!3m2!1sen!2sus!4v1616682873094!5m2!1sen!2sus"
-                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    1i1024!2i768!4f13.1!3m3!1m2!1s0x5d8b1442bfa36b5b%3A0x6c3f9e0e3bf4f13c!2sUlaanbaatar%2C%20Mongolia!5e0!3m2!1sen!2sus!4v1616682873094!5m2!1sen!2sus"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    aria-label="Google Map showing the location of Mongolian Honey Massage"></iframe>
+            </div>
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <p><strong>Address:</strong> 123 Wellness Street, Ulaanbaatar, Mongolia</p>
+                <p><strong>Phone:</strong> <a href="tel:+97612345678">+976 1234 5678</a></p>
+                <p><strong>Email:</strong> <a href="mailto:info@mongolianhoneymassage.mn">info@mongolianhoneymassage.mn</a></p>
+                <a href="contact.html" class="btn">Get in Touch</a>
             </div>
         </div>
     </section>
@@ -80,7 +309,114 @@
 
     <!-- JavaScript Files -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Responsive Navigation Menu
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            burger.classList.toggle('toggle');
+        });
+
+        // Navigation Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <!-- CSS Animations -->
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.delay-1 {
+            transition-delay: 0.3s;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Contact Info Styles */
+        .contact-info {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .contact-info h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #3a2e2a;
+            font-family: 'Noto Serif', serif;
+        }
+
+        .contact-info p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: #d4a373;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #b5835a;
+        }
+
+        .contact-info .btn {
+            margin-top: 20px;
+            background-color: #d4a373;
+            color: #fefae0;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-info .btn:hover {
+            background-color: #b5835a;
+        }
+    </style>
+
+    <!-- Animation on Scroll -->
+    <script>
+        // Animation on Scroll
+        const faders = document.querySelectorAll('.fade-in');
+        const options = {
+            threshold: 0.3,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appear');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
 </body>
 </html>
