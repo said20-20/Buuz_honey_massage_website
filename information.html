@@ -7,14 +7,16 @@
     <title>Information - Mongolian Honey Massage</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Learn more about Mongolian Honey Massage, our techniques, and the benefits of our unique massage therapies.">
-    <meta name="keywords" content="Mongolian Honey Massage, Massage Techniques, Wellness Information, Health Benefits">
+    <meta name="description" content="Explore the extensive benefits of honey and olive oil in Mongolian Honey Massage, including scientific insights on skin absorption and healing properties.">
     
     <!-- Favicon -->
     <link rel="icon" href="assets/images/logo.png">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-o4F+7kM/Xz2dt8ZVagFZxAtGnIVHD+h+GjKO8PAB6m9DdpODjVdVCl4FgW9tF8X1AjsUgFMP3bYWE1QkJ10l4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- CSS Styles -->
     <style>
@@ -204,8 +206,61 @@
             font-size: 1.2em;
             max-width: 800px;
             margin: 0 auto 60px;
-            line-height: 1.6;
+            line-height: 1.8;
             color: #555;
+        }
+
+        .compound-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .compound-section h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #3a2e2a;
+            font-family: 'Noto Serif', serif;
+        }
+
+        .compound-section p {
+            font-size: 1.1em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+
+        .compound-image {
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        .compound-table {
+            margin: 40px auto;
+            border-collapse: collapse;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .compound-table th,
+        .compound-table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .compound-table th {
+            background-color: #d4a373;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .compound-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .compound-table tr:hover {
+            background-color: #f1f1f1;
         }
 
         .benefits {
@@ -370,6 +425,18 @@
                 max-width: none;
             }
         }
+
+        /* CSS Animations */
+        .benefit-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .benefit-item.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -388,7 +455,7 @@
                 <li><a href="location.html">Location</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="burger">
+            <div class="burger" aria-label="Toggle navigation menu">
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
@@ -396,49 +463,163 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Discover the Healing Power of Honey</h1>
-            <p>Delve into the ancient art of Mongolian Honey Massage and its numerous benefits.</p>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Unlock Nature's Healing Secrets</h1>
+                <p>Experience the synergy of honey and olive oil in our Mongolian Honey Massage.</p>
+            </div>
+        </section>
 
-    <!-- Information Content -->
-    <section class="information">
-        <div class="container">
-            <h2>The Art of Mongolian Honey Massage</h2>
-            <p>
-                Our massage therapy is rooted in ancient Mongolian traditions, harnessing the natural properties of honey to detoxify and nourish your skin. Combined with the warmth of hot towels and the richness of virgin olive oil, our treatments provide a holistic approach to wellness.
-            </p>
-            <div class="benefits">
-                <div class="benefit-item">
-                    <i class="fas fa-leaf"></i>
-                    <h3>Detoxification</h3>
-                    <p>Honey's natural enzymes help cleanse the skin and body.</p>
+        <!-- Information Content -->
+        <section class="information">
+            <div class="container">
+                <h2>The Art and Science of Mongolian Honey Massage</h2>
+                <p>
+                    Combining ancient wisdom with modern science, our Mongolian Honey Massage leverages the natural properties of honey and virgin olive oil to rejuvenate your body and mind. Learn how these natural ingredients interact with your skin to promote health and wellness.
+                </p>
+
+                <!-- Detailed Information on Honey -->
+                <div class="compound-section">
+                    <h3>Honey: A Nectar of Wellness</h3>
+                    <img src="assets/images/honeycomb.jpg" alt="Honeycomb" class="compound-image" loading="lazy">
+                    <p>
+                        Honey is more than just a sweetener; it's a powerhouse of bioactive compounds. Rich in <strong>gluconic acid</strong> and <strong>alpha-hydroxy acids (AHAs)</strong>, it gently exfoliates the skin, promoting cell renewal. The natural sugars in honey, like fructose and glucose, act as humectants, drawing moisture into the skin.
+                    </p>
+                    <p>
+                        Honey also contains <strong>propolis</strong>, a resinous mixture produced by bees. Propolis is known for its antimicrobial and anti-inflammatory properties, aiding in skin healing and protection. The synergy of these compounds enhances skin texture and resilience.
+                    </p>
+                    <img src="assets/images/propolis.png" alt="Propolis Structure" class="compound-image" loading="lazy">
+                    <p>
+                        Through massage, these compounds are massaged into the skin, penetrating deeply via transfollicular and intercellular routes. This allows for effective delivery of nutrients, leading to improved skin health from the inside out.
+                    </p>
                 </div>
-                <div class="benefit-item">
-                    <i class="fas fa-spa"></i>
-                    <h3>Relaxation</h3>
-                    <p>Warm towels soothe muscles and promote relaxation.</p>
+
+                <!-- Detailed Information on Olive Oil -->
+                <div class="compound-section">
+                    <h3>Olive Oil: Liquid Gold for the Skin</h3>
+                    <img src="assets/images/olive-oil.jpg" alt="Olive Oil" class="compound-image" loading="lazy">
+                    <p>
+                        Olive oil is revered for its skin-loving properties. High in <strong>oleic acid</strong> and rich in <strong>polyphenols</strong>, it provides antioxidant protection and helps maintain the skin's natural barrier. Olive oil also contains <strong>vitamin E</strong> and <strong>vitamin K</strong>, essential nutrients for skin repair and elasticity.
+                    </p>
+                    <p>
+                        The oil's emollient nature allows for smooth application during massage, reducing friction and enhancing relaxation. Its compounds are easily absorbed, nourishing the skin and supporting cellular functions.
+                    </p>
+                    <img src="assets/images/polyphenols.png" alt="Polyphenol Structure" class="compound-image" loading="lazy">
+                    <p>
+                        Regular application can improve skin hydration, elasticity, and reduce signs of aging. The anti-inflammatory effects also soothe irritated or sensitive skin.
+                    </p>
                 </div>
-                <div class="benefit-item">
-                    <i class="fas fa-tint"></i>
-                    <h3>Hydration</h3>
-                    <p>Virgin olive oil deeply moisturizes and revitalizes the skin.</p>
+
+                <!-- Compounds and Their Benefits Table -->
+                <div class="compound-section">
+                    <h3>Key Compounds and Their Benefits</h3>
+                    <table class="compound-table">
+                        <thead>
+                            <tr>
+                                <th>Compound</th>
+                                <th>Source</th>
+                                <th>Benefits</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gluconic Acid</td>
+                                <td>Honey</td>
+                                <td>Gentle exfoliation, promotes cell renewal</td>
+                            </tr>
+                            <tr>
+                                <td>Propolis</td>
+                                <td>Honey</td>
+                                <td>Antimicrobial, anti-inflammatory</td>
+                            </tr>
+                            <tr>
+                                <td>Flavonoids</td>
+                                <td>Honey</td>
+                                <td>Antioxidant, protects against oxidative stress</td>
+                            </tr>
+                            <tr>
+                                <td>Oleic Acid</td>
+                                <td>Olive Oil</td>
+                                <td>Moisturizes, maintains skin barrier</td>
+                            </tr>
+                            <tr>
+                                <td>Polyphenols</td>
+                                <td>Olive Oil</td>
+                                <td>Antioxidant, anti-inflammatory</td>
+                            </tr>
+                            <tr>
+                                <td>Vitamin E</td>
+                                <td>Olive Oil</td>
+                                <td>Skin repair, protects from UV damage</td>
+                            </tr>
+                            <tr>
+                                <td>Vitamin K</td>
+                                <td>Olive Oil</td>
+                                <td>Promotes skin elasticity, aids in healing</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="benefit-item">
-                    <i class="fas fa-hand-holding-heart"></i>
-                    <h3>Stress Relief</h3>
-                    <p>Experience mental tranquility and reduce stress levels.</p>
+
+                <!-- Updated Benefits Section -->
+                <div class="benefits">
+                    <!-- Existing benefit items -->
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-leaf"></i>
+                        <h3>Detoxification</h3>
+                        <p>Natural enzymes help cleanse and purify the skin.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-spa"></i>
+                        <h3>Relaxation</h3>
+                        <p>Massage techniques relieve tension and stress.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-droplet"></i>
+                        <h3>Hydration</h3>
+                        <p>Deeply moisturizes for soft, supple skin.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-atom"></i>
+                        <h3>Antioxidant Protection</h3>
+                        <p>Guards against environmental damage.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <h3>Improved Circulation</h3>
+                        <p>Enhances blood flow for better nutrient delivery.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-dna"></i>
+                        <h3>Collagen Boost</h3>
+                        <p>Stimulates collagen for firmer skin.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-hand-holding-droplet"></i>
+                        <h3>Deep Nourishment</h3>
+                        <p>Nutrients penetrate deeply for lasting benefits.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-seedling"></i>
+                        <h3>Anti-inflammatory</h3>
+                        <p>Soothes irritated and sensitive skin.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-solid fa-face-smile-beam"></i>
+                        <h3>Mood Enhancement</h3>
+                        <p>Promotes overall well-being and relaxation.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Back to Top Button -->
     <div class="back-to-top" aria-label="Back to Top">
-        <i class="fas fa-chevron-up"></i>
+        <i class="fa-solid fa-chevron-up"></i>
     </div>
 
     <!-- Footer -->
@@ -446,86 +627,70 @@
         <div class="footer-content">
             <p>&copy; 2024 Mongolian Honey Massage. All Rights Reserved.</p>
             <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript Files -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
     <!-- Custom JavaScript -->
     <script>
-        // Responsive Navigation Menu
-        const burger = document.querySelector('.burger');
-        const navLinks = document.querySelector('.nav-links');
-
-        burger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-            burger.classList.toggle('toggle');
-        });
-
-        // Navigation Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-
-            // Back to Top Button Visibility
+        (function() {
+            // Responsive Navigation Menu
+            const burger = document.querySelector('.burger');
+            const navLinks = document.querySelector('.nav-links');
             const backToTop = document.querySelector('.back-to-top');
-            if (window.scrollY > 300) {
-                backToTop.style.display = 'flex';
-            } else {
-                backToTop.style.display = 'none';
-            }
-        });
+            const nav = document.querySelector('nav');
 
-        // Back to Top Functionality
-        const backToTop = document.querySelector('.back-to-top');
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+            burger.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+                burger.classList.toggle('toggle');
+            });
 
-        // Animation on Scroll
-        const faders = document.querySelectorAll('.benefit-item');
-        const options = {
-            threshold: 0.3,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
+            // Navigation Scroll Effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
                 } else {
-                    entry.target.classList.add('appear');
-                    appearOnScroll.unobserve(entry.target);
+                    nav.classList.remove('scrolled');
+                }
+
+                // Back to Top Button Visibility
+                if (window.scrollY > 300) {
+                    backToTop.style.display = 'flex';
+                } else {
+                    backToTop.style.display = 'none';
                 }
             });
-        }, options);
 
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
-        });
+            // Back to Top Functionality
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Animation on Scroll
+            const faders = document.querySelectorAll('.benefit-item');
+            const options = {
+                threshold: 0.3,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('appear');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        })();
     </script>
-
-    <!-- CSS Animations -->
-    <style>
-        .benefit-item {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .benefit-item.appear {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
 </body>
 </html>
