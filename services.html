@@ -4,19 +4,22 @@
     <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Mongolian Honey Massage</title>
-    
+    <title>Body Massage with Honey - Mongolian Honey Massage</title>
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Explore our range of Mongolian honey massage services designed to rejuvenate and relax your body and mind.">
-    <meta name="keywords" content="Mongolian Honey Massage Services, Massage Packages, Wellness Treatments">
-    
+    <meta name="description" content="Experience our exclusive 25-minute BODY MASSAGE WITH HONEY using authentic Mongolian techniques to rejuvenate your body and mind.">
+    <meta name="keywords" content="Mongolian Massage, Body Massage with Honey, Kingston Massage, Relaxation Massage, Mongolian Techniques">
+
     <!-- Favicon -->
     <link rel="icon" href="assets/images/logo.png">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- CSS Styles -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p8fY+Y1N1CzXnGJlmz5UvyBbDuzb1XbXG09tgGtfPcIhV9jHfK9Ewq1jY1Z0J9Vk0xDcgW9T6aSjCqY8FZw5fg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Internal CSS -->
     <style>
         /* Reset & Global Styles */
         *, *::before, *::after {
@@ -40,11 +43,16 @@
         img {
             max-width: 100%;
             display: block;
+            border-radius: 10px;
         }
 
         a {
             text-decoration: none;
             color: inherit;
+        }
+
+        ul {
+            list-style: none;
         }
 
         /* Navigation Styles */
@@ -63,7 +71,7 @@
 
         nav.scrolled {
             background-color: rgba(254, 250, 224, 0.95);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .logo img {
@@ -71,10 +79,8 @@
         }
 
         .nav-links {
-            list-style: none;
             display: flex;
             align-items: center;
-            margin: 0;
         }
 
         .nav-links li {
@@ -82,12 +88,10 @@
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: #3a2e2a;
             font-weight: 500;
-            transition: color 0.3s ease;
             padding: 5px 0;
             position: relative;
+            transition: color 0.3s ease;
         }
 
         .nav-links a::after {
@@ -96,8 +100,8 @@
             width: 0%;
             height: 2px;
             background-color: #d4a373;
-            left: 0;
             bottom: 0;
+            left: 0;
             transition: width 0.3s ease;
         }
 
@@ -106,18 +110,15 @@
             width: 100%;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #d4a373;
-        }
-
-        /* Burger Menu Styles */
         .burger {
             display: none;
             cursor: pointer;
+            background: none;
+            border: none;
         }
 
-        .burger div {
+        .burger span {
+            display: block;
             width: 25px;
             height: 3px;
             background-color: #3a2e2a;
@@ -125,7 +126,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Toggle animation for burger menu */
         .burger.toggle .line1 {
             transform: rotate(-45deg) translate(-5px, 6px);
         }
@@ -140,14 +140,8 @@
 
         /* Services Section */
         .services {
-            padding: 120px 20px 80px;
+            padding: 120px 20px;
             text-align: center;
-            background-color: #fff;
-        }
-
-        .services .container {
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .services h1 {
@@ -157,55 +151,36 @@
             font-family: 'Noto Serif', serif;
         }
 
-        .service-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            justify-items: center;
-        }
-
         .service-card {
-            background-color: #fbf8ef;
-            border-radius: 10px;
+            max-width: 700px;
+            margin: 0 auto;
             padding: 20px;
-            width: 100%;
-            max-width: 350px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #fbf8ef;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            text-align: left;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .service-card img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 1.5em;
+        .service-card h2 {
+            font-size: 1.8em;
             margin-bottom: 15px;
             color: #3a2e2a;
         }
 
         .service-card p {
-            font-size: 1em;
-            color: #555;
             margin-bottom: 20px;
-            line-height: 1.6;
+            font-size: 1.1em;
+            color: #555;
         }
 
         .service-card .price {
-            font-size: 1.2em;
+            font-size: 1.3em;
             color: #d4a373;
             font-weight: bold;
-            margin-bottom: 20px;
         }
 
         .service-card .btn {
@@ -213,8 +188,6 @@
             color: #fefae0;
             padding: 10px 20px;
             border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
             transition: background-color 0.3s ease;
         }
 
@@ -222,55 +195,12 @@
             background-color: #b5835a;
         }
 
-        /* Booking Section */
-        .booking {
-            padding: 80px 20px;
-            text-align: center;
-            background-color: #fbf8ef;
-        }
-
-        .booking .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .booking h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #3a2e2a;
-            font-family: 'Noto Serif', serif;
-        }
-
-        .booking p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            color: #555;
-        }
-
-        .booking .btn {
-            background-color: #d4a373;
-            color: #fefae0;
-            padding: 15px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        .booking .btn:hover {
-            background-color: #b5835a;
-        }
-
-        /* Footer Styles */
+        /* Footer */
         footer {
             background-color: #3a2e2a;
             color: #fefae0;
-            padding: 30px 0;
+            padding: 20px 0;
             text-align: center;
-        }
-
-        .footer-content p {
-            margin-bottom: 15px;
         }
 
         .social-links a {
@@ -284,52 +214,41 @@
             color: #d4a373;
         }
 
-        /* Responsive Styles */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
+            .burger {
+                display: block;
             }
 
             .nav-links {
                 position: fixed;
                 right: 0;
-                height: 100vh;
                 top: 0;
+                height: 100vh;
+                width: 70%;
                 background-color: rgba(254, 250, 224, 0.95);
                 flex-direction: column;
                 align-items: center;
-                width: 70%;
+                justify-content: center;
                 transform: translateX(100%);
                 transition: transform 0.5s ease-in;
                 z-index: 999;
             }
 
             .nav-links.open {
-                transform: translateX(0%);
+                transform: translateX(0);
             }
 
             .nav-links li {
-                margin: 30px 0;
+                margin: 20px 0;
             }
 
-            .burger {
-                display: block;
+            nav {
+                padding: 15px 20px;
             }
 
-            .services h1 {
-                font-size: 2em;
-            }
-
-            .service-card {
-                max-width: none;
-            }
-
-            .booking h2 {
-                font-size: 2em;
-            }
-
-            .booking p {
-                font-size: 1em;
+            .services {
+                padding: 100px 20px;
             }
         }
     </style>
@@ -337,150 +256,76 @@
 <body>
     <!-- Navigation Bar -->
     <header>
-        <nav id="navbar">
+        <nav id="navbar" aria-label="Main Navigation">
             <div class="logo">
                 <a href="index.html">
                     <img src="assets/images/logo.png" alt="Mongolian Honey Massage Logo">
                 </a>
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="information.html">Information</a></li>
-                <li><a href="services.html" class="active">Services</a></li>
-                <li><a href="location.html">Location</a></li>
-                <li><a href="contact.html">Contact</a></li>
+            <ul class="nav-links" role="menubar" id="navigation-menu">
+                <li><a href="index.html" class="active" role="menuitem">Home</a></li>
+                <li><a href="information.html" role="menuitem">Information</a></li>
+                <li><a href="services.html" role="menuitem">Services</a></li>
+                <li><a href="location.html" role="menuitem">Location</a></li>
+                <li><a href="contact.html" role="menuitem">Contact</a></li>
             </ul>
-            <div class="burger">
+            <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navigation-menu">
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
-            </div>
+            </button>
         </nav>
     </header>
 
-    <!-- Services Content -->
-    <section class="services">
-        <div class="container">
-            <h1>Our Services</h1>
-            <div class="service-cards">
-                <!-- Service 1: Hand Massage with No Honey -->
-                <div class="service-card">
-                    <img src="assets/images/hand-massage.jpg" alt="Hand Massage">
-                    <h3>Hand Massage (No Honey)</h3>
-                    <p>Indulge in a soothing hand massage without the use of honey. Perfect for those seeking relaxation and stress relief focused on the hands.</p>
-                    <p class="price">$40 + tax CAD</p>
-                    <a href="#booking" class="btn">Book Now</a>
-                </div>
-                <!-- Service 2: Massage with Honey and Hot Towel -->
-                <div class="service-card">
-                    <img src="assets/images/honey-massage.jpg" alt="Honey Massage with Hot Towel">
-                    <h3>Honey Massage with Hot Towel</h3>
-                    <p>Experience the healing properties of natural honey combined with warm towels to detoxify and rejuvenate your skin and muscles.</p>
-                    <p class="price">$60 + tax CAD</p>
-                    <a href="#booking" class="btn">Book Now</a>
-                </div>
-                <!-- Service 3: Complete Package Service -->
-                <div class="service-card">
-                    <img src="assets/images/complete-package.jpg" alt="Complete Package Service">
-                    <h3>Complete Package Service</h3>
-                    <p>Enjoy the ultimate relaxation with our complete package, including honey massage, hot towels, and virgin olive oil for deep hydration and rejuvenation.</p>
-                    <p class="price">$80 + tax CAD</p>
-                    <a href="#booking" class="btn">Book Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <main>
+        <!-- Services Section -->
+        <section class="services">
+            <h1>Discover Ultimate Relaxation with Our Signature Service</h1>
+            <article class="service-card">
+                <h2>Luxurious Honey-Infused Body Massage</h2>
+                <p>
+                    Immerse yourself in a blissful 25-minute massage experience that seamlessly blends authentic Mongolian techniques with the nourishing essence of pure honey. Our expert therapists will transport you to a state of deep relaxation and rejuvenation, leaving you feeling refreshed and revitalized.
+                </p>
+                <p>Our exclusive session includes:</p>
+                <ul>
+                    <li><strong>Soothing Massage Lotion Application (5 minutes):</strong> Begin with a gentle application of our premium massage lotion to prepare your skin and enhance the sensory experience.</li>
+                    <li><strong>Signature Honey Massage (15 minutes):</strong> Relish the therapeutic warmth and healing properties of natural honey as it is skillfully massaged into your skin, promoting circulation and detoxification.</li>
+                    <li><strong>Nourishing Olive Oil Treatment (5 minutes):</strong> Conclude with a moisturizing olive oil treatment to lock in hydration and leave your skin with a radiant glow.</li>
+                </ul>
+                <p class="price"><strong>Price:</strong> $40 CAD + tax</p>
+                <p><strong>Limited-Time Offer:</strong> Share the experience with a friend and pay only $70 CAD + tax for both!</p>
+                <a href="#booking" class="btn" aria-label="Book Now for Honey-Infused Body Massage">Book Now</a>
+            </article>
+        </section>
+    </main>
 
-    <!-- Booking Section -->
-    <section id="booking" class="booking">
-        <div class="container">
-            <h2>Book Your Session</h2>
-            <p>Contact us to schedule your personalized massage experience. Our team is ready to provide you with exceptional service.</p>
-            <a href="contact.html" class="btn">Contact Us</a>
-        </div>
-    </section>
+
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Mongolian Honey Massage. All Rights Reserved.</p>
-            <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            </div>
+        <p>&copy; 2024 Mongolian Honey Massage. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
     </footer>
 
-    <!-- JavaScript Files -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-    <!-- Custom JavaScript -->
+    <!-- JavaScript -->
     <script>
-        // Responsive Navigation Menu
-        const burger = document.querySelector('.burger');
-        const navLinks = document.querySelector('.nav-links');
+        document.addEventListener('DOMContentLoaded', () => {
+            const burger = document.querySelector('.burger');
+            const navLinks = document.querySelector('.nav-links');
 
-        burger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-            burger.classList.toggle('toggle');
-        });
-
-        // Navigation Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-    </script>
-
-    <!-- CSS Animations -->
-    <style>
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fade-in.delay-1 {
-            transition-delay: 0.3s;
-        }
-
-        .fade-in.delay-2 {
-            transition-delay: 0.6s;
-        }
-
-        .fade-in.appear {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-
-    <!-- Animation on Scroll -->
-    <script>
-        // Animation on Scroll
-        const faders = document.querySelectorAll('.fade-in');
-        const options = {
-            threshold: 0.3,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    entry.target.classList.add('appear');
-                    appearOnScroll.unobserve(entry.target);
-                }
+            burger.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+                burger.classList.toggle('toggle');
             });
-        }, options);
 
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
+                nav.classList.toggle('scrolled', window.scrollY > 50);
+            });
         });
     </script>
 </body>
