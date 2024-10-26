@@ -33,6 +33,9 @@
     <!-- Lightbox2 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p+UjvJ2X+ujY1fXQDyG/jSdfE1XZtPm3e5hF6G6mM8VZcbqYb+z4HdLiY2Qp+g6B8AqSg72TgwKkENq+/drjHg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <!-- CSS Styles -->
     <style>
         :root {
@@ -45,6 +48,7 @@
             --font-primary: 'Roboto', sans-serif;
             --font-secondary: 'Noto Serif', serif;
             --transition-speed: 0.3s;
+            --max-width: 1200px;
         }
 
         /* Reset & Global Styles */
@@ -309,7 +313,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 40px;
-            max-width: 1200px;
+            max-width: var(--max-width);
             margin: auto;
             padding: 0 20px;
         }
@@ -341,18 +345,20 @@
         /* Image Gallery with Lightbox */
         .about-gallery {
             flex: 1;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            justify-items: center;
             align-items: center;
             animation: slideInLeft 1s forwards;
         }
 
         .gallery-image {
-            width: 30%;
+            width: 100%;
+            height: auto;
             border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            object-fit: cover;
         }
 
         .gallery-image:hover,
@@ -393,6 +399,9 @@
             flex-wrap: wrap;
             gap: 40px;
             margin-bottom: 40px;
+            max-width: var(--max-width);
+            margin: 0 auto 40px auto;
+            padding: 0 20px;
         }
 
         .step {
@@ -413,6 +422,7 @@
 
         .step img {
             width: 100%;
+            height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             margin-bottom: 15px;
@@ -462,7 +472,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            max-width: 1200px;
+            max-width: var(--max-width);
             margin: auto;
             padding: 0 20px;
         }
@@ -597,6 +607,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .testimonial-controls button {
@@ -617,17 +628,11 @@
             outline: none;
         }
 
-        /* Testimonials Slider Navigation Buttons Icons */
-        .testimonial-controls button:focus {
-            outline: 2px dashed var(--secondary-color);
-            outline-offset: 4px;
-        }
-
         /* Footer Styles */
         footer {
             background-color: var(--primary-color);
             color: var(--light-color);
-            padding: 30px 0;
+            padding: 30px 20px;
             text-align: center;
         }
 
@@ -674,7 +679,7 @@
             }
 
             .about-gallery {
-                flex-direction: column;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
 
             .gallery-image {
@@ -760,7 +765,7 @@
                     <img src="assets/images/logo.png" alt="Mongolian Honey Massage Logo">
                 </a>
             </div>
-            <ul class="nav-links" role="menubar">
+            <ul class="nav-links" role="menubar" id="navigation-menu">
                 <li><a href="index.html" class="active" role="menuitem">Home</a></li>
                 <li><a href="information.html" role="menuitem">Information</a></li>
                 <li><a href="services.html" role="menuitem">Services</a></li>
@@ -847,33 +852,33 @@
 
                 <!-- About Image Gallery with Lightbox Effect -->
                 <div class="about-gallery">
-                    <a href="assets/images/about1.jpg" data-lightbox="about-gallery" data-title="Therapist preparing oils">
+                    <a href="assets/images/about1-large.jpg" data-lightbox="about-gallery" data-title="Therapist preparing oils">
                         <img src="assets/images/about1.jpg" alt="Therapist preparing oils" loading="lazy" class="gallery-image">
                     </a>
-                    <a href="assets/images/about2.jpg" data-lightbox="about-gallery" data-title="Massage session in progress">
+                    <a href="assets/images/about2-large.jpg" data-lightbox="about-gallery" data-title="Massage session in progress">
                         <img src="assets/images/about2.jpg" alt="Massage session in progress" loading="lazy" class="gallery-image">
                     </a>
-                    <a href="assets/images/about-3-large.jpg" data-lightbox="about-gallery" data-title="Relaxing spa environment">
-                        <img src="assets/images/about-3.jpg" alt="Relaxing spa environment" loading="lazy" class="gallery-image">
+                    <a href="assets/images/about3-large.jpg" data-lightbox="about-gallery" data-title="Relaxing spa environment">
+                        <img src="assets/images/about3.jpg" alt="Relaxing spa environment" loading="lazy" class="gallery-image">
                     </a>
-                    <a href="assets/images/about-4-large.jpg" data-lightbox="about-gallery" data-title="Natural honey application">
-                        <img src="assets/images/about-4.jpg" alt="Natural honey application" loading="lazy" class="gallery-image">
+                    <a href="assets/images/about4-large.jpg" data-lightbox="about-gallery" data-title="Natural honey application">
+                        <img src="assets/images/about4.jpg" alt="Natural honey application" loading="lazy" class="gallery-image">
                     </a>
-                    <a href="assets/images/about-5-large.jpg" data-lightbox="about-gallery" data-title="Serene relaxation area">
-                        <img src="assets/images/about-5.jpg" alt="Serene relaxation area" loading="lazy" class="gallery-image">
+                    <a href="assets/images/about5-large.jpg" data-lightbox="about-gallery" data-title="Serene relaxation area">
+                        <img src="assets/images/about5.jpg" alt="Serene relaxation area" loading="lazy" class="gallery-image">
                     </a>
-                    <a href="assets/images/about-6-large.jpg" data-lightbox="about-gallery" data-title="Holistic wellness approach">
-                        <img src="assets/images/about-6.jpg" alt="Holistic wellness approach" loading="lazy" class="gallery-image">
+                    <a href="assets/images/about6-large.jpg" data-lightbox="about-gallery" data-title="Holistic wellness approach">
+                        <img src="assets/images/about6.jpg" alt="Holistic wellness approach" loading="lazy" class="gallery-image">
                     </a>
                     <!-- Additional Images for Enhanced Visual Appeal -->
-                    <a href="assets/images/about-7-large.jpg" data-lightbox="about-gallery" data-title="Traditional Mongolian herbs">
-                        <img src="assets/images/about-7.jpg" alt="Traditional Mongolian herbs" loading="lazy" class="gallery-image">
+                    <a href="assets/images/about7-large.jpg" data-lightbox="about-gallery" data-title="Traditional Mongolian herbs">
+                        <img src="assets/images/about7.jpg" alt="Traditional Mongolian herbs" loading="lazy" class="gallery-image">
                     </a>
-                    <a href="assets/images/about-8-large.jpg" data-lightbox="about-gallery" data-title="Clients enjoying a massage">
-                        <img src="assets/images/about-8.jpg" alt="Clients enjoying a massage" loading="lazy" class="gallery-image">
+                    <a href="assets/images/about8-large.jpg" data-lightbox="about-gallery" data-title="Clients enjoying a massage">
+                        <img src="assets/images/about8.jpg" alt="Clients enjoying a massage" loading="lazy" class="gallery-image">
                     </a>
-                    <a href="assets/images/about-9-large.jpg" data-lightbox="about-gallery" data-title="Calming treatment rooms">
-                        <img src="assets/images/about-9.jpg" alt="Calming treatment rooms" loading="lazy" class="gallery-image">
+                    <a href="assets/images/about9-large.jpg" data-lightbox="about-gallery" data-title="Calming treatment rooms">
+                        <img src="assets/images/about9.jpg" alt="Calming treatment rooms" loading="lazy" class="gallery-image">
                     </a>
                 </div>
             </div>
@@ -1020,8 +1025,6 @@
     <!-- JavaScript Libraries -->
     <!-- Lightbox2 JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
     <!-- Custom JavaScript -->
     <script>
