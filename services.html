@@ -373,7 +373,7 @@
                 </a>
             </div>
             <ul class="nav-links" role="menubar" id="navigation-menu">
-                <li><a href="index.html" class="active" role="menuitem">Home</a></li>
+                <li><a href="index.html" role="menuitem">Home</a></li>
                 <li><a href="information.html" role="menuitem">Information</a></li>
                 <li><a href="services.html" role="menuitem">Services</a></li>
                 <li><a href="location.html" role="menuitem">Location</a></li>
@@ -426,12 +426,14 @@
             const navLinks = document.querySelector('.nav-links');
             const nav = document.querySelector('nav');
 
+            // Toggle mobile menu
             burger.addEventListener('click', () => {
                 const isOpen = navLinks.classList.toggle('open');
                 burger.classList.toggle('toggle');
                 burger.setAttribute('aria-expanded', isOpen);
             });
 
+            // Change nav style on scroll
             window.addEventListener('scroll', () => {
                 nav.classList.toggle('scrolled', window.scrollY > 50);
             });
@@ -446,6 +448,22 @@
                         burger.setAttribute('aria-expanded', false);
                     }
                 });
+            });
+
+            // Highlight the active menu item based on the current URL
+            const currentPath = window.location.pathname.split('/').pop(); // Get the current page
+            const navLinksList = document.querySelectorAll('.nav-links a');
+
+            navLinksList.forEach(link => {
+                // Remove query parameters and hash from href
+                const linkPath = link.getAttribute('href').split('?')[0].split('#')[0];
+                if (linkPath === currentPath) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.classList.remove('active');
+                    link.removeAttribute('aria-current');
+                }
             });
         });
     </script>
