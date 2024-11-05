@@ -1,25 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Location - Mongolian Honey Massage</title>
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Find us at our serene location in Ulaanbaatar, Mongolia. Easily accessible and surrounded by tranquil landscapes.">
-    <meta name="keywords" content="Mongolian Honey Massage Location, Ulaanbaatar Massage Center, Wellness Center Location">
-    
+    <meta name="description"
+        content="Find us at our serene location in Kingston, Ontario. Easily accessible and surrounded by tranquil settings.">
+    <meta name="keywords" content="Mongolian Honey Massage Location, Kingston Massage Center, Wellness Center Location">
+    <meta name="author" content="Mongolian Honey Massage">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Location - Mongolian Honey Massage">
+    <meta property="og:description"
+        content="Find us at our serene location in Kingston, Ontario. Easily accessible and surrounded by tranquil settings.">
+    <meta property="og:image" content="assets/images/og-image.jpg">
+    <meta property="og:url" content="https://www.mongolianhoneymassage.com/location.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Location - Mongolian Honey Massage">
+    <meta name="twitter:description"
+        content="Find us at our serene location in Kingston, Ontario. Easily accessible and surrounded by tranquil settings.">
+    <meta name="twitter:image" content="assets/images/twitter-image.jpg">
+
     <!-- Favicon -->
-    <link rel="icon" href="assets/images/logo.png">
-    
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- CSS Styles -->
     <style>
+        :root {
+            --primary-color: #3a2e2a;
+            --secondary-color: #d4a373;
+            --background-color: #fbf8ef;
+            --light-color: #fefae0;
+            --accent-color: #b5835a;
+            --overlay-color: rgba(255, 235, 205, 0.2);
+            --font-primary: 'Roboto', sans-serif;
+            --font-secondary: 'Noto Serif', serif;
+            --transition-speed: 0.3s;
+            --max-width: 1200px;
+        }
+
         /* Reset & Global Styles */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -30,16 +67,11 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            color: #3a2e2a;
+            font-family: var(--font-primary);
+            color: var(--primary-color);
             line-height: 1.6;
-            background-color: #fbf8ef;
+            background-color: var(--background-color);
             overflow-x: hidden;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
         }
 
         a {
@@ -53,21 +85,22 @@
             justify-content: space-between;
             align-items: center;
             background-color: rgba(254, 250, 224, 0.9);
-            padding: 20px 50px;
+            padding: 15px 30px;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            transition: background-color 0.3s ease;
+            transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
 
         nav.scrolled {
             background-color: rgba(254, 250, 224, 0.95);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .logo img {
-            width: 80px;
+            width: 70px;
+            height: auto;
         }
 
         .nav-links {
@@ -78,27 +111,28 @@
         }
 
         .nav-links li {
-            margin-left: 30px;
+            margin-left: 25px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #3a2e2a;
+            color: var(--primary-color);
             font-weight: 500;
-            transition: color 0.3s ease;
-            padding: 5px 0;
+            transition: color var(--transition-speed) ease;
             position: relative;
+            font-size: 1em;
         }
 
         .nav-links a::after {
             content: '';
-            position: absolute;
-            width: 0%;
+            display: block;
+            width: 0;
             height: 2px;
-            background-color: #d4a373;
+            background: var(--secondary-color);
+            transition: width var(--transition-speed) ease;
+            position: absolute;
+            bottom: -5px;
             left: 0;
-            bottom: 0;
-            transition: width 0.3s ease;
         }
 
         .nav-links a:hover::after,
@@ -106,23 +140,25 @@
             width: 100%;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #d4a373;
-        }
-
         /* Burger Menu Styles */
         .burger {
             display: none;
             cursor: pointer;
+            width: 30px;
+            height: 25px;
+            position: relative;
+            z-index: 1001;
+            background: none;
+            border: none;
         }
 
         .burger div {
-            width: 25px;
+            width: 100%;
             height: 3px;
-            background-color: #3a2e2a;
-            margin: 5px;
-            transition: all 0.3s ease;
+            background-color: var(--primary-color);
+            margin: 5px 0;
+            transition: all var(--transition-speed) ease;
+            border-radius: 2px;
         }
 
         /* Toggle animation for burger menu */
@@ -138,23 +174,67 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
 
+        /* Mobile Navigation Styles */
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: 0;
+                top: 0;
+                height: 100vh;
+                background-color: rgba(254, 250, 224, 0.95);
+                flex-direction: column;
+                align-items: center;
+                width: 70%;
+                transform: translateX(100%);
+                transition: transform var(--transition-speed) ease-in-out;
+                padding-top: 100px;
+                gap: 30px;
+            }
+
+            .nav-links.open {
+                transform: translateX(0);
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .nav-links a {
+                font-size: 1.2em;
+            }
+        }
+
         /* Location Section */
         .location {
             padding: 120px 20px 80px;
             text-align: center;
             background-color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .location .container {
-            max-width: 1200px;
+            max-width: var(--max-width);
             margin: 0 auto;
         }
 
         .location h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            color: #3a2e2a;
-            font-family: 'Noto Serif', serif;
+            color: var(--primary-color);
+            font-family: var(--font-secondary);
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
 
         .location p {
@@ -163,6 +243,9 @@
             margin: 0 auto 40px;
             line-height: 1.6;
             color: #555;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
         }
 
         .map-container {
@@ -171,70 +254,95 @@
             margin: 0 auto;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1s;
         }
 
         .map-container:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contact Information */
+        .contact-info {
+            margin-top: 60px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1.5s;
+        }
+
+        .contact-info h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-family: var(--font-secondary);
+        }
+
+        .contact-info p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-info .btn {
+            margin-top: 20px;
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+            display: inline-block;
+        }
+
+        .contact-info .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
         }
 
         /* Footer Styles */
         footer {
-            background-color: #3a2e2a;
-            color: #fefae0;
-            padding: 30px 0;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 30px 20px;
             text-align: center;
         }
 
         .footer-content p {
             margin-bottom: 15px;
+            font-size: 1em;
         }
 
         .social-links a {
-            color: #fefae0;
+            color: var(--light-color);
             margin: 0 10px;
             font-size: 1.5em;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
         }
 
         .social-links a:hover {
-            color: #d4a373;
+            color: var(--secondary-color);
+            transform: scale(1.2);
+            outline: none;
         }
 
         /* Responsive Styles */
         @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
-            }
-
-            .nav-links {
-                position: fixed;
-                right: 0;
-                height: 100vh;
-                top: 0;
-                background-color: rgba(254, 250, 224, 0.95);
-                flex-direction: column;
-                align-items: center;
-                width: 70%;
-                transform: translateX(100%);
-                transition: transform 0.5s ease-in;
-                z-index: 999;
-            }
-
-            .nav-links.open {
-                transform: translateX(0%);
-            }
-
-            .nav-links li {
-                margin: 30px 0;
-            }
-
-            .burger {
-                display: block;
-            }
-
             .location h1 {
                 font-size: 2em;
             }
@@ -243,8 +351,16 @@
                 font-size: 1em;
             }
         }
+
+        /* Animations */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
+
 <body>
     <!-- Navigation Bar -->
     <header>
@@ -262,7 +378,8 @@
                 <li><a href="location.html" class="active" role="menuitem" aria-current="page">Location</a></li>
                 <li><a href="contact.html" role="menuitem">Contact</a></li>
             </ul>
-            <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navigation-menu">
+            <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false"
+                aria-controls="navigation-menu">
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
@@ -271,27 +388,29 @@
     </header>
 
     <!-- Location Content -->
-    <section class="location">
+    <section class="location" aria-labelledby="location-heading">
         <div class="container">
-            <h1>Our Location</h1>
+            <h1 id="location-heading">Our Location</h1>
             <p>
-                Nestled in the heart of Ulaanbaatar, our center offers a peaceful retreat from the bustling city life. Easily accessible by public transport with ample parking available.
+                Escape to our peaceful retreat located at 873 Clearfield Crescent, Kingston, ON K7P 1Z6, Canada. Nestled
+                in a tranquil neighborhood, our center offers a serene environment where you can unwind and rejuvenate.
             </p>
             <!-- Google Map Embed -->
             <div class="map-container">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.998338338659!2d106.91466901531508!3d47.88639877919203!2m3!1f0!2f0!3f0!3m2!
-                    1i1024!2i768!4f13.1!3m3!1m2!1s0x5d8b1442bfa36b5b%3A0x6c3f9e0e3bf4f13c!2sUlaanbaatar%2C%20Mongolia!5e0!3m2!1sen!2sus!4v1616682873094!5m2!1sen!2sus"
-                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    aria-label="Google Map showing the location of Mongolian Honey Massage"></iframe>
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2857.6793874345817!2d-76.5775151!3d44.2548408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cd2adb247372381%3A0xf863a098c2313875!2s873%20Clearfield%20Crescent%2C%20Kingston%2C%20ON%20K7P%201Z6!5e0!3m2!1sen!2sca!4v1730848252756!5m2!1sen!2sca"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
+
             <!-- Contact Information -->
             <div class="contact-info">
                 <h2>Contact Information</h2>
-                <p><strong>Address:</strong> 123 Wellness Street, Ulaanbaatar, Mongolia</p>
-                <p><strong>Phone:</strong> <a href="tel:+97612345678">+976 1234 5678</a></p>
-                <p><strong>Email:</strong> <a href="mailto:info@mongolianhoneymassage.mn">info@mongolianhoneymassage.mn</a></p>
-                <a href="contact.html" class="btn">Get in Touch</a>
+                <p><strong>Address:</strong> 873 Clearfield Crescent, Kingston, ON K7P 1Z6, Canada</p>
+                <p><strong>Phone:</strong> <a href="tel:6137702341">613-770-2341</a></p>
+                <p><strong>Email:</strong> <a
+                        href="mailto:info@mongolianhoneymassage.com">info@mongolianhoneymassage.com</a></p>
+                <a href="contact.html" class="btn" role="button">Get in Touch</a>
             </div>
         </div>
     </section>
@@ -309,115 +428,70 @@
     </footer>
 
     <!-- JavaScript Files -->
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
     <!-- Custom JavaScript -->
     <script>
-        // Responsive Navigation Menu
-        const burger = document.querySelector('.burger');
-        const navLinks = document.querySelector('.nav-links');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Responsive Navigation Menu
+            const burger = document.querySelector('.burger');
+            const navLinks = document.querySelector('.nav-links');
 
-        burger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-            burger.classList.toggle('toggle');
-        });
+            burger.addEventListener('click', () => {
+                const expanded = burger.getAttribute('aria-expanded') === 'true' || false;
+                burger.setAttribute('aria-expanded', !expanded);
+                navLinks.classList.toggle('open');
+                burger.classList.toggle('toggle');
+            });
 
-        // Navigation Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-    </script>
+            // Close mobile menu when a link is clicked
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    if (navLinks.classList.contains('open')) {
+                        navLinks.classList.remove('open');
+                        burger.classList.remove('toggle');
+                        burger.setAttribute('aria-expanded', false);
+                    }
+                });
+            });
 
-    <!-- CSS Animations -->
-    <style>
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fade-in.delay-1 {
-            transition-delay: 0.3s;
-        }
-
-        .fade-in.appear {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Contact Info Styles */
-        .contact-info {
-            margin-top: 60px;
-            text-align: center;
-        }
-
-        .contact-info h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #3a2e2a;
-            font-family: 'Noto Serif', serif;
-        }
-
-        .contact-info p {
-            font-size: 1.2em;
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .contact-info a {
-            color: #d4a373;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-info a:hover {
-            color: #b5835a;
-        }
-
-        .contact-info .btn {
-            margin-top: 20px;
-            background-color: #d4a373;
-            color: #fefae0;
-            padding: 15px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        .contact-info .btn:hover {
-            background-color: #b5835a;
-        }
-    </style>
-
-    <!-- Animation on Scroll -->
-    <script>
-        // Animation on Scroll
-        const faders = document.querySelectorAll('.fade-in');
-        const options = {
-            threshold: 0.3,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
+            // Navigation Scroll Effect
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
                 } else {
-                    entry.target.classList.add('appear');
-                    appearOnScroll.unobserve(entry.target);
+                    nav.classList.remove('scrolled');
                 }
             });
-        }, options);
 
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
+            // Animation on Scroll for Location Heading and Paragraph
+            const locationHeading = document.getElementById('location-heading');
+            const locationParagraph = document.querySelector('.location p');
+            const mapContainer = document.querySelector('.map-container');
+            const contactInfo = document.querySelector('.contact-info');
+
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            observer.observe(locationHeading);
+            observer.observe(locationParagraph);
+            observer.observe(mapContainer);
+            observer.observe(contactInfo);
         });
     </script>
 </body>
+
 </html>
