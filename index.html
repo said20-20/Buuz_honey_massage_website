@@ -70,23 +70,13 @@
             overflow-x: hidden;
         }
 
-        /* Visually Hidden (for accessibility) */
-        .visually-hidden {
-            position: absolute;
-            left: -10000px;
-            top: auto;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-        }
-
         /* Navigation Styles */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background-color: rgba(254, 250, 224, 0.9);
-            padding: 20px 50px;
+            padding: 15px 30px;
             position: fixed;
             width: 100%;
             top: 0;
@@ -100,7 +90,7 @@
         }
 
         .logo img {
-            width: 80px;
+            width: 70px;
             height: auto;
         }
 
@@ -112,7 +102,7 @@
         }
 
         .nav-links li {
-            margin-left: 30px;
+            margin-left: 25px;
         }
 
         .nav-links a {
@@ -121,6 +111,7 @@
             font-weight: 500;
             transition: color var(--transition-speed) ease;
             position: relative;
+            font-size: 1em;
         }
 
         .nav-links a::after {
@@ -176,6 +167,10 @@
 
         /* Mobile Navigation Styles */
         @media (max-width: 768px) {
+            nav {
+                padding: 10px 20px;
+            }
+
             .nav-links {
                 position: fixed;
                 right: 0;
@@ -188,7 +183,7 @@
                 transform: translateX(100%);
                 transition: transform var(--transition-speed) ease-in-out;
                 padding-top: 100px;
-                gap: 40px;
+                gap: 30px;
             }
 
             .nav-links.open {
@@ -201,6 +196,10 @@
 
             .burger {
                 display: block;
+            }
+
+            .nav-links a {
+                font-size: 1.2em;
             }
         }
 
@@ -288,9 +287,9 @@
             outline: none;
         }
 
-        /* About Section with Enhanced Media */
+        /* About Section with Soothing Content and Animated Images */
         .about {
-            padding: 100px 0;
+            padding: 80px 0;
             background-image: url('assets/images/patterns.svg');
             background-repeat: no-repeat;
             background-size: cover;
@@ -331,18 +330,14 @@
             color: var(--secondary-color);
         }
 
-        .about-text p, .about-text ul {
+        .about-text p {
             font-size: 1.2em;
-            line-height: 1.6;
+            line-height: 1.8;
             margin-bottom: 20px;
+            text-align: justify;
         }
 
-        .about-text ul {
-            list-style: disc;
-            margin-left: 20px;
-        }
-
-        /* Image Gallery with Lightbox */
+        /* Image Gallery with Lightbox and Animations */
         .about-gallery {
             flex: 1;
             display: grid;
@@ -359,6 +354,14 @@
             border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             object-fit: cover;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .gallery-image.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .gallery-image:hover,
@@ -377,7 +380,7 @@
 
         /* Signature Treatment Section */
         .signature-treatment {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: #fff;
             text-align: center;
         }
@@ -453,7 +456,7 @@
 
         /* Benefits Section */
         .benefits {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: var(--background-color);
             text-align: center;
         }
@@ -554,7 +557,7 @@
 
         /* Testimonials Section */
         .testimonials {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: #fff;
             text-align: center;
         }
@@ -657,12 +660,8 @@
 
         /* Responsive Styles */
         @media (max-width: 768px) {
-            nav {
-                padding: 15px 30px;
-            }
-
             .hero-content h1 {
-                font-size: 2.5em;
+                font-size: 2.2em;
             }
 
             .hero-content p {
@@ -679,7 +678,7 @@
             }
 
             .about-gallery {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
 
             .gallery-image {
@@ -797,62 +796,39 @@
         </div>
     </section>
 
-    <!-- About Section with Enhanced Media and Layout -->
+    <!-- About Section with Soothing Content and Animated Images -->
     <section class="about" aria-labelledby="about-us-heading">
         <div class="container">
-            <h2 id="about-us-heading">Who We Are</h2>
+            <h2 id="about-us-heading">Discover Tranquility</h2>
             <div class="about-content">
                 <!-- About Text Content -->
                 <div class="about-text">
                     <p>
-                        At <strong>Mongolian Honey Massage</strong>, we offer more than just massage therapy – we create an immersive wellness experience. 
-                        Rooted in the ancient healing traditions of Mongolia, our treatments seamlessly blend detoxifying honey with contemporary relaxation techniques, providing you with a serene retreat from the stresses of everyday life.
+                        Nestled in the heart of serenity, <strong>Mongolian Honey Massage</strong> invites you to escape the stresses of everyday life. As you step into our peaceful haven, let the calming aromas and gentle melodies envelop you, transporting you to a world where time slows down and worries fade away.
                     </p>
 
-                    <h3>Our Story</h3>
                     <p>
-                        Inspired by centuries-old Mongolian wellness practices, our journey began with a deep passion for natural healing and holistic health. 
-                        Founded by experts in traditional Mongolian massage, we have meticulously crafted our services to honor and preserve these timeless techniques while integrating modern advancements in wellness therapy.
+                        Our journey began with a simple yet profound vision: to create a sanctuary where ancient wisdom meets modern well-being. Inspired by the timeless healing traditions of Mongolia, we've crafted an oasis that nurtures the soul and rejuvenates the body. Every detail, from our carefully selected natural ingredients to our tranquil spa ambiance, is designed to soothe your senses.
                     </p>
 
-                    <h3>Our Mission</h3>
                     <p>
-                        Our mission is to nurture the body and mind through holistic treatments that inspire and revitalize. 
-                        We are committed to delivering exceptional care through personalized services, utilizing natural remedies, and maintaining a peaceful spa atmosphere that fosters deep relaxation and rejuvenation.
+                        Allow our skilled therapists to guide you through a personalized wellness experience. With tender care and expert touch, they weave together techniques passed down through generations, using pure honey and nourishing oils to restore harmony within. Feel the tension melt away as you surrender to the rhythmic flow of the massage, each stroke bringing you closer to a state of complete relaxation.
                     </p>
 
-                    <h3>Our Philosophy</h3>
                     <p>
-                        We believe that true healing emanates from within and that nature provides the essential tools to unlock this potential. 
-                        By harmonizing ancient wisdom with modern techniques, we help you achieve a balanced state of health, enhancing both physical well-being and mental tranquility.
+                        At Mongolian Honey Massage, we believe in the power of holistic healing. Our philosophy embraces the connection between mind, body, and spirit, recognizing that true well-being arises from balance and harmony. We are committed to providing not just a service, but a journey—a path to inner peace and revitalization.
                     </p>
 
-                    <h3>Why Choose Mongolian Honey Massage?</h3>
-                    <ul>
-                        <li>Authentic treatments inspired by Mongolian healing traditions</li>
-                        <li>Natural ingredients, including pure honey and virgin olive oil</li>
-                        <li>Tailored experiences to meet individual needs</li>
-                        <li>A serene, spa-like environment for deep relaxation</li>
-                        <li>Expert therapists committed to holistic wellness</li>
-                        <li>Comprehensive wellness programs combining multiple therapies</li>
-                        <li>Commitment to sustainable and eco-friendly practices</li>
-                        <li>Continuous innovation in massage techniques and wellness treatments</li>
-                    </ul>
-                    
-                    <h3>Our Team</h3>
                     <p>
-                        Our team comprises highly trained and experienced therapists dedicated to providing personalized care. 
-                        Each member is passionate about holistic health and continuously undergoes training to stay abreast of the latest advancements in massage therapy and wellness practices.
+                        Join us in celebrating the art of self-care. Let the warmth of our hospitality and the serenity of our environment wrap around you like a comforting embrace. Whether you seek relief from daily stress, a moment of quiet reflection, or simply a touch of indulgence, we are here to cater to your every need.
                     </p>
-                    
-                    <h3>Community and Sustainability</h3>
+
                     <p>
-                        We are deeply committed to our community and the environment. 
-                        By sourcing our ingredients sustainably and engaging in eco-friendly practices, we ensure that our services not only benefit our clients but also contribute positively to the world around us.
+                        Your well-being is our utmost priority. Come, unwind with us, and emerge feeling refreshed, rejuvenated, and reconnected with yourself. The tranquility you seek is closer than you imagine.
                     </p>
                 </div>
 
-                <!-- About Image Gallery with Lightbox Effect -->
+                <!-- About Image Gallery with Animated Images -->
                 <div class="about-gallery">
                     <a href="assets/images/about1-large.jpg" data-lightbox="about-gallery" data-title="Therapist preparing oils">
                         <img src="assets/images/about1.jpg" alt="Therapist preparing oils" loading="lazy" class="gallery-image">
@@ -1150,6 +1126,24 @@
             window.addEventListener('scroll', handleVideoPlayback);
             window.addEventListener('resize', handleVideoPlayback);
             document.addEventListener('DOMContentLoaded', handleVideoPlayback);
+
+            // Image Animation on Scroll
+            const galleryImages = document.querySelectorAll('.gallery-image');
+
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting){
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target); // Stop observing after animation
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            galleryImages.forEach(image => {
+                imageObserver.observe(image);
+            });
         });
     </script>
 </body>
