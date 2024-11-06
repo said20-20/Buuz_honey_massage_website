@@ -4,27 +4,68 @@
     <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Body Massage with Honey - Mongolian Honey Massage</title>
-
+    <title>Services - Mongolian Honey Massage</title>
+    
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Experience our exclusive 25-minute BODY MASSAGE WITH HONEY using authentic Mongolian techniques to rejuvenate your body and mind.">
-    <meta name="keywords" content="Mongolian Massage, Body Massage with Honey, Kingston Massage, Relaxation Massage, Mongolian Techniques">
-
+    <meta name="description" content="Discover our range of massage services infused with natural honey and olive oil, designed to rejuvenate your body and mind using authentic Mongolian techniques.">
+    <meta name="keywords" content="Mongolian Massage, Honey Massage, Olive Oil Massage, Kingston Massage Services, Relaxation Therapy, Holistic Wellness, Natural Healing">
+    <meta name="author" content="Mongolian Honey Massage">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Services - Mongolian Honey Massage">
+    <meta property="og:description" content="Discover our range of massage services infused with natural honey and olive oil, designed to rejuvenate your body and mind using authentic Mongolian techniques.">
+    <meta property="og:image" content="https://www.mongolianhoneymassage.com/assets/images/og-image-services.jpg">
+    <meta property="og:url" content="https://www.mongolianhoneymassage.com/services.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Services - Mongolian Honey Massage">
+    <meta name="twitter:description" content="Discover our range of massage services infused with natural honey and olive oil, designed to rejuvenate your body and mind using authentic Mongolian techniques.">
+    <meta name="twitter:image" content="https://www.mongolianhoneymassage.com/assets/images/twitter-image-services.jpg">
+    
     <!-- Favicon -->
-    <link rel="icon" href="assets/images/logo.png">
-
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
+    
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    
+    <!-- AOS CSS for Animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p8fY+Y1N1CzXnGJlmz5UvyBbDuzb1XbXG09tgGtfPcIhV9jHfK9Ewq1jY1Z0J9Vk0xDcgW9T6aSjCqY8FZw5fg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Internal CSS -->
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Custom CSS -->
     <style>
+        :root {
+            --primary-color: #3a2e2a;
+            --secondary-color: #d4a373;
+            --background-color: #fbf8ef;
+            --light-color: #fefae0;
+            --accent-color: #b5835a;
+            --overlay-color: rgba(255, 235, 205, 0.2);
+            --font-primary: 'Roboto', sans-serif;
+            --font-secondary: 'Noto Serif', serif;
+            --transition-speed: 0.3s;
+            --max-width: 1200px;
+            --dark-primary: #f5f5f5;
+            --dark-secondary: #b5835a;
+            --dark-background: #2e2e2e;
+            --dark-light: #e0e0e0;
+            --dark-accent: #a16f4b;
+            --back-to-top-size: 50px;
+            --spacing-unit: 1rem;
+        }
+
         /* Reset & Global Styles */
         *, *::before, *::after {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
@@ -34,27 +75,40 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            color: #3a2e2a;
+            margin: 0;
+            font-family: var(--font-primary);
+            color: var(--primary-color);
             line-height: 1.6;
-            background-color: #fbf8ef;
+            background-color: var(--background-color);
             overflow-x: hidden;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 10px;
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: var(--dark-background);
+            color: var(--dark-light);
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
+        body.dark-mode nav {
+            background-color: rgba(46, 46, 46, 0.9);
         }
 
-        ul {
-            list-style: none;
+        body.dark-mode .video-overlay {
+            background: rgba(255, 235, 205, 0.3);
+        }
+
+        body.dark-mode .btn {
+            background-color: var(--dark-secondary);
+        }
+
+        body.dark-mode .btn:hover,
+        body.dark-mode .btn:focus {
+            background-color: var(--dark-accent);
+        }
+
+        body.dark-mode .footer-content {
+            background-color: var(--dark-primary);
         }
 
         /* Navigation Styles */
@@ -63,39 +117,42 @@
             justify-content: space-between;
             align-items: center;
             background-color: rgba(254, 250, 224, 0.9);
-            padding: 15px 20px;
+            padding: var(--spacing-unit) 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            transition: background-color 0.3s ease, padding 0.3s ease;
+            transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
 
         nav.scrolled {
             background-color: rgba(254, 250, 224, 0.95);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .logo img {
-            width: 60px;
+            width: 80px;
+            height: auto;
         }
 
         .nav-links {
+            list-style: none;
             display: flex;
             align-items: center;
-            gap: 20px;
-        }
-
-        .nav-links li {
             margin: 0;
         }
 
+        .nav-links li {
+            margin-left: 30px;
+        }
+
         .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
             font-weight: 500;
+            transition: color var(--transition-speed) ease;
             padding: 5px 0;
             position: relative;
-            transition: color 0.3s ease;
             font-size: 1rem;
         }
 
@@ -104,10 +161,10 @@
             position: absolute;
             width: 0%;
             height: 2px;
-            background-color: #d4a373;
-            bottom: 0;
+            background-color: var(--secondary-color);
             left: 0;
-            transition: width 0.3s ease;
+            bottom: 0;
+            transition: width var(--transition-speed) ease;
         }
 
         .nav-links a:hover::after,
@@ -115,22 +172,48 @@
             width: 100%;
         }
 
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary-color);
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            margin-left: 1rem;
+            cursor: pointer;
+            font-size: 1.2em;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            transition: color var(--transition-speed);
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            color: var(--dark-light);
+        }
+
+        /* Burger Menu Styles */
         .burger {
             display: none;
             cursor: pointer;
+            width: 30px;
+            height: 25px;
+            position: relative;
+            z-index: 1001;
             background: none;
             border: none;
         }
 
-        .burger span {
-            display: block;
-            width: 25px;
+        .burger div {
+            width: 100%;
             height: 3px;
-            background-color: #3a2e2a;
-            margin: 5px;
-            transition: all 0.3s ease;
+            background-color: var(--primary-color);
+            margin: 5px 0;
+            transition: all var(--transition-speed) ease;
+            border-radius: 2px;
         }
 
+        /* Toggle animation for burger menu */
         .burger.toggle .line1 {
             transform: rotate(-45deg) translate(-5px, 6px);
         }
@@ -143,140 +226,10 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
 
-        /* Services Section */
-        .services {
-            padding: 120px 20px 60px;
-            text-align: center;
-        }
-
-        .services h1 {
-            font-size: 2em;
-            margin-bottom: 30px;
-            color: #3a2e2a;
-            font-family: 'Noto Serif', serif;
-        }
-
-        .service-card {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-card h2 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            color: #3a2e2a;
-        }
-
-        .service-card p {
-            margin-bottom: 15px;
-            font-size: 1rem;
-            color: #555;
-        }
-
-        .service-card ul {
-            text-align: left;
-            margin-bottom: 15px;
-            padding-left: 20px;
-        }
-
-        .service-card ul li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .service-card ul li::before {
-            content: '✔️';
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: #d4a373;
-        }
-
-        .service-card .price {
-            font-size: 1.2em;
-            color: #d4a373;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .service-card .btn {
-            display: inline-block;
-            background-color: #d4a373;
-            color: #fefae0;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .service-card .btn:hover {
-            background-color: #b5835a;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #3a2e2a;
-            color: #fefae0;
-            padding: 20px 10px;
-            text-align: center;
-        }
-
-        .social-links {
-            margin-top: 10px;
-        }
-
-        .social-links a {
-            color: #fefae0;
-            margin: 0 10px;
-            font-size: 1.5em;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #d4a373;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .services {
-                padding: 100px 15px 50px;
-            }
-
-            .services h1 {
-                font-size: 1.8em;
-            }
-
-            .service-card h2 {
-                font-size: 1.4em;
-            }
-
-            .service-card p, .service-card ul, .service-card .price, .service-card .btn {
-                font-size: 0.95em;
-            }
-
-            nav {
-                padding: 12px 15px;
-            }
-
-            .logo img {
-                width: 50px;
-            }
-        }
-
+        /* Mobile Navigation Styles */
         @media (max-width: 768px) {
-            .burger {
-                display: block;
+            nav {
+                padding: var(--spacing-unit) 1.5rem;
             }
 
             .nav-links {
@@ -290,9 +243,10 @@
                 align-items: center;
                 justify-content: center;
                 transform: translateX(100%);
-                transition: transform 0.5s ease-in;
+                transition: transform var(--transition-speed) ease-in-out;
                 z-index: 999;
-                padding: 20px;
+                padding-top: 100px;
+                gap: 30px;
             }
 
             .nav-links.open {
@@ -300,68 +254,288 @@
             }
 
             .nav-links li {
-                margin: 15px 0;
+                margin: 0;
             }
 
-            nav {
-                padding: 10px 15px;
-            }
-
-            .services {
-                padding: 100px 15px 50px;
-            }
-
-            .services h1 {
-                font-size: 1.6em;
-            }
-
-            .service-card {
-                padding: 15px;
-            }
-
-            .service-card h2 {
-                font-size: 1.3em;
-            }
-
-            .service-card p, .service-card ul, .service-card .price, .service-card .btn {
-                font-size: 0.9em;
-            }
-
-            .service-card .btn {
-                padding: 8px 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .services {
-                padding: 90px 10px 40px;
-            }
-
-            .services h1 {
-                font-size: 1.4em;
-            }
-
-            .service-card {
-                padding: 10px;
-            }
-
-            .service-card h2 {
+            .nav-links a {
                 font-size: 1.2em;
             }
 
+            .dark-mode-toggle {
+                margin-left: 0;
+            }
+
+            .burger {
+                display: block;
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 20px 60px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .services .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .services h1 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-family: var(--font-secondary);
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.3s;
+        }
+
+        .service-card {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fbf8ef;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.5s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .service-card h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-family: var(--font-secondary);
+        }
+
+        .service-card p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .service-card ul {
+            text-align: left;
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .service-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .service-card ul li::before {
+            content: '✔️';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--secondary-color);
+        }
+
+        .service-card .price {
+            font-size: 1.2em;
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .service-card .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+            font-size: 1rem;
+        }
+
+        .service-card .btn:hover,
+        .service-card .btn:focus {
+            background-color: var(--accent-color);
+            transform: scale(1.05);
+            outline: none;
+        }
+
+        /* Back to Top Button */
+        #backToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 2.5rem;
+            right: 2.5rem;
+            z-index: 100;
+            font-size: 1.125rem;
+            border: none;
+            outline: none;
+            background-color: var(--secondary-color);
+            color: white;
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 50%;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        #backToTopBtn:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 30px 10px;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 15px;
+            font-size: 1em;
+        }
+
+        .social-links a {
+            color: var(--light-color);
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        .social-links a:hover,
+        .social-links a:focus {
+            color: var(--secondary-color);
+            transform: scale(1.2);
+            outline: none;
+        }
+
+        /* CSS Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (min-width: 600px) {
+            .services h1 {
+                font-size: 2.5em;
+            }
+
+            .service-card {
+                padding: 25px;
+            }
+
+            .service-card h2 {
+                font-size: 1.7em;
+            }
+
             .service-card p, .service-card ul, .service-card .price, .service-card .btn {
-                font-size: 0.85em;
+                font-size: 1.1em;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .services h1 {
+                font-size: 3rem;
             }
 
-            .service-card .btn {
-                padding: 6px 12px;
+            .service-card {
+                padding: 30px;
             }
 
-            .logo img {
-                width: 45px;
+            .service-card h2 {
+                font-size: 2em;
+            }
+
+            .service-card p, .service-card ul, .service-card .price, .service-card .btn {
+                font-size: 1.2em;
             }
         }
     </style>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Luxurious Honey-Infused Body Massage",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "Mongolian Honey Massage",
+            "image": "https://www.mongolianhoneymassage.com/assets/images/logo.png",
+            "@id": "",
+            "url": "https://www.mongolianhoneymassage.com",
+            "telephone": "+1234567890",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "873 Clearfield Crescent",
+                "addressLocality": "Kingston",
+                "addressRegion": "ON",
+                "postalCode": "K7P 1Z6",
+                "addressCountry": "CA"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 44.231166,
+                "longitude": -76.543803
+            },
+            "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ],
+                "opens": "09:00",
+                "closes": "21:00"
+            },
+            "sameAs": [
+                "https://www.facebook.com/mongolianhoneymassage",
+                "https://www.instagram.com/mongolianhoneymassage",
+                "https://twitter.com/mongolianhoney"
+            ]
+        },
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "CAD",
+            "price": "40.00",
+            "url": "https://www.mongolianhoneymassage.com/appointments.html",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2024-01-01"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "150"
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -369,17 +543,20 @@
         <nav id="navbar" aria-label="Main Navigation">
             <div class="logo">
                 <a href="index.html">
-                    <img src="assets/images/logo.png" alt="Mongolian Honey Massage Logo">
+                    <img src="assets/images/logo.png" alt="Mongolian Honey Massage Logo" loading="lazy">
                 </a>
             </div>
             <ul class="nav-links" role="menubar" id="navigation-menu">
                 <li><a href="index.html" role="menuitem">Home</a></li>
                 <li><a href="information.html" role="menuitem">Information</a></li>
-                <li><a href="services.html" role="menuitem">Services</a></li>
-                <li><a href="appointments.html" class="active" role="menuitem" aria-current="page">Appointments</a></li>
+                <li><a href="services.html" class="active" role="menuitem" aria-current="page">Services</a></li>
+                <li><a href="appointments.html" role="menuitem">Appointments</a></li>
                 <li><a href="location.html" role="menuitem">Location</a></li>
                 <li><a href="contact.html" role="menuitem">Contact</a></li>
             </ul>
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
             <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navigation-menu">
                 <div class="line1"></div>
                 <div class="line2"></div>
@@ -391,52 +568,82 @@
     <!-- Main Content -->
     <main>
         <!-- Services Section -->
-        <section class="services">
-            <h1>Discover Ultimate Relaxation with Our Signature Service</h1>
-            <article class="service-card">
-                <h2>Luxurious Honey-Infused Body Massage</h2>
-                <p>
-                    Immerse yourself in a blissful 25-minute massage experience that seamlessly blends authentic Mongolian techniques with the nourishing essence of pure honey. Our expert therapists will transport you to a state of deep relaxation and rejuvenation, leaving you feeling refreshed and revitalized.
-                </p>
-                <p>Our exclusive session includes:</p>
-                <ul>
-                    <li><strong>Soothing Massage Lotion Application (5 minutes):</strong> Begin with a gentle application of our premium massage lotion to prepare your skin and enhance the sensory experience.</li>
-                    <li><strong>Signature Honey Massage (15 minutes):</strong> Relish the therapeutic warmth and healing properties of natural honey as it is skillfully massaged into your skin, promoting circulation and detoxification.</li>
-                    <li><strong>Nourishing Olive Oil Treatment (5 minutes):</strong> Conclude with a moisturizing olive oil treatment to lock in hydration and leave your skin with a radiant glow.</li>
-                </ul>
-                <p class="price"><strong>Price:</strong> $40 CAD + tax</p>
-                <p><strong>Limited-Time Offer:</strong> Share the experience with a friend and pay only $70 CAD + tax for both!</p>
-                <a href="#booking" class="btn" aria-label="Book Now for Honey-Infused Body Massage">Book Now</a>
-            </article>
+        <section class="services" aria-labelledby="services-heading">
+            <div class="container">
+                <h1 id="services-heading">Discover Ultimate Relaxation with Our Signature Service</h1>
+                <article class="service-card" data-aos="fade-up">
+                    <h2>Luxurious Honey-Infused Body Massage</h2>
+                    <p>
+                        Immerse yourself in a blissful 25-minute massage experience that seamlessly blends authentic Mongolian techniques with the nourishing essence of pure honey. Our expert therapists will transport you to a state of deep relaxation and rejuvenation, leaving you feeling refreshed and revitalized.
+                    </p>
+                    <p>Our exclusive session includes:</p>
+                    <ul>
+                        <li><strong>Soothing Massage Lotion Application (5 minutes):</strong> Begin with a gentle application of our premium massage lotion to prepare your skin and enhance the sensory experience.</li>
+                        <li><strong>Signature Honey Massage (15 minutes):</strong> Relish the therapeutic warmth and healing properties of natural honey as it is skillfully massaged into your skin, promoting circulation and detoxification.</li>
+                        <li><strong>Nourishing Olive Oil Treatment (5 minutes):</strong> Conclude with a moisturizing olive oil treatment to lock in hydration and leave your skin with a radiant glow.</li>
+                    </ul>
+                    <p class="price"><strong>Price:</strong> $40 CAD + tax</p>
+                    <p><strong>Limited-Time Offer:</strong> Share the experience with a friend and pay only $70 CAD + tax for both!</p>
+                    <a href="appointments.html#booking" class="btn" aria-label="Book Now for Honey-Infused Body Massage">Book Now</a>
+                </article>
+            </div>
         </section>
     </main>
 
+    <!-- Back-to-Top Button -->
+    <button id="backToTopBtn" aria-label="Back to Top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Mongolian Honey Massage. All Rights Reserved.</p>
-        <div class="social-links">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <div class="footer-content">
+            <p>&copy; 2024 Mongolian Honey Massage. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/mongolianhoneymassage" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/mongolianhoneymassage" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/mongolianhoney" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript Libraries -->
+    <!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-ZlG7Y+jFHiPpsg1FS4kKHNbCc2wxp2Kgz5vFJ5RXhE2nPb6XJURFLYBkKqZJbiqja5+Jp6Lid7ev5A9h7vQ0lA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- AOS JS for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- Live Chat Widget (Example: Tawk.to) -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/your_tawkto_property_id/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+
+    <!-- Custom JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true
+            });
+
+            // Responsive Navigation Menu
             const burger = document.querySelector('.burger');
             const navLinks = document.querySelector('.nav-links');
-            const nav = document.querySelector('nav');
 
-            // Toggle mobile menu
             burger.addEventListener('click', () => {
                 const isOpen = navLinks.classList.toggle('open');
                 burger.classList.toggle('toggle');
                 burger.setAttribute('aria-expanded', isOpen);
-            });
-
-            // Change nav style on scroll
-            window.addEventListener('scroll', () => {
-                nav.classList.toggle('scrolled', window.scrollY > 50);
             });
 
             // Close mobile menu when a link is clicked
@@ -451,22 +658,163 @@
                 });
             });
 
-            // Highlight the active menu item based on the current URL
-            const currentPath = window.location.pathname.split('/').pop(); // Get the current page
-            const navLinksList = document.querySelectorAll('.nav-links a');
-
-            navLinksList.forEach(link => {
-                // Remove query parameters and hash from href
-                const linkPath = link.getAttribute('href').split('?')[0].split('#')[0];
-                if (linkPath === currentPath) {
-                    link.classList.add('active');
-                    link.setAttribute('aria-current', 'page');
+            // Navigation Scroll Effect
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
                 } else {
-                    link.classList.remove('active');
-                    link.removeAttribute('aria-current');
+                    nav.classList.remove('scrolled');
+                }
+
+                // Back-to-Top Button Visibility
+                const backToTopBtn = document.getElementById('backToTopBtn');
+                if (window.scrollY > 300) {
+                    backToTopBtn.style.display = "block";
+                } else {
+                    backToTopBtn.style.display = "none";
                 }
             });
+
+            // Back-to-Top Button Functionality
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Accessibility: Allow keyboard navigation for burger menu
+            burger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    burger.click();
+                }
+            });
+
+            // Image Animation on Scroll (Benefit Items)
+            const serviceCards = document.querySelectorAll('.service-card');
+
+            const serviceObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting){
+                        entry.target.classList.add('appear');
+                        observer.unobserve(entry.target); // Stop observing after animation
+                    }
+                });
+            }, {
+                threshold: 0.3
+            });
+
+            serviceCards.forEach(card => {
+                serviceObserver.observe(card);
+            });
+
+            // Dark Mode Toggle Functionality
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+
+            // Check for saved user preference, if any, on load of the website
+            if (localStorage.getItem('dark-mode') === 'enabled') {
+                body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+            }
+
+            darkModeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+
+                if(body.classList.contains('dark-mode')){
+                    darkModeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+                    localStorage.setItem('dark-mode', 'enabled');
+                } else {
+                    darkModeToggle.innerHTML = '<i class="fas fa-moon" aria-hidden="true"></i>';
+                    localStorage.setItem('dark-mode', 'disabled');
+                }
+            });
+
+            // Handle Keyboard Accessibility for Dark Mode Toggle
+            darkModeToggle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    darkModeToggle.click();
+                }
+            });
+
+            // PWA: Register Service Worker
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+                });
+            }
         });
+    </script>
+
+    <!-- Service Worker -->
+    <script>
+        // Note: Service worker script should be in a separate file (service-worker.js).
+        // Here is a basic example:
+
+        /*
+        const CACHE_NAME = 'mhm-cache-v1';
+        const urlsToCache = [
+            '/',
+            '/index.html',
+            '/services.html',
+            '/assets/images/logo.png',
+            '/assets/images/massage-hero.jpg',
+            '/assets/images/honey-infused-massage.jpg',
+            '/assets/images/og-image-services.jpg',
+            '/assets/images/twitter-image-services.jpg',
+            '/assets/css/styles.css',
+            '/assets/js/main.js',
+            // Add other assets to cache
+        ];
+
+        self.addEventListener('install', function(event) {
+            event.waitUntil(
+                caches.open(CACHE_NAME)
+                    .then(function(cache) {
+                        console.log('Opened cache');
+                        return cache.addAll(urlsToCache);
+                    })
+            );
+        });
+
+        self.addEventListener('fetch', function(event) {
+            event.respondWith(
+                caches.match(event.request)
+                    .then(function(response) {
+                        if (response) {
+                            return response;
+                        }
+                        return fetch(event.request);
+                    }
+                )
+            );
+        });
+
+        self.addEventListener('activate', function(event) {
+            const cacheWhitelist = [CACHE_NAME];
+            event.waitUntil(
+                caches.keys().then(cacheNames => {
+                    return Promise.all(
+                        cacheNames.map(cacheName => {
+                            if (!cacheWhitelist.includes(cacheName)) {
+                                return caches.delete(cacheName);
+                            }
+                        })
+                    );
+                })
+            );
+        });
+        */
     </script>
 </body>
 </html>

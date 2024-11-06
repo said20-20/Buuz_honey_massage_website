@@ -8,45 +8,107 @@
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Explore the extensive benefits of honey and olive oil in Mongolian Honey Massage, including scientific insights on skin absorption and healing properties.">
+    <meta name="keywords" content="Mongolian Honey Massage, Honey Benefits, Olive Oil Benefits, Skin Care, Natural Healing, Massage Therapy, Holistic Wellness, Detoxification, Hydration">
+    <meta name="author" content="Mongolian Honey Massage">
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Information - Mongolian Honey Massage">
+    <meta property="og:description" content="Explore the extensive benefits of honey and olive oil in Mongolian Honey Massage, including scientific insights on skin absorption and healing properties.">
+    <meta property="og:image" content="https://www.mongolianhoneymassage.com/assets/images/og-image-information.jpg">
+    <meta property="og:url" content="https://www.mongolianhoneymassage.com/information.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Information - Mongolian Honey Massage">
+    <meta name="twitter:description" content="Explore the extensive benefits of honey and olive oil in Mongolian Honey Massage, including scientific insights on skin absorption and healing properties.">
+    <meta name="twitter:image" content="https://www.mongolianhoneymassage.com/assets/images/twitter-image-information.jpg">
     
     <!-- Favicon -->
-    <link rel="icon" href="assets/images/logo.png">
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    
+    <!-- AOS CSS for Animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-o4F+7kM/Xz2dt8ZVagFZxAtGnIVHD+h+GjKO8PAB6m9DdpODjVdVCl4FgW9tF8X1AjsUgFMP3bYWE1QkJ10l4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- CSS Styles -->
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Custom CSS -->
     <style>
+        :root {
+            --primary-color: #3a2e2a;
+            --secondary-color: #d4a373;
+            --background-color: #fbf8ef;
+            --light-color: #fefae0;
+            --accent-color: #b5835a;
+            --overlay-color: rgba(255, 235, 205, 0.2);
+            --font-primary: 'Roboto', sans-serif;
+            --font-secondary: 'Noto Serif', serif;
+            --transition-speed: 0.3s;
+            --max-width: 1200px;
+            --dark-primary: #f5f5f5;
+            --dark-secondary: #b5835a;
+            --dark-background: #2e2e2e;
+            --dark-light: #e0e0e0;
+            --dark-accent: #a16f4b;
+            --back-to-top-size: 50px;
+            --spacing-unit: 1rem;
+        }
+
         /* Reset & Global Styles */
         *, *::before, *::after {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            color: #3a2e2a;
+            margin: 0;
+            font-family: var(--font-primary);
+            color: var(--primary-color);
             line-height: 1.6;
-            background-color: #fbf8ef;
+            background-color: var(--background-color);
             overflow-x: hidden;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
-        img {
-            max-width: 100%;
-            display: block;
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: var(--dark-background);
+            color: var(--dark-light);
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
+        body.dark-mode nav {
+            background-color: rgba(46, 46, 46, 0.9);
+        }
+
+        body.dark-mode .video-overlay {
+            background: rgba(255, 235, 205, 0.3);
+        }
+
+        body.dark-mode .btn {
+            background-color: var(--dark-secondary);
+        }
+
+        body.dark-mode .btn:hover,
+        body.dark-mode .btn:focus {
+            background-color: var(--dark-accent);
+        }
+
+        body.dark-mode .footer-content {
+            background-color: var(--dark-primary);
         }
 
         /* Navigation Styles */
@@ -55,12 +117,12 @@
             justify-content: space-between;
             align-items: center;
             background-color: rgba(254, 250, 224, 0.9);
-            padding: 20px 50px;
+            padding: var(--spacing-unit) 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            transition: background-color 0.3s ease;
+            transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
 
         nav.scrolled {
@@ -70,6 +132,7 @@
 
         .logo img {
             width: 80px;
+            height: auto;
         }
 
         .nav-links {
@@ -85,11 +148,12 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #3a2e2a;
+            color: var(--primary-color);
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease;
             padding: 5px 0;
             position: relative;
+            font-size: 1rem;
         }
 
         .nav-links a::after {
@@ -97,10 +161,10 @@
             position: absolute;
             width: 0%;
             height: 2px;
-            background-color: #d4a373;
+            background-color: var(--secondary-color);
             left: 0;
             bottom: 0;
-            transition: width 0.3s ease;
+            transition: width var(--transition-speed) ease;
         }
 
         .nav-links a:hover::after,
@@ -110,21 +174,43 @@
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: #d4a373;
+            color: var(--secondary-color);
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            margin-left: 1rem;
+            cursor: pointer;
+            font-size: 1.2em;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            transition: color var(--transition-speed);
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            color: var(--dark-light);
         }
 
         /* Burger Menu Styles */
         .burger {
             display: none;
             cursor: pointer;
+            width: 30px;
+            height: 25px;
+            position: relative;
+            z-index: 1001;
+            background: none;
+            border: none;
         }
 
         .burger div {
-            width: 25px;
+            width: 100%;
             height: 3px;
-            background-color: #3a2e2a;
-            margin: 5px;
-            transition: all 0.3s ease;
+            background-color: var(--primary-color);
+            margin: 5px 0;
+            transition: all var(--transition-speed) ease;
+            border-radius: 2px;
         }
 
         /* Toggle animation for burger menu */
@@ -140,6 +226,48 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
 
+        /* Mobile Navigation Styles */
+        @media (max-width: 768px) {
+            nav {
+                padding: var(--spacing-unit) 1.5rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: 0;
+                top: 0;
+                height: 100vh;
+                background-color: rgba(254, 250, 224, 0.95);
+                flex-direction: column;
+                align-items: center;
+                width: 70%;
+                transform: translateX(100%);
+                transition: transform var(--transition-speed) ease-in-out;
+                padding-top: 100px;
+                gap: 30px;
+            }
+
+            .nav-links.open {
+                transform: translateX(0);
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .nav-links a {
+                font-size: 1.2em;
+            }
+
+            .dark-mode-toggle {
+                margin-left: 0;
+            }
+        }
+
         /* Hero Section */
         .hero {
             background-image: url('assets/images/massage-hero.jpg');
@@ -150,8 +278,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fefae0;
+            color: var(--light-color);
             text-align: center;
+            margin-top: 60px; /* To prevent content from hiding behind fixed nav */
         }
 
         .hero::after {
@@ -169,18 +298,26 @@
             position: relative;
             z-index: 1;
             padding: 0 20px;
+            max-width: var(--max-width);
         }
 
         .hero-content h1 {
             font-size: 3em;
             margin-bottom: 20px;
-            font-family: 'Noto Serif', serif;
+            font-family: var(--font-secondary);
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.2s;
         }
 
         .hero-content p {
             font-size: 1.2em;
             max-width: 800px;
             margin: 0 auto;
+            line-height: 1.5;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
         }
 
         /* Information Section */
@@ -191,15 +328,18 @@
         }
 
         .information .container {
-            max-width: 1200px;
+            max-width: var(--max-width);
             margin: 0 auto;
         }
 
         .information h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            color: #3a2e2a;
-            font-family: 'Noto Serif', serif;
+            color: var(--primary-color);
+            font-family: var(--font-secondary);
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.3s;
         }
 
         .information p {
@@ -208,18 +348,24 @@
             margin: 0 auto 60px;
             line-height: 1.8;
             color: #555;
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.5s;
         }
 
         .compound-section {
             text-align: center;
             margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.6s;
         }
 
         .compound-section h3 {
             font-size: 2em;
             margin-bottom: 20px;
-            color: #3a2e2a;
-            font-family: 'Noto Serif', serif;
+            color: var(--primary-color);
+            font-family: var(--font-secondary);
         }
 
         .compound-section p {
@@ -233,6 +379,15 @@
         .compound-image {
             max-width: 300px;
             margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .compound-image:hover,
+        .compound-image:focus {
+            transform: scale(1.05);
+            outline: none;
         }
 
         .compound-table {
@@ -240,6 +395,9 @@
             border-collapse: collapse;
             width: 90%;
             max-width: 800px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.7s;
         }
 
         .compound-table th,
@@ -250,7 +408,7 @@
         }
 
         .compound-table th {
-            background-color: #d4a373;
+            background-color: var(--secondary-color);
             color: #fff;
             font-weight: bold;
         }
@@ -263,15 +421,22 @@
             background-color: #f1f1f1;
         }
 
+        /* Benefits Section */
         .benefits {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
             justify-items: center;
+            padding: 40px 20px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.8s;
         }
 
         .benefit-item {
-            background-color: #fbf8ef;
+            background-color: var(--background-color);
             border-radius: 10px;
             padding: 30px;
             width: 100%;
@@ -280,6 +445,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .benefit-item::before {
@@ -289,7 +455,7 @@
             right: -75px;
             width: 150px;
             height: 150px;
-            background-color: #d4a373;
+            background-color: var(--secondary-color);
             border-radius: 50%;
             z-index: -1;
             transition: all 0.3s ease;
@@ -305,6 +471,7 @@
         .benefit-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            outline: none;
         }
 
         .benefit-item i {
@@ -316,7 +483,7 @@
         .benefit-item h3 {
             font-size: 1.5em;
             margin-bottom: 15px;
-            color: #3a2e2a;
+            color: var(--secondary-color);
         }
 
         .benefit-item p {
@@ -325,119 +492,139 @@
         }
 
         /* Back to Top Button */
-        .back-to-top {
+        #backToTopBtn {
+            display: none; /* Hidden by default */
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #d4a373;
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            bottom: 2.5rem;
+            right: 2.5rem;
+            z-index: 100;
+            font-size: 1.125rem;
+            border: none;
+            outline: none;
+            background-color: var(--secondary-color);
+            color: white;
             cursor: pointer;
-            z-index: 1000;
-            transition: background-color 0.3s ease;
+            padding: 0.75rem;
+            border-radius: 50%;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
         }
 
-        .back-to-top:hover {
-            background-color: #b5835a;
+        #backToTopBtn:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
         }
 
         /* Footer Styles */
         footer {
-            background-color: #3a2e2a;
-            color: #fefae0;
+            background-color: var(--primary-color);
+            color: var(--light-color);
             padding: 30px 0;
             text-align: center;
         }
 
         .footer-content p {
             margin-bottom: 15px;
+            font-size: 1em;
         }
 
         .social-links a {
-            color: #fefae0;
+            color: var(--light-color);
             margin: 0 10px;
             font-size: 1.5em;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
         }
 
-        .social-links a:hover {
-            color: #d4a373;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
-            }
-
-            .nav-links {
-                position: fixed;
-                right: 0;
-                height: 100vh;
-                top: 0;
-                background-color: rgba(254, 250, 224, 0.95);
-                flex-direction: column;
-                align-items: center;
-                width: 70%;
-                transform: translateX(100%);
-                transition: transform 0.5s ease-in;
-                z-index: 999;
-            }
-
-            .nav-links.open {
-                transform: translateX(0%);
-            }
-
-            .nav-links li {
-                margin: 30px 0;
-            }
-
-            .burger {
-                display: block;
-            }
-
-            .hero {
-                height: 50vh;
-            }
-
-            .hero-content h1 {
-                font-size: 2em;
-            }
-
-            .hero-content p {
-                font-size: 1em;
-            }
-
-            .information h2 {
-                font-size: 2em;
-            }
-
-            .information p {
-                font-size: 1em;
-            }
-
-            .benefit-item {
-                max-width: none;
-            }
+        .social-links a:hover,
+        .social-links a:focus {
+            color: var(--secondary-color);
+            transform: scale(1.2);
+            outline: none;
         }
 
         /* CSS Animations */
-        .benefit-item {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
 
-        .benefit-item.appear {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (min-width: 600px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.5rem;
+            }
+
+            .information h2 {
+                font-size: 3rem;
+            }
+
+            .information p {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .information h2 {
+                font-size: 3.5rem;
+            }
+
+            .information p {
+                font-size: 1.4rem;
+            }
+
+            .benefits {
+                gap: 50px;
+            }
+
+            .benefit-item {
+                max-width: 400px;
+            }
         }
     </style>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.mongolianhoneymassage.com/information.html"
+        },
+        "headline": "The Art and Science of Mongolian Honey Massage",
+        "description": "Combining ancient wisdom with modern science, our Mongolian Honey Massage leverages the natural properties of honey and virgin olive oil to rejuvenate your body and mind.",
+        "image": "https://www.mongolianhoneymassage.com/assets/images/og-image-information.jpg",
+        "author": {
+            "@type": "Organization",
+            "name": "Mongolian Honey Massage"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Mongolian Honey Massage",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.mongolianhoneymassage.com/assets/images/logo.png"
+            }
+        },
+        "datePublished": "2024-01-15",
+        "dateModified": "2024-01-15"
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -445,17 +632,20 @@
         <nav id="navbar" aria-label="Main Navigation">
             <div class="logo">
                 <a href="index.html">
-                    <img src="assets/images/logo.png" alt="Mongolian Honey Massage Logo">
+                    <img src="assets/images/logo.png" alt="Mongolian Honey Massage Logo" loading="lazy">
                 </a>
             </div>
             <ul class="nav-links" role="menubar" id="navigation-menu">
                 <li><a href="index.html" role="menuitem">Home</a></li>
                 <li><a href="information.html" class="active" role="menuitem" aria-current="page">Information</a></li>
                 <li><a href="services.html" role="menuitem">Services</a></li>
-                <li><a href="appointments.html" role="menuitem" >Appointments</a></li>
+                <li><a href="appointments.html" role="menuitem">Appointments</a></li>
                 <li><a href="location.html" role="menuitem">Location</a></li>
                 <li><a href="contact.html" role="menuitem">Contact</a></li>
             </ul>
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
             <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navigation-menu">
                 <div class="line1"></div>
                 <div class="line2"></div>
@@ -467,17 +657,17 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
+        <section class="hero" aria-label="Hero Section">
+            <div class="hero-content" data-aos="fade-up">
                 <h1>Unlock Nature's Healing Secrets</h1>
                 <p>Experience the synergy of honey and olive oil in our Mongolian Honey Massage.</p>
             </div>
         </section>
 
         <!-- Information Content -->
-        <section class="information">
+        <section class="information" aria-labelledby="information-heading">
             <div class="container">
-                <h2>The Art and Science of Mongolian Honey Massage</h2>
+                <h2 id="information-heading">The Art and Science of Mongolian Honey Massage</h2>
                 <p>
                     Combining ancient wisdom with modern science, our Mongolian Honey Massage leverages the natural properties of honey and virgin olive oil to rejuvenate your body and mind. Learn how these natural ingredients interact with your skin to promote health and wellness.
                 </p>
@@ -485,14 +675,18 @@
                 <!-- Detailed Information on Honey -->
                 <div class="compound-section">
                     <h3>Honey: A Nectar of Wellness</h3>
-                    <img src="assets/images/honeycomb.jpg" alt="Honeycomb" class="compound-image" loading="lazy">
+                    <a href="assets/images/honeycomb-large.jpg" data-lightbox="honey-gallery" data-title="Honeycomb Structure">
+                        <img src="assets/images/honeycomb.jpg" alt="Honeycomb" class="compound-image" loading="lazy">
+                    </a>
                     <p>
                         Honey is more than just a sweetener; it's a powerhouse of bioactive compounds. Rich in <strong>gluconic acid</strong> and <strong>alpha-hydroxy acids (AHAs)</strong>, it gently exfoliates the skin, promoting cell renewal. The natural sugars in honey, like fructose and glucose, act as humectants, drawing moisture into the skin.
                     </p>
                     <p>
                         Honey also contains <strong>propolis</strong>, a resinous mixture produced by bees. Propolis is known for its antimicrobial and anti-inflammatory properties, aiding in skin healing and protection. The synergy of these compounds enhances skin texture and resilience.
                     </p>
-                    <img src="assets/images/propolis.png" alt="Propolis Structure" class="compound-image" loading="lazy">
+                    <a href="assets/images/propolis-large.jpg" data-lightbox="honey-gallery" data-title="Propolis Structure">
+                        <img src="assets/images/propolis.png" alt="Propolis Structure" class="compound-image" loading="lazy">
+                    </a>
                     <p>
                         Through massage, these compounds are massaged into the skin, penetrating deeply via transfollicular and intercellular routes. This allows for effective delivery of nutrients, leading to improved skin health from the inside out.
                     </p>
@@ -501,14 +695,18 @@
                 <!-- Detailed Information on Olive Oil -->
                 <div class="compound-section">
                     <h3>Olive Oil: Liquid Gold for the Skin</h3>
-                    <img src="assets/images/olive-oil.jpg" alt="Olive Oil" class="compound-image" loading="lazy">
+                    <a href="assets/images/olive-oil-large.jpg" data-lightbox="olive-gallery" data-title="Olive Oil Bottle">
+                        <img src="assets/images/olive-oil.jpg" alt="Olive Oil" class="compound-image" loading="lazy">
+                    </a>
                     <p>
                         Olive oil is revered for its skin-loving properties. High in <strong>oleic acid</strong> and rich in <strong>polyphenols</strong>, it provides antioxidant protection and helps maintain the skin's natural barrier. Olive oil also contains <strong>vitamin E</strong> and <strong>vitamin K</strong>, essential nutrients for skin repair and elasticity.
                     </p>
                     <p>
                         The oil's emollient nature allows for smooth application during massage, reducing friction and enhancing relaxation. Its compounds are easily absorbed, nourishing the skin and supporting cellular functions.
                     </p>
-                    <img src="assets/images/polyphenols.png" alt="Polyphenol Structure" class="compound-image" loading="lazy">
+                    <a href="assets/images/polyphenols-large.jpg" data-lightbox="olive-gallery" data-title="Polyphenol Structure">
+                        <img src="assets/images/polyphenols.png" alt="Polyphenol Structure" class="compound-image" loading="lazy">
+                    </a>
                     <p>
                         Regular application can improve skin hydration, elasticity, and reduce signs of aging. The anti-inflammatory effects also soothe irritated or sensitive skin.
                     </p>
@@ -565,50 +763,49 @@
                     </table>
                 </div>
 
-                <!-- Updated Benefits Section -->
-                <div class="benefits">
-                    <!-- Existing benefit items -->
-                    <div class="benefit-item">
+                <!-- Benefits Section -->
+                <div class="benefits" aria-labelledby="benefits-heading">
+                    <div class="benefit-item" tabindex="0" data-aos="fade-up">
                         <i class="fa-solid fa-leaf"></i>
                         <h3>Detoxification</h3>
                         <p>Natural enzymes help cleanse and purify the skin.</p>
                     </div>
-                    <div class="benefit-item">
+                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="100">
                         <i class="fa-solid fa-spa"></i>
                         <h3>Relaxation</h3>
                         <p>Massage techniques relieve tension and stress.</p>
                     </div>
-                    <div class="benefit-item">
+                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="200">
                         <i class="fa-solid fa-droplet"></i>
                         <h3>Hydration</h3>
                         <p>Deeply moisturizes for soft, supple skin.</p>
                     </div>
-                    <div class="benefit-item">
+                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="300">
                         <i class="fa-solid fa-atom"></i>
                         <h3>Antioxidant Protection</h3>
                         <p>Guards against environmental damage.</p>
                     </div>
-                    <div class="benefit-item">
+                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="400">
                         <i class="fa-solid fa-heart-pulse"></i>
                         <h3>Improved Circulation</h3>
                         <p>Enhances blood flow for better nutrient delivery.</p>
                     </div>
-                    <div class="benefit-item">
+                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="500">
                         <i class="fa-solid fa-dna"></i>
                         <h3>Collagen Boost</h3>
                         <p>Stimulates collagen for firmer skin.</p>
                     </div>
-                    <div class="benefit-item">
+                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="600">
                         <i class="fa-solid fa-hand-holding-droplet"></i>
                         <h3>Deep Nourishment</h3>
                         <p>Nutrients penetrate deeply for lasting benefits.</p>
                     </div>
-                    <div class="benefit-item">
+                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="700">
                         <i class="fa-solid fa-seedling"></i>
                         <h3>Anti-inflammatory</h3>
                         <p>Soothes irritated and sensitive skin.</p>
                     </div>
-                    <div class="benefit-item">
+                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="800">
                         <i class="fa-solid fa-face-smile-beam"></i>
                         <h3>Mood Enhancement</h3>
                         <p>Promotes overall well-being and relaxation.</p>
@@ -618,80 +815,240 @@
         </section>
     </main>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top" aria-label="Back to Top">
-        <i class="fa-solid fa-chevron-up"></i>
-    </div>
+    <!-- Back-to-Top Button -->
+    <button id="backToTopBtn" aria-label="Back to Top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p>&copy; 2024 Mongolian Honey Massage. All Rights Reserved.</p>
             <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.facebook.com/mongolianhoneymassage" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/mongolianhoneymassage" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/mongolianhoney" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter" aria-hidden="true"></i></a>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript Libraries -->
+    <!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-ZlG7Y+jFHiPpsg1FS4kKHNbCc2wxp2Kgz5vFJ5RXhE2nPb6XJURFLYBkKqZJbiqja5+Jp6Lid7ev5A9h7vQ0lA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- AOS JS for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- Live Chat Widget (Example: Tawk.to) -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/your_tawkto_property_id/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+
     <!-- Custom JavaScript -->
     <script>
-        (function() {
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true
+            });
+
             // Responsive Navigation Menu
             const burger = document.querySelector('.burger');
             const navLinks = document.querySelector('.nav-links');
-            const backToTop = document.querySelector('.back-to-top');
-            const nav = document.querySelector('nav');
 
             burger.addEventListener('click', () => {
                 navLinks.classList.toggle('open');
                 burger.classList.toggle('toggle');
+                const expanded = burger.getAttribute('aria-expanded') === 'true' || false;
+                burger.setAttribute('aria-expanded', !expanded);
+            });
+
+            // Close mobile menu when a link is clicked
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    if (navLinks.classList.contains('open')) {
+                        navLinks.classList.remove('open');
+                        burger.classList.remove('toggle');
+                        burger.setAttribute('aria-expanded', false);
+                    }
+                });
             });
 
             // Navigation Scroll Effect
             window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
                 if (window.scrollY > 50) {
                     nav.classList.add('scrolled');
                 } else {
                     nav.classList.remove('scrolled');
                 }
 
-                // Back to Top Button Visibility
+                // Back-to-Top Button Visibility
+                const backToTopBtn = document.getElementById('backToTopBtn');
                 if (window.scrollY > 300) {
-                    backToTop.style.display = 'flex';
+                    backToTopBtn.style.display = "block";
                 } else {
-                    backToTop.style.display = 'none';
+                    backToTopBtn.style.display = "none";
                 }
             });
 
-            // Back to Top Functionality
-            backToTop.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Back-to-Top Button Functionality
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
 
-            // Animation on Scroll
-            const faders = document.querySelectorAll('.benefit-item');
-            const options = {
-                threshold: 0.3,
-                rootMargin: "0px 0px -50px 0px"
-            };
+            // Accessibility: Allow keyboard navigation for burger menu
+            burger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    burger.click();
+                }
+            });
 
-            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            // Image Animation on Scroll (Benefit Items)
+            const benefitItems = document.querySelectorAll('.benefit-item');
+
+            const benefitObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    } else {
+                    if(entry.isIntersecting){
                         entry.target.classList.add('appear');
-                        observer.unobserve(entry.target);
+                        observer.unobserve(entry.target); // Stop observing after animation
                     }
                 });
-            }, options);
-
-            faders.forEach(fader => {
-                appearOnScroll.observe(fader);
+            }, {
+                threshold: 0.3
             });
-        })();
+
+            benefitItems.forEach(item => {
+                benefitObserver.observe(item);
+            });
+
+            // Accessibility: Ensure focus is managed when Lightbox is opened
+            // (Lightbox2 handles most accessibility features internally)
+
+            // Dark Mode Toggle Functionality
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+
+            // Check for saved user preference, if any, on load of the website
+            if (localStorage.getItem('dark-mode') === 'enabled') {
+                body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+            }
+
+            darkModeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+
+                if(body.classList.contains('dark-mode')){
+                    darkModeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+                    localStorage.setItem('dark-mode', 'enabled');
+                } else {
+                    darkModeToggle.innerHTML = '<i class="fas fa-moon" aria-hidden="true"></i>';
+                    localStorage.setItem('dark-mode', 'disabled');
+                }
+            });
+
+            // Handle Keyboard Accessibility for Dark Mode Toggle
+            darkModeToggle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    darkModeToggle.click();
+                }
+            });
+
+            // PWA: Register Service Worker
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+                });
+            }
+        });
+    </script>
+
+    <!-- Service Worker -->
+    <script>
+        // Note: Service worker script should be in a separate file (service-worker.js).
+        // Here is a basic example:
+
+        /*
+        const CACHE_NAME = 'mhm-cache-v1';
+        const urlsToCache = [
+            '/',
+            '/index.html',
+            '/information.html',
+            '/assets/images/logo.png',
+            '/assets/images/massage-hero.jpg',
+            '/assets/images/honeycomb.jpg',
+            '/assets/images/honeycomb-large.jpg',
+            '/assets/images/propolis.png',
+            '/assets/images/propolis-large.jpg',
+            '/assets/images/olive-oil.jpg',
+            '/assets/images/olive-oil-large.jpg',
+            '/assets/images/polyphenols.png',
+            '/assets/images/polyphenols-large.jpg',
+            '/assets/css/styles.css',
+            '/assets/js/main.js',
+            // Add other assets to cache
+        ];
+
+        self.addEventListener('install', function(event) {
+            event.waitUntil(
+                caches.open(CACHE_NAME)
+                    .then(function(cache) {
+                        console.log('Opened cache');
+                        return cache.addAll(urlsToCache);
+                    })
+            );
+        });
+
+        self.addEventListener('fetch', function(event) {
+            event.respondWith(
+                caches.match(event.request)
+                    .then(function(response) {
+                        if (response) {
+                            return response;
+                        }
+                        return fetch(event.request);
+                    }
+                )
+            );
+        });
+
+        self.addEventListener('activate', function(event) {
+            const cacheWhitelist = [CACHE_NAME];
+            event.waitUntil(
+                caches.keys().then(cacheNames => {
+                    return Promise.all(
+                        cacheNames.map(cacheName => {
+                            if (!cacheWhitelist.includes(cacheName)) {
+                                return caches.delete(cacheName);
+                            }
+                        })
+                    );
+                })
+            );
+        });
+        */
     </script>
 </body>
 </html>

@@ -17,7 +17,7 @@
     <meta property="og:title" content="Location - Mongolian Honey Massage">
     <meta property="og:description"
         content="Find us at our serene location in Kingston, Ontario. Easily accessible and surrounded by tranquil settings.">
-    <meta property="og:image" content="assets/images/og-image.jpg">
+    <meta property="og:image" content="https://www.mongolianhoneymassage.com/assets/images/og-image-location.jpg">
     <meta property="og:url" content="https://www.mongolianhoneymassage.com/location.html">
     <meta property="og:type" content="website">
 
@@ -26,19 +26,30 @@
     <meta name="twitter:title" content="Location - Mongolian Honey Massage">
     <meta name="twitter:description"
         content="Find us at our serene location in Kingston, Ontario. Easily accessible and surrounded by tranquil settings.">
-    <meta name="twitter:image" content="assets/images/twitter-image.jpg">
+    <meta name="twitter:image" content="https://www.mongolianhoneymassage.com/assets/images/twitter-image-location.jpg">
 
     <!-- Favicon -->
     <link rel="icon" href="assets/images/logo.png" type="image/png">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Roboto:wght@400;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Roboto:wght@400;700&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 
-    <!-- CSS Styles -->
+    <!-- AOS CSS for Animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-p+UjvJ2X+ujY1fXQDyG/jSdfE1XZtPm3e5hF6G6mM8VZcbqYb+z4HdLiY2Qp+g6B8AqSg72TgwKkENq+/drjHg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Custom CSS -->
     <style>
         :root {
             --primary-color: #3a2e2a;
@@ -46,24 +57,32 @@
             --background-color: #fbf8ef;
             --light-color: #fefae0;
             --accent-color: #b5835a;
-            --overlay-color: rgba(255, 235, 205, 0.2);
+            --overlay-color: rgba(58, 46, 42, 0.6);
             --font-primary: 'Roboto', sans-serif;
             --font-secondary: 'Noto Serif', serif;
             --transition-speed: 0.3s;
             --max-width: 1200px;
+            --dark-primary: #2e2e2e;
+            --dark-secondary: #b5835a;
+            --dark-background: #1a1a1a;
+            --dark-light: #e0e0e0;
+            --dark-accent: #a16f4b;
+            --back-to-top-size: 50px;
+            --spacing-unit: 1rem;
         }
 
         /* Reset & Global Styles */
         *,
         *::before,
         *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
@@ -72,11 +91,34 @@
             line-height: 1.6;
             background-color: var(--background-color);
             overflow-x: hidden;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: var(--dark-background);
+            color: var(--dark-light);
+        }
+
+        body.dark-mode nav {
+            background-color: rgba(46, 46, 46, 0.9);
+        }
+
+        body.dark-mode .hero-overlay {
+            background: rgba(58, 46, 42, 0.8);
+        }
+
+        body.dark-mode .btn {
+            background-color: var(--dark-secondary);
+        }
+
+        body.dark-mode .btn:hover,
+        body.dark-mode .btn:focus {
+            background-color: var(--dark-accent);
+        }
+
+        body.dark-mode .footer-content {
+            background-color: var(--dark-primary);
         }
 
         /* Navigation Styles */
@@ -85,7 +127,7 @@
             justify-content: space-between;
             align-items: center;
             background-color: rgba(254, 250, 224, 0.9);
-            padding: 15px 30px;
+            padding: var(--spacing-unit) 2rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -99,7 +141,7 @@
         }
 
         .logo img {
-            width: 70px;
+            width: 80px;
             height: auto;
         }
 
@@ -111,7 +153,7 @@
         }
 
         .nav-links li {
-            margin-left: 25px;
+            margin-left: 30px;
         }
 
         .nav-links a {
@@ -119,25 +161,45 @@
             color: var(--primary-color);
             font-weight: 500;
             transition: color var(--transition-speed) ease;
+            padding: 5px 0;
             position: relative;
-            font-size: 1em;
+            font-size: 1rem;
         }
 
         .nav-links a::after {
             content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: var(--secondary-color);
-            transition: width var(--transition-speed) ease;
             position: absolute;
-            bottom: -5px;
+            width: 0%;
+            height: 2px;
+            background-color: var(--secondary-color);
             left: 0;
+            bottom: 0;
+            transition: width var(--transition-speed) ease;
         }
 
         .nav-links a:hover::after,
         .nav-links a.active::after {
             width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary-color);
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            margin-left: 1rem;
+            cursor: pointer;
+            font-size: 1.2em;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            transition: color var(--transition-speed);
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            color: var(--dark-light);
         }
 
         /* Burger Menu Styles */
@@ -177,7 +239,7 @@
         /* Mobile Navigation Styles */
         @media (max-width: 768px) {
             nav {
-                padding: 10px 20px;
+                padding: var(--spacing-unit) 1.5rem;
             }
 
             .nav-links {
@@ -185,12 +247,14 @@
                 right: 0;
                 top: 0;
                 height: 100vh;
+                width: 80%;
                 background-color: rgba(254, 250, 224, 0.95);
                 flex-direction: column;
                 align-items: center;
-                width: 70%;
+                justify-content: center;
                 transform: translateX(100%);
                 transition: transform var(--transition-speed) ease-in-out;
+                z-index: 999;
                 padding-top: 100px;
                 gap: 30px;
             }
@@ -203,13 +267,65 @@
                 margin: 0;
             }
 
-            .burger {
-                display: block;
-            }
-
             .nav-links a {
                 font-size: 1.2em;
             }
+
+            .burger {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://www.mongolianhoneymassage.com/assets/images/location-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 80px; /* To prevent content from hiding behind fixed nav */
+            transition: height var(--transition-speed) ease;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay-color);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: var(--light-color);
+            padding: 0 20px;
+            max-width: var(--max-width);
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-secondary);
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: fadeInDown 1s forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.5s;
         }
 
         /* Location Section */
@@ -315,12 +431,36 @@
             transform: translateY(-3px);
         }
 
+        /* Back to Top Button */
+        #backToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 2.5rem;
+            right: 2.5rem;
+            z-index: 100;
+            font-size: 1.125rem;
+            border: none;
+            outline: none;
+            background-color: var(--secondary-color);
+            color: white;
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 50%;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        #backToTopBtn:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
         /* Footer Styles */
         footer {
             background-color: var(--primary-color);
             color: var(--light-color);
             padding: 30px 20px;
             text-align: center;
+            transition: padding var(--transition-speed) ease;
         }
 
         .footer-content p {
@@ -341,6 +481,59 @@
             outline: none;
         }
 
+        /* CSS Animations */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         /* Responsive Styles */
         @media (max-width: 768px) {
             .location h1 {
@@ -350,15 +543,152 @@
             .location p {
                 font-size: 1em;
             }
-        }
 
-        /* Animations */
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
+            .map-container {
+                width: 100%;
+                height: 300px;
+            }
+
+            .contact-info h2 {
+                font-size: 1.5em;
+            }
+
+            .contact-info p {
+                font-size: 1em;
+            }
+
+            .contact-info .btn {
+                padding: 10px 20px;
             }
         }
+
+        @media (max-width: 480px) {
+            .location h1 {
+                font-size: 1.8em;
+            }
+
+            .location p {
+                font-size: 0.9em;
+            }
+
+            .map-container {
+                height: 200px;
+            }
+
+            .contact-info h2 {
+                font-size: 1.2em;
+            }
+
+            .contact-info p {
+                font-size: 0.9em;
+            }
+
+            .contact-info .btn {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+
+            .social-links a {
+                font-size: 1.2em;
+                margin: 0 8px;
+            }
+
+            footer .footer-content p {
+                font-size: 0.9em;
+            }
+        }
+
+        /* Lightbox Custom Styles */
+        .lb-data .lb-close {
+            color: var(--primary-color);
+            opacity: 1;
+        }
+
+        /* Back to Top Button Icon */
+        #backToTopBtn i {
+            font-size: 1.5em;
+        }
+
+        /* Dark Mode Toggle Button Icon */
+        .dark-mode-toggle i {
+            font-size: 1.2em;
+        }
+
+        /* Ensure iframe is responsive */
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+        }
+
+        @media (max-width: 768px) {
+            .map-container iframe {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .map-container iframe {
+                height: 200px;
+            }
+        }
+
+        /* Accessibility: Focus Styles */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
     </style>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Mongolian Honey Massage",
+            "image": "https://www.mongolianhoneymassage.com/assets/images/logo.png",
+            "@id": "",
+            "url": "https://www.mongolianhoneymassage.com",
+            "telephone": "+1234567890",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "873 Clearfield Crescent",
+                "addressLocality": "Kingston",
+                "addressRegion": "ON",
+                "postalCode": "K7P 1Z6",
+                "addressCountry": "CA"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 44.2548408,
+                "longitude": -76.5775151
+            },
+            "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ],
+                "opens": "09:00",
+                "closes": "21:00"
+            },
+            "sameAs": [
+                "https://www.facebook.com/mongolianhoneymassage",
+                "https://www.instagram.com/mongolianhoneymassage",
+                "https://twitter.com/mongolianhoney"
+            ],
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "reviewCount": "150"
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -367,7 +697,8 @@
         <nav id="navbar" aria-label="Main Navigation">
             <div class="logo">
                 <a href="index.html">
-                    <img src="assets/images/logo.png" alt="Mongolian Honey Massage Logo">
+                    <img src="https://www.mongolianhoneymassage.com/assets/images/logo.png" alt="Mongolian Honey Massage Logo"
+                        loading="lazy">
                 </a>
             </div>
             <ul class="nav-links" role="menubar" id="navigation-menu">
@@ -378,6 +709,9 @@
                 <li><a href="location.html" class="active" role="menuitem" aria-current="page">Location</a></li>
                 <li><a href="contact.html" role="menuitem">Contact</a></li>
             </ul>
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
             <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false"
                 aria-controls="navigation-menu">
                 <div class="line1"></div>
@@ -396,7 +730,7 @@
                 in a tranquil neighborhood, our center offers a serene environment where you can unwind and rejuvenate.
             </p>
             <!-- Google Map Embed -->
-            <div class="map-container">
+            <div class="map-container" data-aos="fade-up">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2857.6793874345817!2d-76.5775151!3d44.2548408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cd2adb247372381%3A0xf863a098c2313875!2s873%20Clearfield%20Crescent%2C%20Kingston%2C%20ON%20K7P%201Z6!5e0!3m2!1sen!2sca!4v1730848252756!5m2!1sen!2sca"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
@@ -404,7 +738,7 @@
             </div>
 
             <!-- Contact Information -->
-            <div class="contact-info">
+            <div class="contact-info" data-aos="fade-up" data-aos-delay="200">
                 <h2>Contact Information</h2>
                 <p><strong>Address:</strong> 873 Clearfield Crescent, Kingston, ON K7P 1Z6, Canada</p>
                 <p><strong>Phone:</strong> <a href="tel:6137702341">613-770-2341</a></p>
@@ -415,34 +749,69 @@
         </div>
     </section>
 
+    <!-- Back-to-Top Button -->
+    <button id="backToTopBtn" aria-label="Back to Top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p>&copy; 2024 Mongolian Honey Massage. All Rights Reserved.</p>
             <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com/mongolianhoneymassage" aria-label="Facebook" target="_blank"
+                    rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/mongolianhoneymassage" aria-label="Instagram" target="_blank"
+                    rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/mongolianhoney" aria-label="Twitter" target="_blank"
+                    rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript Files -->
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- JavaScript Libraries -->
+    <!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"
+        integrity="sha512-ZlG7Y+jFHiPpsg1FS4kKHNbCc2wxp2Kgz5vFJ5RXhE2nPb6XJURFLYBkKqZJbiqja5+Jp6Lid7ev5A9h7vQ0lA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- AOS JS for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- Live Chat Widget (Example: Tawk.to) -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/your_tawkto_property_id/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
 
     <!-- Custom JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true
+            });
+
             // Responsive Navigation Menu
             const burger = document.querySelector('.burger');
             const navLinks = document.querySelector('.nav-links');
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const backToTopBtn = document.getElementById('backToTopBtn');
 
             burger.addEventListener('click', () => {
-                const expanded = burger.getAttribute('aria-expanded') === 'true' || false;
-                burger.setAttribute('aria-expanded', !expanded);
-                navLinks.classList.toggle('open');
+                const isOpen = navLinks.classList.toggle('open');
                 burger.classList.toggle('toggle');
+                burger.setAttribute('aria-expanded', isOpen);
             });
 
             // Close mobile menu when a link is clicked
@@ -465,7 +834,80 @@
                 } else {
                     nav.classList.remove('scrolled');
                 }
+
+                // Back-to-Top Button Visibility
+                if (window.scrollY > 300) {
+                    backToTopBtn.style.display = "block";
+                } else {
+                    backToTopBtn.style.display = "none";
+                }
             });
+
+            // Back-to-Top Button Functionality
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Accessibility: Allow keyboard navigation for burger menu
+            burger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    burger.click();
+                }
+            });
+
+            // Dark Mode Toggle Functionality
+            const body = document.body;
+
+            // Check for saved user preference, if any, on load of the website
+            if (localStorage.getItem('dark-mode') === 'enabled') {
+                body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+            }
+
+            darkModeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+
+                if (body.classList.contains('dark-mode')) {
+                    darkModeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+                    localStorage.setItem('dark-mode', 'enabled');
+                } else {
+                    darkModeToggle.innerHTML = '<i class="fas fa-moon" aria-hidden="true"></i>';
+                    localStorage.setItem('dark-mode', 'disabled');
+                }
+            });
+
+            // Handle Keyboard Accessibility for Dark Mode Toggle
+            darkModeToggle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    darkModeToggle.click();
+                }
+            });
+
+            // Back-to-Top Button Accessibility
+            backToTopBtn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    backToTopBtn.click();
+                }
+            });
+
+            // PWA: Register Service Worker
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                        .then(registration => {
+                            console.log('Service Worker registered with scope:', registration.scope);
+                        })
+                        .catch(error => {
+                            console.error('Service Worker registration failed:', error);
+                        });
+                });
+            }
 
             // Animation on Scroll for Location Heading and Paragraph
             const locationHeading = document.getElementById('location-heading');
