@@ -37,7 +37,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-o4F+7kM/Xz2dt8ZVagFZxAtGnIVHD+h+GjKO8PAB6m9DdpODjVdVCl4FgW9tF8X1AjsUgFMP3bYWE1QkJ10l4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Updated Font Awesome to the latest version -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-BwZtgE0s6Xf+ItN9dOkvTck+V8XbdISdgU9HncdJrEVM/4RqG4yQ8v7IHk6rwxP9Clgpy3mN9Y7PAUAvvHTuMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Web App Manifest -->
     <link rel="manifest" href="manifest.json">
@@ -204,13 +205,14 @@
             border: none;
         }
 
-        .burger div {
+        .burger span {
             width: 100%;
             height: 3px;
             background-color: var(--primary-color);
             margin: 5px 0;
             transition: all var(--transition-speed) ease;
             border-radius: 2px;
+            display: block;
         }
 
         /* Toggle animation for burger menu */
@@ -445,7 +447,6 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
-            cursor: pointer;
         }
 
         .benefit-item::before {
@@ -647,9 +648,9 @@
                 <i class="fas fa-moon" aria-hidden="true"></i>
             </button>
             <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navigation-menu">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+                <span class="line1"></span>
+                <span class="line2"></span>
+                <span class="line3"></span>
             </button>
         </nav>
     </header>
@@ -764,48 +765,49 @@
                 </div>
 
                 <!-- Benefits Section -->
+                <h2 id="benefits-heading">Benefits of Mongolian Honey Massage</h2>
                 <div class="benefits" aria-labelledby="benefits-heading">
-                    <div class="benefit-item" tabindex="0" data-aos="fade-up">
+                    <div class="benefit-item" data-aos="fade-up">
                         <i class="fa-solid fa-leaf"></i>
                         <h3>Detoxification</h3>
                         <p>Natural enzymes help cleanse and purify the skin.</p>
                     </div>
-                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-item" data-aos="fade-up" data-aos-delay="100">
                         <i class="fa-solid fa-spa"></i>
                         <h3>Relaxation</h3>
                         <p>Massage techniques relieve tension and stress.</p>
                     </div>
-                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-item" data-aos="fade-up" data-aos-delay="200">
                         <i class="fa-solid fa-droplet"></i>
                         <h3>Hydration</h3>
                         <p>Deeply moisturizes for soft, supple skin.</p>
                     </div>
-                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefit-item" data-aos="fade-up" data-aos-delay="300">
                         <i class="fa-solid fa-atom"></i>
                         <h3>Antioxidant Protection</h3>
                         <p>Guards against environmental damage.</p>
                     </div>
-                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="400">
+                    <div class="benefit-item" data-aos="fade-up" data-aos-delay="400">
                         <i class="fa-solid fa-heart-pulse"></i>
                         <h3>Improved Circulation</h3>
                         <p>Enhances blood flow for better nutrient delivery.</p>
                     </div>
-                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="500">
+                    <div class="benefit-item" data-aos="fade-up" data-aos-delay="500">
                         <i class="fa-solid fa-dna"></i>
                         <h3>Collagen Boost</h3>
                         <p>Stimulates collagen for firmer skin.</p>
                     </div>
-                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="600">
+                    <div class="benefit-item" data-aos="fade-up" data-aos-delay="600">
                         <i class="fa-solid fa-hand-holding-droplet"></i>
                         <h3>Deep Nourishment</h3>
                         <p>Nutrients penetrate deeply for lasting benefits.</p>
                     </div>
-                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="700">
+                    <div class="benefit-item" data-aos="fade-up" data-aos-delay="700">
                         <i class="fa-solid fa-seedling"></i>
                         <h3>Anti-inflammatory</h3>
                         <p>Soothes irritated and sensitive skin.</p>
                     </div>
-                    <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="800">
+                    <div class="benefit-item" data-aos="fade-up" data-aos-delay="800">
                         <i class="fa-solid fa-face-smile-beam"></i>
                         <h3>Mood Enhancement</h3>
                         <p>Promotes overall well-being and relaxation.</p>
@@ -919,27 +921,6 @@
                 }
             });
 
-            // Image Animation on Scroll (Benefit Items)
-            const benefitItems = document.querySelectorAll('.benefit-item');
-
-            const benefitObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting){
-                        entry.target.classList.add('appear');
-                        observer.unobserve(entry.target); // Stop observing after animation
-                    }
-                });
-            }, {
-                threshold: 0.3
-            });
-
-            benefitItems.forEach(item => {
-                benefitObserver.observe(item);
-            });
-
-            // Accessibility: Ensure focus is managed when Lightbox is opened
-            // (Lightbox2 handles most accessibility features internally)
-
             // Dark Mode Toggle Functionality
             const darkModeToggle = document.getElementById('darkModeToggle');
             const body = document.body;
@@ -983,72 +964,6 @@
                 });
             }
         });
-    </script>
-
-    <!-- Service Worker -->
-    <script>
-        // Note: Service worker script should be in a separate file (service-worker.js).
-        // Here is a basic example:
-
-        /*
-        const CACHE_NAME = 'mhm-cache-v1';
-        const urlsToCache = [
-            '/',
-            '/index.html',
-            '/information.html',
-            '/assets/images/logo.png',
-            '/assets/images/massage-hero.jpg',
-            '/assets/images/honeycomb.jpg',
-            '/assets/images/honeycomb-large.jpg',
-            '/assets/images/propolis.png',
-            '/assets/images/propolis-large.jpg',
-            '/assets/images/olive-oil.jpg',
-            '/assets/images/olive-oil-large.jpg',
-            '/assets/images/polyphenols.png',
-            '/assets/images/polyphenols-large.jpg',
-            '/assets/css/styles.css',
-            '/assets/js/main.js',
-            // Add other assets to cache
-        ];
-
-        self.addEventListener('install', function(event) {
-            event.waitUntil(
-                caches.open(CACHE_NAME)
-                    .then(function(cache) {
-                        console.log('Opened cache');
-                        return cache.addAll(urlsToCache);
-                    })
-            );
-        });
-
-        self.addEventListener('fetch', function(event) {
-            event.respondWith(
-                caches.match(event.request)
-                    .then(function(response) {
-                        if (response) {
-                            return response;
-                        }
-                        return fetch(event.request);
-                    }
-                )
-            );
-        });
-
-        self.addEventListener('activate', function(event) {
-            const cacheWhitelist = [CACHE_NAME];
-            event.waitUntil(
-                caches.keys().then(cacheNames => {
-                    return Promise.all(
-                        cacheNames.map(cacheName => {
-                            if (!cacheWhitelist.includes(cacheName)) {
-                                return caches.delete(cacheName);
-                            }
-                        })
-                    );
-                })
-            );
-        });
-        */
     </script>
 </body>
 </html>
