@@ -30,17 +30,18 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Lightbox2 CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <!-- Flatpickr CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p+UjvJ2X+ujY1fXQDyG/jSdfE1XZtPm3e5hF6G6mM8VZcbqYb+z4HdLiY2Qp+g6B8AqSg72TgwKkENq+/drjHg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- Flatpickr CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     
     <!-- CSS Styles -->
     <style>
+        /* Root Variables for Colors & Fonts */
         :root {
             --primary-color: #3a2e2a;
             --secondary-color: #d4a373;
@@ -54,7 +55,7 @@
             --max-width: 1200px;
         }
 
-        /* Reset & Global Styles */
+        /* Global Reset & Basic Styles */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -71,16 +72,14 @@
             line-height: 1.6;
             background-color: var(--background-color);
             overflow-x: hidden;
+            margin: 0 auto;
         }
 
-        /* Visually Hidden (for accessibility) */
-        .visually-hidden {
-            position: absolute;
-            left: -10000px;
-            top: auto;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
+        a {
+            text-decoration: none;
+            color: inherit;
+            word-wrap: break-word;
+            white-space: normal;
         }
 
         /* Navigation Styles */
@@ -89,7 +88,7 @@
             justify-content: space-between;
             align-items: center;
             background-color: rgba(254, 250, 224, 0.9);
-            padding: 20px 50px;
+            padding: 10px 30px;
             position: fixed;
             width: 100%;
             top: 0;
@@ -103,39 +102,33 @@
         }
 
         .logo img {
-            width: 80px;
-            height: auto;
+            width: 70px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
             align-items: center;
-            margin: 0;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
+            gap: 20px;
         }
 
         .nav-links a {
-            text-decoration: none;
             color: var(--primary-color);
             font-weight: 500;
-            transition: color var(--transition-speed) ease;
             position: relative;
+            font-size: 1em;
+            transition: color var(--transition-speed) ease;
         }
 
         .nav-links a::after {
             content: '';
-            display: block;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
             width: 0;
             height: 2px;
-            background: var(--secondary-color);
+            background-color: var(--secondary-color);
             transition: width var(--transition-speed) ease;
-            position: absolute;
-            bottom: -5px;
-            left: 0;
         }
 
         .nav-links a:hover::after,
@@ -143,68 +136,24 @@
             width: 100%;
         }
 
-        /* Burger Menu Styles */
+        /* Responsive Burger Menu */
         .burger {
             display: none;
             cursor: pointer;
-            width: 30px;
-            height: 25px;
-            position: relative;
-            z-index: 1001;
             background: none;
             border: none;
         }
 
+        .burger:focus {
+            outline: 2px solid var(--secondary-color);
+        }
+
         .burger div {
-            width: 100%;
+            width: 25px;
             height: 3px;
             background-color: var(--primary-color);
             margin: 5px 0;
             transition: all var(--transition-speed) ease;
-            border-radius: 2px;
-        }
-
-        /* Toggle animation for burger menu */
-        .burger.toggle .line1 {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .burger.toggle .line2 {
-            opacity: 0;
-        }
-
-        .burger.toggle .line3 {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-
-        /* Mobile Navigation Styles */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                right: 0;
-                top: 0;
-                height: 100vh;
-                background-color: rgba(254, 250, 224, 0.95);
-                flex-direction: column;
-                align-items: center;
-                width: 70%;
-                transform: translateX(100%);
-                transition: transform var(--transition-speed) ease-in-out;
-                padding-top: 100px;
-                gap: 40px;
-            }
-
-            .nav-links.open {
-                transform: translateX(0);
-            }
-
-            .nav-links li {
-                margin: 0;
-            }
-
-            .burger {
-                display: block;
-            }
         }
 
         /* Hero Section */
@@ -218,7 +167,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            margin-top: 80px; /* To prevent content being hidden behind fixed navbar */
+            margin-top: 80px;
+            transition: height var(--transition-speed) ease;
         }
 
         .hero-overlay {
@@ -237,6 +187,7 @@
             text-align: center;
             color: var(--light-color);
             padding: 0 20px;
+            animation: fadeIn 1s forwards;
         }
 
         .hero-content h1 {
@@ -245,7 +196,7 @@
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             opacity: 0;
-            animation: fadeIn 1s forwards;
+            animation: fadeInDown 1s forwards;
         }
 
         .hero-content p {
@@ -253,7 +204,7 @@
             margin-bottom: 30px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
             opacity: 0;
-            animation: fadeIn 1s forwards;
+            animation: fadeInUp 1s forwards;
             animation-delay: 0.5s;
         }
 
@@ -264,18 +215,25 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            transition: padding var(--transition-speed) ease;
         }
 
         .appointment-container {
             background-color: #fff;
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             max-width: 800px;
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 30px;
+            animation: slideIn 1s forwards;
+            opacity: 0;
+        }
+
+        .appointment-container.visible {
+            opacity: 1;
         }
 
         .appointment-container h2 {
@@ -284,6 +242,55 @@
             margin-bottom: 20px;
             color: var(--primary-color);
             text-align: center;
+        }
+
+        /* Step Indicator */
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step::before {
+            content: attr(data-step);
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .step::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background-color: #ccc;
+            z-index: -1;
+        }
+
+        .step:last-child::after {
+            content: none;
+        }
+
+        .step.active::before,
+        .step.completed::before {
+            background-color: var(--accent-color);
+        }
+
+        .step.completed::after {
+            background-color: var(--accent-color);
         }
 
         /* Inline Calendar Styles */
@@ -298,28 +305,32 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            position: relative;
         }
 
         .appointment-form label {
             font-size: 1em;
             color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
         }
 
         .appointment-form input,
         .appointment-form select,
         .appointment-form textarea {
-            padding: 10px 15px;
+            padding: 12px 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 1em;
             width: 100%;
-            transition: border-color var(--transition-speed) ease;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
         }
 
         .appointment-form input:focus,
         .appointment-form select:focus,
         .appointment-form textarea:focus {
             border-color: var(--secondary-color);
+            box-shadow: 0 0 5px rgba(212, 163, 115, 0.5);
             outline: none;
         }
 
@@ -335,6 +346,7 @@
             display: inline-block;
             width: 100%;
             margin-top: 10px;
+            position: relative;
         }
 
         .appointment-form button:hover,
@@ -344,16 +356,37 @@
             outline: none;
         }
 
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid var(--secondary-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            z-index: 10;
+        }
+
+        .appointment-form.loading .spinner {
+            display: block;
+        }
+
         /* Success Message */
         .success-message {
             display: none;
             background-color: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
-            padding: 15px;
+            padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
             text-align: center;
+            animation: fadeIn 1s forwards;
         }
 
         /* Footer Styles */
@@ -362,6 +395,7 @@
             color: var(--light-color);
             padding: 30px 20px;
             text-align: center;
+            transition: padding var(--transition-speed) ease;
         }
 
         .footer-content p {
@@ -384,17 +418,53 @@
         }
 
         /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .step-indicator {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .step::after {
+                top: 35px;
+                left: 15px;
+                width: 2px;
+                height: 50%;
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
-                padding: 15px 30px;
+                padding: 15px 20px;
             }
 
-            .hero-content h1 {
-                font-size: 2em;
+            .burger {
+                display: block;
             }
 
-            .hero-content p {
-                font-size: 1em;
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background-color: rgba(254, 250, 224, 0.95);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height var(--transition-speed) ease;
+            }
+
+            .nav-links.open {
+                max-height: 300px; /* Adjust as needed */
+            }
+
+            .nav-links a {
+                padding: 15px;
+                border-top: 1px solid #ddd;
+            }
+
+            .hero {
+                height: 50vh;
             }
 
             .appointment-container {
@@ -404,6 +474,30 @@
             .calendar-container {
                 flex-direction: column;
                 align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8em;
+            }
+
+            .appointment-form label, 
+            .appointment-form input, 
+            .appointment-form select, 
+            .appointment-form textarea, 
+            .appointment-form button {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+
+            footer .social-links a {
+                font-size: 1.2em;
+                margin: 0 8px;
+            }
+
+            footer .footer-content p {
+                font-size: 0.9em;
             }
         }
 
@@ -424,44 +518,35 @@
             border: 2px solid var(--secondary-color);
         }
 
+        /* Time Slots Dropdown */
+        .time-slots {
+            display: none; /* Initially hidden; will be displayed when a date is selected */
+        }
+
         /* Animations */
         @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
@@ -483,9 +568,9 @@
                 <li><a href="contact.html" role="menuitem">Contact</a></li>
             </ul>
             <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navigation-menu">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </button>
         </nav>
     </header>
@@ -502,12 +587,19 @@
     <!-- Appointment Form Section -->
     <section class="appointment-section" aria-labelledby="appointment-heading">
         <div class="container">
-            <div class="appointment-container">
+            <div class="appointment-container" id="appointment-container">
                 <h2 id="appointment-heading">Schedule Your Massage</h2>
                 
+                <!-- Step Indicator -->
+                <div class="step-indicator" aria-label="Booking Steps">
+                    <div class="step completed" data-step="1">Select Date</div>
+                    <div class="step" data-step="2">Choose Time</div>
+                    <div class="step" data-step="3">Your Details</div>
+                </div>
+
                 <!-- Inline Calendar -->
                 <div class="calendar-container">
-                    <div id="inline-calendar"></div>
+                    <div id="inline-calendar" aria-label="Select Appointment Date"></div>
                 </div>
 
                 <!-- Appointment Form -->
@@ -525,14 +617,6 @@
                         <input type="tel" id="phone" name="phone" required aria-required="true" placeholder="Enter your phone number">
                     </div>
                     <div>
-                        <label for="appointment-date">Preferred Date<span aria-hidden="true" style="color: red;">*</span></label>
-                        <input type="text" id="appointment-date" name="appointment-date" required aria-required="true" placeholder="Select a date" readonly>
-                    </div>
-                    <div>
-                        <label for="appointment-time">Preferred Time<span aria-hidden="true" style="color: red;">*</span></label>
-                        <input type="time" id="appointment-time" name="appointment-time" required aria-required="true">
-                    </div>
-                    <div>
                         <label for="service">Select Service<span aria-hidden="true" style="color: red;">*</span></label>
                         <select id="service" name="service" required aria-required="true">
                             <option value="">--Please choose an option--</option>
@@ -543,11 +627,25 @@
                             <option value="deep-tissue">Deep Tissue Massage</option>
                         </select>
                     </div>
+                    <div class="time-slots">
+                        <label for="appointment-time">Preferred Time<span aria-hidden="true" style="color: red;">*</span></label>
+                        <select id="appointment-time" name="appointment-time" required aria-required="true">
+                            <option value="">--Please choose a time slot--</option>
+                            <!-- Time slots will be populated dynamically -->
+                        </select>
+                    </div>
                     <div>
                         <label for="notes">Additional Notes</label>
                         <textarea id="notes" name="notes" rows="4" placeholder="Any specific requests or information"></textarea>
                     </div>
+                    
+                    <!-- Google reCAPTCHA -->
+                    <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+                    
                     <button type="submit">Submit Appointment</button>
+                    
+                    <!-- Loading Spinner -->
+                    <div class="spinner" id="spinner" aria-hidden="true"></div>
                 </form>
                 <div class="success-message" id="success-message" role="alert">
                     Thank you! Your appointment has been submitted successfully. We will contact you shortly to confirm.
@@ -569,11 +667,11 @@
     </footer>
 
     <!-- JavaScript Libraries -->
-    <!-- Lightbox2 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    
     <!-- Flatpickr JS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <!-- jQuery for Simplified AJAX (Optional, can use vanilla JS) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <!-- Custom JavaScript -->
     <script>
@@ -622,78 +720,82 @@
             // Appointment Form Handling
             const appointmentForm = document.getElementById('appointment-form');
             const successMessage = document.getElementById('success-message');
+            const spinner = document.getElementById('spinner');
+            const stepIndicator = document.querySelectorAll('.step-indicator .step');
 
             appointmentForm.addEventListener('submit', (e) => {
                 e.preventDefault();
 
+                // Check reCAPTCHA
+                if (grecaptcha.getResponse() === "") {
+                    alert("Please verify that you are not a robot.");
+                    return;
+                }
+
                 // Simple form validation
                 if (appointmentForm.checkValidity()) {
-                    // Here you can add AJAX to submit the form data to the server
-                    // For demonstration, we'll just show a success message
-                    successMessage.style.display = 'block';
-                    appointmentForm.reset();
-                    // Reset Flatpickr to remove disabled dates selection
-                    if (flatpickrInstance) {
-                        flatpickrInstance.clear();
-                        // Reinitialize Flatpickr to regenerate booked dates
-                        initializeFlatpickr();
-                    }
+                    // Show loading spinner
+                    appointmentForm.classList.add('loading');
+                    spinner.style.display = 'block';
 
-                    // Hide the success message after 5 seconds
+                    // Prepare form data
+                    const formData = new FormData(appointmentForm);
+
+                    // Append reCAPTCHA response
+                    formData.append('g-recaptcha-response', grecaptcha.getResponse());
+
+                    // Simulate AJAX request (Replace with actual AJAX request to your server)
                     setTimeout(() => {
-                        successMessage.style.display = 'none';
-                    }, 5000);
+                        // Hide loading spinner
+                        appointmentForm.classList.remove('loading');
+                        spinner.style.display = 'none';
+
+                        // Show success message
+                        successMessage.style.display = 'block';
+
+                        // Reset form
+                        appointmentForm.reset();
+
+                        // Reset Step Indicator
+                        stepIndicator.forEach(step => step.classList.remove('active', 'completed'));
+                        stepIndicator[0].classList.add('completed');
+                        stepIndicator[1].classList.remove('completed');
+                        stepIndicator[2].classList.remove('completed');
+
+                        // Reset Time Slots
+                        const timeSlotsDiv = document.querySelector('.time-slots');
+                        timeSlotsDiv.style.display = 'none';
+                        const timeSelect = document.getElementById('appointment-time');
+                        timeSelect.innerHTML = '<option value="">--Please choose a time slot--</option>';
+
+                        // Reset reCAPTCHA
+                        grecaptcha.reset();
+
+                        // Hide the success message after 7 seconds
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 7000);
+                    }, 2000); // Simulated delay (Replace with actual AJAX response handling)
                 } else {
                     // If the form is invalid, display native validation messages
                     appointmentForm.reportValidity();
                 }
             });
 
-            // Accessibility: Pause video playback when not in viewport (if any)
-            function handleVideoPlayback() {
-                const videos = document.querySelectorAll('video');
-                videos.forEach(video => {
-                    const rect = video.getBoundingClientRect();
-                    if (rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)) {
-                        video.play();
-                    } else {
-                        video.pause();
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', handleVideoPlayback);
-            window.addEventListener('resize', handleVideoPlayback);
-            document.addEventListener('DOMContentLoaded', handleVideoPlayback);
-
             // Initialize Flatpickr for Appointment Date
             let flatpickrInstance;
 
+            // Simulated booked dates and times (In real scenarios, fetch this from the server)
+            const bookedAppointments = {
+                // Format: 'YYYY-MM-DD': ['HH:MM', 'HH:MM']
+                '2024-11-10': ['10:00', '14:00'],
+                '2024-11-12': ['09:00', '13:00', '16:00'],
+                '2024-11-15': ['11:00', '15:00'],
+                // Add more booked dates and times as needed
+            };
+
             function initializeFlatpickr() {
                 const appointmentDateInput = document.getElementById('appointment-date');
-
-                // Generate random booked dates within the next 60 days
-                const generateBookedDates = () => {
-                    const bookedDates = [];
-                    const today = new Date();
-                    const numberOfBookedDays = 10; // Number of days to mark as booked
-
-                    while (bookedDates.length < numberOfBookedDays) {
-                        const randomDaysToAdd = Math.floor(Math.random() * 60); // Next 60 days
-                        const bookedDate = new Date();
-                        bookedDate.setDate(today.getDate() + randomDaysToAdd);
-                        // Reset time to midnight for consistency
-                        bookedDate.setHours(0,0,0,0);
-                        const dateStr = bookedDate.toISOString().split('T')[0];
-                        if (!bookedDates.includes(dateStr) && bookedDate >= today) {
-                            bookedDates.push(dateStr);
-                        }
-                    }
-
-                    return bookedDates;
-                };
-
-                const bookedDates = generateBookedDates();
 
                 // Initialize Flatpickr
                 flatpickrInstance = flatpickr(appointmentDateInput, {
@@ -701,26 +803,110 @@
                     dateFormat: "Y-m-d",
                     minDate: "today",
                     maxDate: new Date().fp_incr(60), // 60 days from now
-                    disable: bookedDates,
                     inline: true, // Display calendar inline
                     locale: {
                         firstDayOfWeek: 1 // Start week on Monday
                     },
                     onDayCreate: function(dObj, dStr, fp, dayElem) {
-                        if (bookedDates.includes(dayElem.dateObj.toISOString().split('T')[0])) {
+                        const dateStr = dayElem.dateObj.toISOString().split('T')[0];
+                        const dayOfWeek = dayElem.dateObj.getDay(); // 0 (Sun) to 6 (Sat)
+
+                        // Disable Sundays
+                        if (dayOfWeek === 0) {
                             dayElem.classList.add('disabled');
-                            dayElem.title = "Booked";
+                            dayElem.title = "Unavailable";
+                        }
+
+                        // Disable days with all time slots booked (assuming 9 AM to 5 PM, 9 slots)
+                        const totalSlots = 9;
+                        const bookedSlots = bookedAppointments[dateStr] ? bookedAppointments[dateStr].length : 0;
+                        if (bookedSlots >= totalSlots) {
+                            dayElem.classList.add('disabled');
+                            dayElem.title = "Fully Booked";
                         }
                     },
                     onChange: function(selectedDates, dateStr, instance) {
-                        // Update the date input with the selected date
-                        appointmentDateInput.value = dateStr;
+                        // Update Step Indicator
+                        updateStepIndicator(1);
+
+                        // Show time slots div
+                        const timeSlotsDiv = document.querySelector('.time-slots');
+                        timeSlotsDiv.style.display = 'block';
+                        populateTimeSlots(dateStr);
                     }
                 });
             }
 
+            // Function to populate available time slots based on selected date
+            function populateTimeSlots(dateStr) {
+                const timeSelect = document.getElementById('appointment-time');
+                timeSelect.innerHTML = '<option value="">--Please choose a time slot--</option>'; // Reset options
+
+                // Define all possible time slots (9 AM to 5 PM)
+                const allTimeSlots = [
+                    '09:00',
+                    '10:00',
+                    '11:00',
+                    '12:00',
+                    '13:00',
+                    '14:00',
+                    '15:00',
+                    '16:00',
+                    '17:00'
+                ];
+
+                // Get booked slots for the selected date
+                const bookedSlots = bookedAppointments[dateStr] || [];
+
+                // Filter out booked slots
+                const availableSlots = allTimeSlots.filter(time => !bookedSlots.includes(time));
+
+                if (availableSlots.length === 0) {
+                    timeSelect.innerHTML += '<option value="" disabled>No available slots</option>';
+                } else {
+                    availableSlots.forEach(time => {
+                        const option = document.createElement('option');
+                        option.value = time;
+                        option.textContent = formatTime(time);
+                        timeSelect.appendChild(option);
+                    });
+                }
+
+                // Add event listener to update step indicator
+                timeSelect.addEventListener('change', () => {
+                    if (timeSelect.value !== "") {
+                        updateStepIndicator(2);
+                    } else {
+                        updateStepIndicator(1);
+                    }
+                });
+            }
+
+            // Helper function to format time from "HH:MM" to "h:mm AM/PM"
+            function formatTime(timeStr) {
+                const [hour, minute] = timeStr.split(':');
+                const date = new Date();
+                date.setHours(parseInt(hour), parseInt(minute));
+                return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            }
+
+            // Function to update step indicator
+            function updateStepIndicator(stepNumber) {
+                stepIndicator.forEach((step, index) => {
+                    if (index < stepNumber) {
+                        step.classList.add('completed');
+                        step.classList.remove('active');
+                    } else if (index === stepNumber) {
+                        step.classList.add('active');
+                        step.classList.remove('completed');
+                    } else {
+                        step.classList.remove('active', 'completed');
+                    }
+                });
+            }
+
+            // Initialize Flatpickr
             initializeFlatpickr();
-        });
-    </script>
+        </script>
 </body>
 </html>

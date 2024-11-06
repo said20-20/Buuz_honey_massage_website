@@ -8,13 +8,13 @@
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Experience the ancient healing art of Mongolian honey massage. Rejuvenate your body and soul with our signature treatments.">
-    <meta name="keywords" content="Mongolian Honey Massage, Massage Therapy, Wellness, Relaxation, Natural Healing">
+    <meta name="keywords" content="Mongolian Honey Massage, Massage Therapy, Wellness, Relaxation, Natural Healing, Stress Relief, Pain Management, Holistic Wellness">
     <meta name="author" content="Mongolian Honey Massage">
     
     <!-- Open Graph Meta Tags for Social Sharing -->
     <meta property="og:title" content="Mongolian Honey Massage | Home">
     <meta property="og:description" content="Experience the ancient healing art of Mongolian honey massage. Rejuvenate your body and soul with our signature treatments.">
-    <meta property="og:image" content="assets/images/og-image.jpg">
+    <meta property="og:image" content="https://www.mongolianhoneymassage.com/assets/images/og-image.jpg">
     <meta property="og:url" content="https://www.mongolianhoneymassage.com">
     <meta property="og:type" content="website">
     
@@ -22,21 +22,27 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mongolian Honey Massage | Home">
     <meta name="twitter:description" content="Experience the ancient healing art of Mongolian honey massage. Rejuvenate your body and soul with our signature treatments.">
-    <meta name="twitter:image" content="assets/images/twitter-image.jpg">
+    <meta name="twitter:image" content="https://www.mongolianhoneymassage.com/assets/images/twitter-image.jpg">
     
     <!-- Favicon -->
     <link rel="icon" href="assets/images/logo.png" type="image/png">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     
     <!-- Lightbox2 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     
+    <!-- AOS CSS for Animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p+UjvJ2X+ujY1fXQDyG/jSdfE1XZtPm3e5hF6G6mM8VZcbqYb+z4HdLiY2Qp+g6B8AqSg72TgwKkENq+/drjHg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- CSS Styles -->
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Custom CSS -->
     <style>
         :root {
             --primary-color: #3a2e2a;
@@ -49,25 +55,60 @@
             --font-secondary: 'Noto Serif', serif;
             --transition-speed: 0.3s;
             --max-width: 1200px;
+            --dark-primary: #f5f5f5;
+            --dark-secondary: #b5835a;
+            --dark-background: #2e2e2e;
+            --dark-light: #e0e0e0;
+            --dark-accent: #a16f4b;
+            --back-to-top-size: 50px;
+            --spacing-unit: 1rem;
         }
 
         /* Reset & Global Styles */
         *, *::before, *::after {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
+            margin: 0;
             font-family: var(--font-primary);
             color: var(--primary-color);
             line-height: 1.6;
             background-color: var(--background-color);
             overflow-x: hidden;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: var(--dark-background);
+            color: var(--dark-light);
+        }
+
+        body.dark-mode nav {
+            background-color: rgba(46, 46, 46, 0.9);
+        }
+
+        body.dark-mode .video-overlay {
+            background: rgba(255, 235, 205, 0.3);
+        }
+
+        body.dark-mode .btn {
+            background-color: var(--dark-secondary);
+        }
+
+        body.dark-mode .btn:hover,
+        body.dark-mode .btn:focus {
+            background-color: var(--dark-accent);
+        }
+
+        body.dark-mode .footer-content {
+            background-color: var(--dark-primary);
         }
 
         /* Navigation Styles */
@@ -76,7 +117,7 @@
             justify-content: space-between;
             align-items: center;
             background-color: rgba(254, 250, 224, 0.9);
-            padding: 15px 30px;
+            padding: var(--spacing-unit) 2rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -102,7 +143,7 @@
         }
 
         .nav-links li {
-            margin-left: 25px;
+            margin-left: 1.5rem;
         }
 
         .nav-links a {
@@ -111,7 +152,7 @@
             font-weight: 500;
             transition: color var(--transition-speed) ease;
             position: relative;
-            font-size: 1em;
+            font-size: 1rem;
         }
 
         .nav-links a::after {
@@ -129,6 +170,21 @@
         .nav-links a:hover::after,
         .nav-links a.active::after {
             width: 100%;
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            margin-left: 1rem;
+            cursor: pointer;
+            font-size: 1.2em;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            transition: color var(--transition-speed);
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            color: var(--dark-light);
         }
 
         /* Burger Menu Styles */
@@ -168,7 +224,7 @@
         /* Mobile Navigation Styles */
         @media (max-width: 768px) {
             nav {
-                padding: 10px 20px;
+                padding: var(--spacing-unit) 1.5rem;
             }
 
             .nav-links {
@@ -201,6 +257,30 @@
             .nav-links a {
                 font-size: 1.2em;
             }
+
+            .dark-mode-toggle {
+                margin-left: 0;
+            }
+        }
+
+        /* Booking Button in Navigation */
+        .booking-btn {
+            margin-left: 1.5rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+            font-size: 1rem;
+        }
+
+        .booking-btn:hover,
+        .booking-btn:focus {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            outline: none;
         }
 
         /* Hero Section */
@@ -235,29 +315,29 @@
         }
 
         .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
             text-align: center;
             color: var(--light-color);
             z-index: 1;
             width: 100%;
-            padding: 0 20px;
+            padding: 0 1rem;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .hero-content h1 {
             font-family: var(--font-secondary);
-            font-size: 3em;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             opacity: 0;
             animation: fadeIn 1s forwards;
+            animation-delay: 0.2s;
         }
 
         .hero-content p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
             opacity: 0;
             animation: fadeIn 1s forwards;
@@ -265,12 +345,12 @@
         }
 
         .btn {
-            padding: 15px 30px;
+            padding: 0.75rem 1.5rem;
             background-color: var(--secondary-color);
             color: var(--light-color);
             border: none;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 1rem;
             text-decoration: none;
             transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
             border-radius: 5px;
@@ -287,9 +367,90 @@
             outline: none;
         }
 
-        /* About Section with Soothing Content and Animated Images */
+        /* Booking Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+            padding-top: 60px;
+            transition: opacity var(--transition-speed) ease;
+        }
+
+        .modal-content {
+            background-color: var(--background-color);
+            margin: 5% auto; /* 5% from the top and centered */
+            padding: 1.5rem;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            position: relative;
+            animation: slideIn 0.5s forwards;
+        }
+
+        .modal-content.dark-mode {
+            background-color: var(--dark-background);
+            color: var(--dark-light);
+        }
+
+        .close-modal {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-form label {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .modal-form input,
+        .modal-form select,
+        .modal-form button {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 1px solid var(--secondary-color);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .modal-form button {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            border: none;
+            cursor: pointer;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .modal-form button:hover,
+        .modal-form button:focus {
+            background-color: var(--accent-color);
+            outline: none;
+        }
+
+        /* About Section with Enhanced Layout and Flexbox */
         .about {
-            padding: 80px 0;
+            padding: 5rem 0;
             background-image: url('assets/images/patterns.svg');
             background-repeat: no-repeat;
             background-size: cover;
@@ -299,64 +460,103 @@
 
         .about h2 {
             font-family: var(--font-secondary);
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
             color: var(--primary-color);
             opacity: 0;
             animation: slideInLeft 1s forwards;
+            animation-delay: 0.3s;
         }
 
         .about-content {
             display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 40px;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
             max-width: var(--max-width);
             margin: auto;
-            padding: 0 20px;
+            padding: 0 2rem;
+        }
+
+        @media (min-width: 992px) {
+            .about-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
         }
 
         .about-text {
             flex: 1;
-            min-width: 300px;
             text-align: left;
-            animation: slideInRight 1s forwards;
+            position: relative;
+            padding-left: 2rem;
+            animation: fadeInLeft 1s forwards;
+            animation-delay: 0.5s;
         }
 
-        .about-text h3 {
-            font-size: 1.8em;
-            margin-top: 20px;
-            color: var(--secondary-color);
+        .about-text::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--secondary-color);
+            border-radius: 5px;
         }
 
         .about-text p {
-            font-size: 1.2em;
+            font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
             text-align: justify;
         }
 
-        /* Image Gallery with Lightbox and Animations */
+        /* Image Gallery with Lightbox and Flexbox */
         .about-gallery {
             flex: 1;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            justify-items: center;
-            align-items: center;
-            animation: slideInLeft 1s forwards;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            animation: fadeInRight 1s forwards;
+            animation-delay: 0.5s;
         }
 
         .gallery-image {
-            width: 100%;
-            height: auto;
+            width: calc(50% - 20px);
+            position: relative;
+            overflow: hidden;
             border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            object-fit: cover;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .gallery-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity var(--transition-speed) ease;
+            border-radius: 10px;
+        }
+
+        .gallery-image:hover::after,
+        .gallery-image:focus-within::after {
+            opacity: 1;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
         }
 
         .gallery-image.animate {
@@ -367,28 +567,21 @@
         .gallery-image:hover,
         .gallery-image:focus-within {
             transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             outline: none;
-        }
-
-        /* Lightbox Caption Styling */
-        .lb-caption {
-            font-family: var(--font-primary);
-            font-size: 1em;
-            color: var(--light-color);
         }
 
         /* Signature Treatment Section */
         .signature-treatment {
-            padding: 80px 0;
+            padding: 5rem 0;
             background-color: #fff;
             text-align: center;
         }
 
         .signature-treatment h2 {
             font-family: var(--font-secondary);
-            font-size: 2.5em;
-            margin-bottom: 40px;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             color: var(--primary-color);
             opacity: 0;
             animation: fadeIn 1s forwards;
@@ -397,14 +590,20 @@
 
         .treatment-steps {
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 40px;
+            flex-direction: column;
+            align-items: center;
             max-width: var(--max-width);
-            margin: 0 auto 40px auto;
-            padding: 0 20px;
+            margin: 0 auto 2rem auto;
+            padding: 0 2rem;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .treatment-steps {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
         }
 
         .step {
@@ -415,20 +614,12 @@
             animation-delay: 0.4s;
         }
 
-        .step:nth-child(2) {
-            animation-delay: 0.6s;
-        }
-
-        .step:nth-child(3) {
-            animation-delay: 0.8s;
-        }
-
         .step img {
             width: 100%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
+            margin-bottom: 0.75rem;
             transition: transform var(--transition-speed) ease;
         }
 
@@ -439,32 +630,40 @@
         }
 
         .step h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
             color: var(--secondary-color);
         }
 
         .step p {
-            font-size: 1em;
+            font-size: 1rem;
             color: var(--primary-color);
             line-height: 1.5;
         }
 
         .signature-treatment .btn {
-            margin-top: 30px;
+            margin-top: 1.5rem;
         }
 
         /* Benefits Section */
         .benefits {
-            padding: 80px 0;
+            padding: 5rem 0;
             background-color: var(--background-color);
             text-align: center;
         }
 
+        .benefits-intro {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            line-height: 1.6;
+        }
+
         .benefits h2 {
             font-family: var(--font-secondary);
-            font-size: 2.5em;
-            margin-bottom: 40px;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             color: var(--primary-color);
             opacity: 0;
             animation: fadeIn 1s forwards;
@@ -474,98 +673,74 @@
         .benefit-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            gap: 2rem;
             max-width: var(--max-width);
             margin: auto;
-            padding: 0 20px;
+            padding: 0 2rem;
         }
 
         .benefit-item {
-            text-align: center;
-            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
             background-color: #fff;
-            padding: 20px;
+            padding: 2rem 1.5rem;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            cursor: pointer;
             opacity: 0;
             animation: fadeInUp 1s forwards;
         }
 
-        .benefit-item:nth-child(1) {
-            animation-delay: 0.5s;
-        }
-
-        .benefit-item:nth-child(2) {
-            animation-delay: 0.6s;
-        }
-
-        .benefit-item:nth-child(3) {
-            animation-delay: 0.7s;
-        }
-
-        .benefit-item:nth-child(4) {
-            animation-delay: 0.8s;
-        }
-
-        .benefit-item:nth-child(5) {
-            animation-delay: 0.9s;
-        }
-
-        .benefit-item:nth-child(6) {
-            animation-delay: 1s;
-        }
-
-        .benefit-item:nth-child(7) {
-            animation-delay: 1.1s;
-        }
-
-        .benefit-item:nth-child(8) {
-            animation-delay: 1.2s;
-        }
-
         .benefit-item:hover,
         .benefit-item:focus-within {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            outline: none;
-        }
-
-        .benefit-item img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 15px;
-            transition: transform var(--transition-speed) ease;
-        }
-
-        .benefit-item img:hover,
-        .benefit-item img:focus {
-            transform: scale(1.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             outline: none;
         }
 
         .benefit-item h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
             color: var(--secondary-color);
         }
 
         .benefit-item p {
-            font-size: 1.1em;
-            line-height: 1.6;
+            font-size: 1rem;
             color: var(--primary-color);
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .benefits-cta {
+            margin-top: 3rem;
+        }
+
+        .benefits-cta .btn {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            border-radius: 5px;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        .benefits-cta .btn:hover,
+        .benefits-cta .btn:focus {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            outline: none;
         }
 
         /* Testimonials Section */
         .testimonials {
-            padding: 80px 0;
+            padding: 5rem 0;
             background-color: #fff;
             text-align: center;
         }
 
         .testimonials h2 {
             font-family: var(--font-secondary);
-            font-size: 2.5em;
-            margin-bottom: 40px;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             color: var(--primary-color);
             opacity: 0;
             animation: fadeIn 1s forwards;
@@ -582,7 +757,7 @@
         .testimonial {
             display: none;
             text-align: center;
-            padding: 0 20px;
+            padding: 0 1rem;
             opacity: 0;
             transition: opacity var(--transition-speed) ease;
         }
@@ -593,23 +768,23 @@
         }
 
         .testimonial p {
-            font-size: 1.2em;
+            font-size: 1rem;
             line-height: 1.6;
             color: var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
             font-style: italic;
         }
 
         .testimonial h3 {
-            font-size: 1.5em;
+            font-size: 1.2rem;
             color: var(--secondary-color);
         }
 
         .testimonial-controls {
-            margin-top: 20px;
+            margin-top: 1rem;
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 0.5rem;
             flex-wrap: wrap;
         }
 
@@ -617,11 +792,11 @@
             background-color: var(--secondary-color);
             border: none;
             color: var(--light-color);
-            padding: 10px 20px;
+            padding: 0.5rem 1rem;
             cursor: pointer;
             border-radius: 5px;
             transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
-            font-size: 1em;
+            font-size: 1rem;
         }
 
         .testimonial-controls button:hover,
@@ -631,23 +806,171 @@
             outline: none;
         }
 
+        /* FAQ Section with Accordions */
+        .faq {
+            padding: 5rem 0;
+            background-color: var(--background-color);
+            text-align: center;
+        }
+
+        .faq h2 {
+            font-family: var(--font-secondary);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
+        }
+
+        .accordion-container {
+            max-width: var(--max-width);
+            margin: auto;
+            padding: 0 2rem;
+        }
+
+        .accordion {
+            background-color: #fff;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.1rem;
+            transition: background-color var(--transition-speed) ease;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .accordion::after {
+            content: '\f107'; /* FontAwesome down arrow */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .accordion.active::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .accordion.active, .accordion:hover {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+
+        .panel {
+            padding: 0 1.5rem;
+            background-color: white;
+            display: none;
+            overflow: hidden;
+            border-left: 2px solid var(--secondary-color);
+            border-right: 2px solid var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .panel p {
+            padding: 1rem 0;
+            text-align: left;
+            font-size: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Newsletter Subscription Form */
+        .newsletter {
+            padding: 2.5rem 1rem;
+            background-color: var(--background-color);
+            text-align: center;
+        }
+
+        .newsletter h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .newsletter form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .newsletter input[type="email"] {
+            padding: 0.75rem;
+            border: 1px solid var(--secondary-color);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .newsletter button {
+            padding: 0.75rem;
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        .newsletter button:hover,
+        .newsletter button:focus {
+            background-color: var(--accent-color);
+            transform: scale(1.05);
+            outline: none;
+        }
+
+        /* Back-to-Top Button */
+        #backToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 2.5rem;
+            right: 2.5rem;
+            z-index: 100;
+            font-size: 1.125rem;
+            border: none;
+            outline: none;
+            background-color: var(--secondary-color);
+            color: white;
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 50%;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        #backToTopBtn:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
         /* Footer Styles */
         footer {
             background-color: var(--primary-color);
             color: var(--light-color);
-            padding: 30px 20px;
+            padding: 2rem 1rem;
             text-align: center;
         }
 
         .footer-content p {
-            margin-bottom: 15px;
-            font-size: 1em;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
         }
 
         .social-links a {
             color: var(--light-color);
-            margin: 0 10px;
-            font-size: 1.5em;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
             transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
         }
 
@@ -658,60 +981,37 @@
             outline: none;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.2em;
-            }
+        /* Google Maps Section */
+        .location-map {
+            padding: 5rem 0;
+            background-color: #fff;
+            text-align: center;
+        }
 
-            .hero-content p {
-                font-size: 1.2em;
-            }
+        .location-map h2 {
+            font-family: var(--font-secondary);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.6s;
+        }
 
-            .about-content {
-                flex-direction: column;
-                text-align: center;
-            }
+        .map-container {
+            max-width: var(--max-width);
+            margin: auto;
+            padding: 0 2rem;
+        }
 
-            .about-text {
-                text-align: center;
-            }
-
-            .about-gallery {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-
-            .gallery-image {
-                width: 100%;
-            }
-
-            .benefit-item {
-                padding: 15px;
-            }
-
-            .benefit-item img {
-                width: 60px;
-                height: 60px;
-            }
-
-            .testimonial-controls {
-                flex-direction: column;
-            }
-
-            .testimonial-controls button {
-                width: 100%;
-                max-width: 200px;
-            }
-
-            /* Signature Treatment Section Adjustments */
-            .signature-treatment .treatment-steps {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .step {
-                max-width: 100%;
-            }
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 10px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.8s;
         }
 
         /* Animations */
@@ -753,7 +1053,189 @@
                 transform: translateY(0);
             }
         }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (min-width: 600px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.5rem;
+            }
+
+            .about-text, .about-gallery {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-links a {
+                font-size: 1rem;
+            }
+
+            .nav-links li {
+                margin-left: 2rem;
+            }
+
+            .booking-btn {
+                margin-left: 2rem;
+            }
+
+            .dark-mode-toggle {
+                margin-left: 1rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+
+            .hero-content p {
+                font-size: 1.75rem;
+            }
+
+            .about h2,
+            .signature-treatment h2,
+            .benefits h2,
+            .testimonials h2,
+            .faq h2,
+            .location-map h2 {
+                font-size: 2.5rem;
+            }
+
+            .benefits-intro {
+                font-size: 1.5rem;
+            }
+
+            .benefit-item h3 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Spa",
+        "name": "Mongolian Honey Massage",
+        "image": "https://www.mongolianhoneymassage.com/assets/images/logo.png",
+        "@id": "",
+        "url": "https://www.mongolianhoneymassage.com",
+        "telephone": "+1234567890",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "873 Clearfield Crescent",
+            "addressLocality": "Kingston",
+            "addressRegion": "ON",
+            "postalCode": "K7P 1Z6",
+            "addressCountry": "CA"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 44.231166,
+            "longitude": -76.543803
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            ],
+            "opens": "09:00",
+            "closes": "21:00"
+        },
+        "sameAs": [
+            "https://www.facebook.com/mongolianhoneymassage",
+            "https://www.instagram.com/mongolianhoneymassage",
+            "https://twitter.com/mongolianhoney"
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "150"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": "Sarah L.",
+                "datePublished": "2024-04-15",
+                "reviewBody": "The Mongolian Honey Massage was an incredible experience. I felt completely rejuvenated and stress-free after my session.",
+                "name": "Amazing Relaxation"
+            },
+            {
+                "@type": "Review",
+                "author": "Mark D.",
+                "datePublished": "2024-05-10",
+                "reviewBody": "The therapists are very professional and attentive. The hot towel treatment was my favorite part.",
+                "name": "Highly Recommend"
+            },
+            {
+                "@type": "Review",
+                "author": "Emily R.",
+                "datePublished": "2024-06-05",
+                "reviewBody": "I have trouble sleeping, and after a few sessions here, my sleep quality has improved significantly.",
+                "name": "Life-Changing"
+            }
+        ],
+        "service": [
+            {
+                "@type": "Service",
+                "name": "Honey Massage",
+                "description": "Immersive honey-based massage to detoxify the skin and promote circulation."
+            },
+            {
+                "@type": "Service",
+                "name": "Hot Towel Wipe Down",
+                "description": "Soothing hot towel treatment to remove impurities and enhance blood flow."
+            },
+            {
+                "@type": "Service",
+                "name": "Olive Oil Massage",
+                "description": "Nourishing olive oil massage to hydrate the skin and alleviate muscle tension."
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -761,7 +1243,7 @@
         <nav id="navbar" aria-label="Main Navigation">
             <div class="logo">
                 <a href="index.html">
-                    <img src="assets/images/logo.png" alt="Mongolian Honey Massage Logo">
+                    <img src="assets/images/logo.png" alt="Mongolian Honey Massage Logo" loading="lazy">
                 </a>
             </div>
             <ul class="nav-links" role="menubar" id="navigation-menu">
@@ -771,7 +1253,12 @@
                 <li><a href="appointments.html" role="menuitem">Appointments</a></li>
                 <li><a href="location.html" role="menuitem">Location</a></li>
                 <li><a href="contact.html" role="menuitem">Contact</a></li>
+                <li><a href="#faq" role="menuitem">FAQ</a></li>
             </ul>
+            <button class="booking-btn" id="openBookingModal" aria-label="Book an Appointment">Book Now</button>
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
             <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navigation-menu">
                 <div class="line1"></div>
                 <div class="line2"></div>
@@ -780,6 +1267,31 @@
         </nav>
     </header>
 
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="bookingModalTitle">
+        <div class="modal-content">
+            <span class="close-modal" id="closeBookingModal" aria-label="Close Booking Modal">&times;</span>
+            <h2 id="bookingModalTitle">Book an Appointment</h2>
+            <form class="modal-form" id="bookingForm">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required aria-required="true">
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Your email address" required aria-required="true">
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Your phone number" required aria-required="true">
+
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="date" required aria-required="true">
+
+                <label for="time">Preferred Time</label>
+                <input type="time" id="time" name="time" required aria-required="true">
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Hero Section with Video Background -->
     <section class="hero" aria-label="Hero Section">
@@ -789,20 +1301,20 @@
         </video>
         <!-- Overlay to Soften the Video -->
         <div class="video-overlay"></div>
-        <div class="hero-content">
+        <div class="hero-content" data-aos="fade-up">
             <h1>Welcome to Mongolian Honey Massage</h1>
             <p>Revitalize Your Body and Soul</p>
             <a href="services.html" class="btn" role="button">Our Services</a>
         </div>
     </section>
 
-    <!-- About Section with Soothing Content and Animated Images -->
+    <!-- About Section with Enhanced Layout and Flexbox -->
     <section class="about" aria-labelledby="about-us-heading">
         <div class="container">
-            <h2 id="about-us-heading">Discover Tranquility</h2>
+            <h2 id="about-us-heading" data-aos="fade-right">Discover Tranquility</h2>
             <div class="about-content">
                 <!-- About Text Content -->
-                <div class="about-text">
+                <div class="about-text" data-aos="fade-left">
                     <p>
                         Nestled in the heart of serenity, <strong>Mongolian Honey Massage</strong> invites you to escape the stresses of everyday life. As you step into our peaceful haven, let the calming aromas and gentle melodies envelop you, transporting you to a world where time slows down and worries fade away.
                     </p>
@@ -829,42 +1341,48 @@
                 </div>
 
                 <!-- About Image Gallery with Animated Images -->
-                <div class="about-gallery">
+                <div class="about-gallery" data-aos="zoom-in">
                     <a href="assets/images/about1-large.jpg" data-lightbox="about-gallery" data-title="Therapist preparing oils">
-                        <img src="assets/images/about1.jpg" alt="Therapist preparing oils" loading="lazy" class="gallery-image">
+                        <div class="gallery-image">
+                            <img src="assets/images/about1.jpg" alt="Therapist preparing oils" loading="lazy">
+                        </div>
                     </a>
-                    <a href="assets/images/about2-large.jpg" data-lightbox="about-gallery" data-title="Massage session in progress">
-                        <img src="assets/images/about2.jpg" alt="Massage session in progress" loading="lazy" class="gallery-image">
-                    </a>
+
                     <a href="assets/images/about3-large.jpg" data-lightbox="about-gallery" data-title="Relaxing spa environment">
-                        <img src="assets/images/about3.jpg" alt="Relaxing spa environment" loading="lazy" class="gallery-image">
+                        <div class="gallery-image">
+                            <img src="assets/images/about3.jpg" alt="Relaxing spa environment" loading="lazy">
+                        </div>
                     </a>
                     <a href="assets/images/about4-large.jpg" data-lightbox="about-gallery" data-title="Natural honey application">
-                        <img src="assets/images/about4.jpg" alt="Natural honey application" loading="lazy" class="gallery-image">
+                        <div class="gallery-image">
+                            <img src="assets/images/about4.jpg" alt="Natural honey application" loading="lazy">
+                        </div>
                     </a>
                     <a href="assets/images/about5-large.jpg" data-lightbox="about-gallery" data-title="Serene relaxation area">
-                        <img src="assets/images/about5.jpg" alt="Serene relaxation area" loading="lazy" class="gallery-image">
+                        <div class="gallery-image">
+                            <img src="assets/images/about5.jpg" alt="Serene relaxation area" loading="lazy">
+                        </div>
                     </a>
-                    <a href="assets/images/about6-large.jpg" data-lightbox="about-gallery" data-title="Holistic wellness approach">
-                        <img src="assets/images/about6.jpg" alt="Holistic wellness approach" loading="lazy" class="gallery-image">
-                    </a>
+
                     <!-- Additional Images for Enhanced Visual Appeal -->
                     <a href="assets/images/about7-large.jpg" data-lightbox="about-gallery" data-title="Traditional Mongolian herbs">
-                        <img src="assets/images/about7.jpg" alt="Traditional Mongolian herbs" loading="lazy" class="gallery-image">
+                        <div class="gallery-image">
+                            <img src="assets/images/about7.jpg" alt="Traditional Mongolian herbs" loading="lazy">
+                        </div>
                     </a>
                     <a href="assets/images/about8-large.jpg" data-lightbox="about-gallery" data-title="Clients enjoying a massage">
-                        <img src="assets/images/about8.jpg" alt="Clients enjoying a massage" loading="lazy" class="gallery-image">
+                        <div class="gallery-image">
+                            <img src="assets/images/about8.jpg" alt="Clients enjoying a massage" loading="lazy">
+                        </div>
                     </a>
-                    <a href="assets/images/about9-large.jpg" data-lightbox="about-gallery" data-title="Calming treatment rooms">
-                        <img src="assets/images/about9.jpg" alt="Calming treatment rooms" loading="lazy" class="gallery-image">
-                    </a>
+
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Signature Treatment with Enhanced Layout -->
-    <section class="signature-treatment" aria-labelledby="signature-treatment-heading">
+    <section class="signature-treatment" aria-labelledby="signature-treatment-heading" data-aos="fade-up">
         <div class="container">
             <h2 id="signature-treatment-heading">Our Signature Treatment</h2>
             <div class="treatment-steps">
@@ -900,71 +1418,107 @@
     <!-- Benefits Section -->
     <section class="benefits" aria-labelledby="benefits-heading">
         <div class="container">
-            <h2 id="benefits-heading">Who Can Benefit</h2>
+            <h2 id="benefits-heading">Who Can Benefit from Our Services</h2>
+            <p class="benefits-intro">
+                Whether you're seeking relaxation, pain relief, or overall wellness, our specialized treatments cater to a wide range of needs. Discover how Mongolian Honey Massage can enhance your well-being.
+            </p>
             <div class="benefit-grid">
                 <!-- Benefit Items -->
-                <div class="benefit-item" tabindex="0">
-                    <img src="assets/icons/stressed-professionals.png" alt="Stressed Professionals Icon" loading="lazy">
+                <div class="benefit-item" tabindex="0" data-aos="fade-up">
                     <h3>Stressed Professionals</h3>
                     <p>
-                        Overwhelmed by work deadlines and responsibilities? Our massages help melt away stress, promoting mental clarity and relaxation.
+                        Balancing work and life can be overwhelming. Our massages help melt away stress, promoting mental clarity and relaxation to keep you performing at your best.
                     </p>
                 </div>
-                <div class="benefit-item" tabindex="0">
-                    <img src="assets/icons/sleep-disorders.png" alt="Sleep Disorders Icon" loading="lazy">
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="100">
                     <h3>Individuals with Sleep Disorders</h3>
                     <p>
-                        Struggling with insomnia or restless nights? Our therapies promote better sleep by calming the nervous system.
+                        Struggling with insomnia or restless nights? Our therapies calm the nervous system, fostering better sleep patterns and enhancing your overall restfulness.
                     </p>
                 </div>
-                <div class="benefit-item" tabindex="0">
-                    <img src="assets/icons/chronic-pain.png" alt="Chronic Pain Icon" loading="lazy">
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="200">
                     <h3>Chronic Pain Sufferers</h3>
                     <p>
-                        Those dealing with chronic back pain, arthritis, or migraines can find relief through our specialized massage techniques.
+                        Experience relief from persistent back pain, arthritis, or migraines through our specialized massage techniques that target and alleviate chronic discomfort.
                     </p>
                 </div>
-                <div class="benefit-item" tabindex="0">
-                    <img src="assets/icons/athletes.png" alt="Athletes Icon" loading="lazy">
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="300">
                     <h3>Athletes and Fitness Enthusiasts</h3>
                     <p>
-                        Enhance recovery and prevent injuries with massages that improve circulation and flexibility.
+                        Enhance your recovery and prevent injuries with massages that improve circulation, increase flexibility, and support peak athletic performance.
                     </p>
                 </div>
-                <div class="benefit-item" tabindex="0">
-                    <img src="assets/icons/stress.png" alt="Stress Relief Icon" loading="lazy">
-                    <h3>People with Chronic Stress</h3>
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="400">
+                    <h3>Individuals Battling Chronic Stress</h3>
                     <p>
-                        Combat chronic stress and anxiety with our relaxing massages that help balance your mental and physical health.
+                        Combat chronic stress and anxiety with our relaxing massages, designed to balance your mental and physical health for a harmonious life.
                     </p>
                 </div>
-                <div class="benefit-item" tabindex="0">
-                    <img src="assets/icons/pain-relief.png" alt="Pain Relief Icon" loading="lazy">
-                    <h3>Individuals Seeking Pain Relief</h3>
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="500">
+                    <h3>Those Seeking Pain Relief</h3>
                     <p>
-                        Relieve persistent pain and discomfort with our targeted massage therapies designed to alleviate pain and improve mobility.
+                        Alleviate persistent pain and discomfort with our targeted massage therapies, improving mobility and enhancing your quality of life.
                     </p>
                 </div>
-                <div class="benefit-item" tabindex="0">
-                    <img src="assets/icons/migraines.png" alt="Migraines and Headaches Icon" loading="lazy">
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="600">
                     <h3>Individuals with Migraines and Headaches</h3>
                     <p>
-                        Suffering from frequent migraines or tension headaches? Our specialized massages help reduce the frequency and intensity of headaches.
+                        Reduce the frequency and intensity of migraines and tension headaches with our specialized massage techniques that soothe and relax.
                     </p>
                 </div>
-                <div class="benefit-item" tabindex="0">
-                    <img src="assets/icons/posture.png" alt="Posture Issues Icon" loading="lazy">
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="700">
                     <h3>People with Posture Issues</h3>
                     <p>
-                        Improve your posture and alleviate related discomfort with massages that target muscle imbalances and promote spinal alignment.
+                        Improve your posture and alleviate related discomfort with massages that target muscle imbalances and promote spinal alignment for a healthier stance.
                     </p>
                 </div>
+                <!-- Additional Benefit Items for Enhanced Coverage -->
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="800">
+                    <h3>Elderly Individuals</h3>
+                    <p>
+                        Enhance mobility and reduce aches associated with aging. Our gentle massage techniques cater to the unique needs of our senior clients.
+                    </p>
+                </div>
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="900">
+                    <h3>New Mothers</h3>
+                    <p>
+                        Recover and rejuvenate postpartum with massages that relieve muscle tension, reduce stress, and promote overall well-being during this special time.
+                    </p>
+                </div>
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="1000">
+                    <h3>Individuals Seeking Spiritual Balance</h3>
+                    <p>
+                        Achieve a deeper sense of inner peace and spiritual harmony through our holistic massage therapies that nurture both body and soul.
+                    </p>
+                </div>
+                <!-- Honey and Olive Oil Specific Benefits -->
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="1100">
+                    <h3>Honey for Stress Relief</h3>
+                    <p>
+                        Honey is rich in antioxidants and has natural anti-inflammatory properties. When used in massages, it helps soothe the nervous system, reduce cortisol levels, and promote relaxation, effectively combating daily stress.
+                    </p>
+                </div>
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="1200">
+                    <h3>Olive Oil for Muscle Recovery</h3>
+                    <p>
+                        Olive oil is packed with healthy fats and vitamins E and K, which nourish the skin and muscles. Its moisturizing properties help reduce muscle soreness and improve flexibility, making it ideal for recovery after a long day or intense physical activity.
+                    </p>
+                </div>
+                <div class="benefit-item" tabindex="0" data-aos="fade-up" data-aos-delay="1300">
+                    <h3>Combined Honey and Olive Oil Benefits</h3>
+                    <p>
+                        The combination of honey and olive oil in massages enhances their individual benefits, providing deep hydration, improved circulation, and a calming effect on both the body and mind. This synergy is perfect for alleviating stress and promoting overall well-being.
+                    </p>
+                </div>
+            </div>
+            <div class="benefits-cta">
+                <a href="services.html" class="btn" role="button">Explore Our Services</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" aria-labelledby="testimonials-heading">
+    <section class="testimonials" aria-labelledby="testimonials-heading" data-aos="fade-up">
         <div class="container">
             <h2 id="testimonials-heading">What Our Clients Say</h2>
             <div class="testimonial-slider" aria-live="polite">
@@ -988,36 +1542,119 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq" id="faq" aria-labelledby="faq-heading">
+        <div class="container">
+            <h2 id="faq-heading">Frequently Asked Questions</h2>
+            <div class="accordion-container" data-aos="fade-up">
+                <button class="accordion" aria-expanded="false">What is a Mongolian Honey Massage?</button>
+                <div class="panel">
+                    <p>A Mongolian Honey Massage is a therapeutic treatment that combines traditional massage techniques with the healing properties of pure honey. It helps detoxify the skin, improve circulation, and promote overall relaxation.</p>
+                </div>
+
+                <button class="accordion" aria-expanded="false">How long does a session last?</button>
+                <div class="panel">
+                    <p>Each session typically lasts between 60 to 90 minutes, depending on your specific needs and the type of treatment you choose.</p>
+                </div>
+
+                <button class="accordion" aria-expanded="false">Do I need to book in advance?</button>
+                <div class="panel">
+                    <p>Yes, we recommend booking in advance to secure your preferred time slot. However, we do accept walk-ins based on availability.</p>
+                </div>
+
+                <button class="accordion" aria-expanded="false">What should I wear to my appointment?</button>
+                <div class="panel">
+                    <p>We suggest wearing comfortable, loose-fitting clothing that allows easy access to the areas being treated. You can also change into our provided spa attire if preferred.</p>
+                </div>
+
+                <button class="accordion" aria-expanded="false">Can I request a specific therapist?</button>
+                <div class="panel">
+                    <p>Absolutely! If you have a preferred therapist, please let us know when booking your appointment, and we will do our best to accommodate your request.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section with Google Maps Integration -->
+    <section class="location-map" aria-labelledby="location-heading">
+        <div class="container">
+            <h2 id="location-heading" data-aos="fade-right">Our Location</h2>
+            <div class="map-container" data-aos="zoom-in">
+                <!-- Updated Google Maps Embed with Correct Address -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.567122912588!2d-76.54380318449706!3d44.23116607909875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d8a2e4d5aef9b9%3A0xd1d5c8c0e5bfa62!2s873%20Clearfield%20Crescent%2C%20Kingston%2C%20ON%20K7P%201Z6%2C%20Canada!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus" 
+                    width="600" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade" 
+                    title="Mongolian Honey Massage Location">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Subscription Section -->
+    <section class="newsletter" aria-labelledby="newsletter-heading" data-aos="fade-up">
+        <h3 id="newsletter-heading">Stay Updated</h3>
+        <form action="#" method="POST" aria-label="Newsletter Subscription Form">
+            <input type="email" name="email" id="newsletter-email" placeholder="Enter your email address" required aria-required="true">
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Back-to-Top Button -->
+    <button id="backToTopBtn" aria-label="Back to Top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p>&copy; 2024 Mongolian Honey Massage. All Rights Reserved.</p>
             <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                <a href="https://www.facebook.com/mongolianhoneymassage" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/mongolianhoneymassage" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/mongolianhoney" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter" aria-hidden="true"></i></a>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript Libraries -->
     <!-- Lightbox2 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-ZlG7Y+jFHiPpsg1FS4kKHNbCc2wxp2Kgz5vFJ5RXhE2nPb6XJURFLYBkKqZJbiqja5+Jp6Lid7ev5A9h7vQ0lA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- AOS JS for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- Live Chat Widget (Example: Tawk.to) -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/your_tawkto_property_id/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
 
     <!-- Custom JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true
+            });
+
             // Adjust playback rates for videos
             const heroVideo = document.getElementById('hero-video');
             if (heroVideo) {
                 heroVideo.playbackRate = 0.25; // 25% speed
             }
-
-            // No IDs for other videos; adjust all videos except hero
-            const otherVideos = document.querySelectorAll('video:not(#hero-video)');
-            otherVideos.forEach(video => {
-                video.playbackRate = 0.5; // 50% speed
-            });
 
             // Responsive Navigation Menu
             const burger = document.querySelector('.burger');
@@ -1049,6 +1686,14 @@
                     nav.classList.add('scrolled');
                 } else {
                     nav.classList.remove('scrolled');
+                }
+
+                // Back-to-Top Button Visibility
+                const backToTopBtn = document.getElementById('backToTopBtn');
+                if (window.scrollY > 300) {
+                    backToTopBtn.style.display = "block";
+                } else {
+                    backToTopBtn.style.display = "none";
                 }
             });
 
@@ -1144,7 +1789,189 @@
             galleryImages.forEach(image => {
                 imageObserver.observe(image);
             });
+
+            // Back-to-Top Button Functionality
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Booking Modal Functionality
+            const bookingModal = document.getElementById('bookingModal');
+            const openBookingModalBtn = document.getElementById('openBookingModal');
+            const closeBookingModalBtn = document.getElementById('closeBookingModal');
+
+            openBookingModalBtn.addEventListener('click', () => {
+                bookingModal.style.display = "block";
+                bookingModal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+
+            closeBookingModalBtn.addEventListener('click', () => {
+                bookingModal.style.display = "none";
+                bookingModal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = 'auto'; // Restore background scrolling
+            });
+
+            // Close modal when clicking outside of the modal content
+            window.addEventListener('click', (event) => {
+                if (event.target == bookingModal) {
+                    bookingModal.style.display = "none";
+                    bookingModal.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Dark Mode Toggle Functionality
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+
+            // Check for saved user preference, if any, on load of the website
+            if (localStorage.getItem('dark-mode') === 'enabled') {
+                body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+            }
+
+            darkModeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+
+                if(body.classList.contains('dark-mode')){
+                    darkModeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+                    localStorage.setItem('dark-mode', 'enabled');
+                } else {
+                    darkModeToggle.innerHTML = '<i class="fas fa-moon" aria-hidden="true"></i>';
+                    localStorage.setItem('dark-mode', 'disabled');
+                }
+            });
+
+            // Handle Keyboard Accessibility for Dark Mode Toggle
+            darkModeToggle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    darkModeToggle.click();
+                }
+            });
+
+            // Booking Form Submission Handling (Dummy)
+            const bookingForm = document.getElementById('bookingForm');
+            bookingForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for booking an appointment! We will contact you soon.');
+                bookingForm.reset();
+                bookingModal.style.display = "none";
+                bookingModal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Newsletter Subscription Handling (Dummy)
+            const newsletterForm = document.querySelector('.newsletter form');
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('newsletter-email').value;
+                alert(`Thank you for subscribing with ${email}!`);
+                newsletterForm.reset();
+            });
+
+            // FAQ Accordion Functionality
+            const accordions = document.querySelectorAll('.accordion');
+
+            accordions.forEach(acc => {
+                acc.addEventListener('click', function() {
+                    const isActive = this.classList.contains('active');
+                    accordions.forEach(a => {
+                        a.classList.remove('active');
+                        a.setAttribute('aria-expanded', 'false');
+                        a.nextElementSibling.style.display = "none";
+                    });
+                    if (!isActive) {
+                        this.classList.add('active');
+                        this.setAttribute('aria-expanded', 'true');
+                        this.nextElementSibling.style.display = "block";
+                    }
+                });
+
+                // Accessibility: Allow keyboard navigation
+                acc.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        acc.click();
+                    }
+                });
+            });
+
+            // PWA: Register Service Worker
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+                });
+            }
         });
+    </script>
+
+    <!-- Service Worker -->
+    <script>
+        // Note: Service worker script should be in a separate file (service-worker.js).
+        // Here is a basic example:
+
+        /*
+        const CACHE_NAME = 'mhm-cache-v1';
+        const urlsToCache = [
+            '/',
+            '/index.html',
+            '/assets/images/logo.png',
+            '/assets/videos/signature-treatment.mp4',
+            '/assets/css/styles.css',
+            '/assets/js/main.js',
+            // Add other assets to cache
+        ];
+
+        self.addEventListener('install', function(event) {
+            event.waitUntil(
+                caches.open(CACHE_NAME)
+                    .then(function(cache) {
+                        console.log('Opened cache');
+                        return cache.addAll(urlsToCache);
+                    })
+            );
+        });
+
+        self.addEventListener('fetch', function(event) {
+            event.respondWith(
+                caches.match(event.request)
+                    .then(function(response) {
+                        if (response) {
+                            return response;
+                        }
+                        return fetch(event.request);
+                    }
+                )
+            );
+        });
+
+        self.addEventListener('activate', function(event) {
+            const cacheWhitelist = [CACHE_NAME];
+            event.waitUntil(
+                caches.keys().then(cacheNames => {
+                    return Promise.all(
+                        cacheNames.map(cacheName => {
+                            if (!cacheWhitelist.includes(cacheName)) {
+                                return caches.delete(cacheName);
+                            }
+                        })
+                    );
+                })
+            );
+        });
+        */
     </script>
 </body>
 </html>
