@@ -324,20 +324,23 @@
             line-height: 1.8;
         }
 
+        /* Removed bullet points and ✔️ icons */
         .service-card ul {
             text-align: left;
             margin-bottom: 15px;
-            padding-left: 20px;
+            padding-left: 0;
+            list-style: none; /* Remove default bullets */
         }
 
         .service-card ul li {
             margin-bottom: 10px;
-            position: relative;
-            padding-left: 25px;
+            /* Removed relative positioning and padding-left */
             font-size: 1rem;
             color: #555;
         }
 
+        /* Removed the ✔️ icon before list items */
+        /*
         .service-card ul li::before {
             content: '✔️';
             position: absolute;
@@ -345,6 +348,7 @@
             top: 0;
             color: var(--secondary-color);
         }
+        */
 
         .service-card .price {
             font-size: 1.2em;
@@ -578,9 +582,8 @@
                     </p>
                     <p>Our exclusive session includes:</p>
                     <ul>
-                        <li><strong>Soothing Massage Lotion Application (5 minutes):</strong> Begin with a gentle application of our premium massage lotion to prepare your skin and enhance the sensory experience.</li>
                         <li><strong>Signature Honey Massage (15 minutes):</strong> Relish the therapeutic warmth and healing properties of natural honey as it is skillfully massaged into your skin, promoting circulation and detoxification.</li>
-                        <li><strong>Nourishing Olive Oil Treatment (5 minutes):</strong> Conclude with a moisturizing olive oil treatment to lock in hydration and leave your skin with a radiant glow.</li>
+                        <li><strong>Nourishing Olive Oil Treatment (10 minutes):</strong> Conclude with a moisturizing olive oil treatment to lock in hydration and leave your skin with a radiant glow.</li>
                     </ul>
                     <p class="price"><strong>Price:</strong> $40 CAD + tax</p>
                     <p><strong>Limited-Time Offer:</strong> Share the experience with a friend and pay only $70 CAD + tax for both!</p>
