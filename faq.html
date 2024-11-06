@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Mongolian Honey Massage</title>
+    <meta name="description" content="Frequently Asked Questions about Mongolian Honey Massage, including benefits, booking, and session details.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        /* Root Variables */
+        :root {
+            --primary-color: #3a2e2a;
+            --secondary-color: #d4a373;
+            --background-color: #fbf8ef;
+            --dark-bg-color: #2e2e2e;
+            --text-color: #333;
+            --text-light-color: #fefae0;
+            --max-width: 1000px;
+            --spacing-unit: 1rem;
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg-color);
+            color: var(--text-light-color);
+        }
+
+        header, .faq-section {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: var(--spacing-unit) 2rem;
+        }
+
+        /* Navigation */
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        header .logo img {
+            width: 80px;
+        }
+
+        header .nav-links a {
+            color: var(--primary-color);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        body.dark-mode header .nav-links a {
+            color: var(--text-light-color);
+        }
+
+        header .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .faq-section h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            padding: 1rem 0;
+            text-align: left;
+            transition: background-color var(--transition-speed);
+        }
+
+        .faq-item h3 {
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            padding: 0.5rem 0;
+            transition: color var(--transition-speed);
+        }
+
+        .faq-item h3:focus,
+        .faq-item h3:hover {
+            color: var(--secondary-color);
+        }
+
+        .faq-item p {
+            display: none;
+            padding-top: 0.5rem;
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .faq-item.active p {
+            display: block;
+            color: inherit;
+        }
+
+        /* FAQ item icon rotation */
+        .faq-item.active h3 i {
+            transform: rotate(180deg);
+        }
+
+        h3 i {
+            transition: transform var(--transition-speed);
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            cursor: pointer;
+            font-size: 1.2em;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            transition: color var(--transition-speed);
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            color: var(--text-light-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="assets/images/logo.png" alt="Mongolian Honey Massage Logo"></a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="information.html">Information</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <h1>Frequently Asked Questions</h1>
+        
+        <div class="faq-item" data-aos="fade-up">
+            <h3 tabindex="0">What is Mongolian Honey Massage? <i class="fa-solid fa-chevron-down"></i></h3>
+            <p>Mongolian Honey Massage is a therapeutic practice combining honey and olive oil for skin rejuvenation, improved circulation, and deep relaxation.</p>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+            <h3 tabindex="0">What are the benefits of honey in massage therapy? <i class="fa-solid fa-chevron-down"></i></h3>
+            <p>Honey is a natural humectant that hydrates and nourishes the skin. It also has anti-inflammatory and antioxidant properties, enhancing skin health.</p>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+            <h3 tabindex="0">Can I book a session online? <i class="fa-solid fa-chevron-down"></i></h3>
+            <p>Yes, you can easily book a session through our website by clicking the "Book Now" button on the homepage or visiting our appointments section.</p>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+            <h3 tabindex="0">Are there any side effects? <i class="fa-solid fa-chevron-down"></i></h3>
+            <p>Our massage uses natural ingredients, so side effects are rare. However, if you have sensitive skin, please let your therapist know beforehand.</p>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+            <h3 tabindex="0">How do I prepare for my massage session? <i class="fa-solid fa-chevron-down"></i></h3>
+            <p>It’s best to arrive a few minutes early, wear comfortable clothing, and avoid heavy meals beforehand to maximize relaxation and comfort.</p>
+        </div>
+    </section>
+    
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init();
+
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentNode;
+                parent.classList.toggle('active');
+            });
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    item.click();
+                }
+            });
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Check for saved user preference
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('dark-mode', 'enabled');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('dark-mode', 'disabled');
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+    </script>
+</body>
+</html>
