@@ -1297,8 +1297,7 @@
                     aria-required="true">
 
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="Your phone number" required
-                    aria-required="true">
+                <input type="tel" id="phone" name="phone" placeholder="Your phone number" required aria-required="true">
 
                 <label for="date">Preferred Date</label>
                 <input type="date" id="date" name="date" required aria-required="true">
@@ -1313,8 +1312,8 @@
 
     <!-- Hero Section with Video Background -->
     <section class="hero" aria-label="Hero Section">
-        <video id="hero-video" muted autoplay playsinline loop preload="auto"
-            poster="assets/images/video-poster.jpg" aria-hidden="true">
+        <video id="hero-video" muted autoplay playsinline loop preload="auto" poster="assets/images/video-poster.jpg"
+            aria-hidden="true">
             <source src="assets/videos/signature-treatment-no-audio.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -1703,8 +1702,9 @@
                 once: true
             });
 
-            // Adjust playback rates for videos
             const heroVideo = document.getElementById('hero-video');
+            heroVideo.muted = true;
+            heroVideo.playsInline = true;
 
             function attemptPlay() {
                 heroVideo.play().then(() => {
