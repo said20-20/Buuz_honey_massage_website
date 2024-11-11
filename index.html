@@ -1751,12 +1751,52 @@
 
             // Adjust playback rates for videos
             const heroVideo = document.getElementById('hero-video');
-            if (heroVideo) {
-                heroVideo.playbackRate = 0.25; // 25% speed
 
-                // Autoplay video on mobile devices
-                heroVideo.play().catch(function (error) {
-                    console.log('Error attempting to play video:', error);
+            function attemptPlay() {
+                heroVideo.play().then(() => {
+                    console.log('Video playback started');
+                }).catch(error => {
+                    console.log('Autoplay was prevented:', error);
+                    // Show a play button or alternative content
+                    showPlayButton();
+                });
+            }
+
+            // Attempt to play the video on page load
+            attemptPlay();
+
+            // Play video on first user interaction
+            ['click', 'touchstart'].forEach(event => {
+                document.addEventListener(event, function once() {
+                    attemptPlay();
+                    document.removeEventListener(event, once);
+                });
+            });
+
+            // Function to display a play button if autoplay is prevented
+            function showPlayButton() {
+                const playButton = document.createElement('button');
+                playButton.textContent = 'Play Video';
+                // Style the button
+                playButton.style.position = 'absolute';
+                playButton.style.top = '50%';
+                playButton.style.left = '50%';
+                playButton.style.transform = 'translate(-50%, -50%)';
+                playButton.style.padding = '1rem 2rem';
+                playButton.style.fontSize = '1.5rem';
+                playButton.style.zIndex = '2';
+                playButton.style.cursor = 'pointer';
+                playButton.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                playButton.style.color = '#fff';
+                playButton.style.border = 'none';
+                playButton.style.borderRadius = '5px';
+
+                const heroSection = document.querySelector('.hero');
+                heroSection.appendChild(playButton);
+
+                playButton.addEventListener('click', () => {
+                    heroVideo.play();
+                    playButton.remove();
                 });
             }
 
@@ -1801,147 +1841,6 @@
                 }
             });
 
-            // Testimonials Slider
-            const testimonials = document.querySelectorAll('.testimonial');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            let currentTestimonial = 0;
-            const totalTestimonials = testimonials.length;
-            let testimonialInterval;
-
-            function showTestimonial(index) {
-                testimonials.forEach((testimonial, i) => {
-                    testimonial.classList.remove('active');
-                    if (i === index) {
-                        testimonial.classList.add('active');
-                    }
-                });
-            }
-
-            function prevTestimonial() {
-                currentTestimonial = (currentTestimonial > 0) ? currentTestimonial - 1 : totalTestimonials - 1;
-                showTestimonial(currentTestimonial);
-                resetInterval();
-            }
-
-            function nextTestimonial() {
-                currentTestimonial = (currentTestimonial < totalTestimonials - 1) ? currentTestimonial + 1 : 0;
-                showTestimonial(currentTestimonial);
-                resetInterval();
-            }
-
-            prevBtn.addEventListener('click', prevTestimonial);
-            nextBtn.addEventListener('click', nextTestimonial);
-
-            // Auto-slide Testimonials Every 5 Seconds
-            function startInterval() {
-                testimonialInterval = setInterval(() => {
-                    nextTestimonial();
-                }, 5000);
-            }
-
-            function resetInterval() {
-                clearInterval(testimonialInterval);
-                startInterval();
-            }
-
-            // Initialize Testimonials Slider
-            if (testimonials.length > 0) {
-                showTestimonial(currentTestimonial);
-                startInterval();
-            }
-
-            // Accessibility: Allow keyboard navigation for burger menu
-            burger.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    burger.click();
-                }
-            });
-
-            // Accessibility: Pause video playback when not in viewport
-            function handleVideoPlayback() {
-                const videos = document.querySelectorAll('video');
-                videos.forEach(video => {
-                    const rect = video.getBoundingClientRect();
-                    if (rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)) {
-                        video.play();
-                    } else {
-                        video.pause();
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', handleVideoPlayback);
-            window.addEventListener('resize', handleVideoPlayback);
-            document.addEventListener('DOMContentLoaded', handleVideoPlayback);
-
-            // Slideshow Carousel Functionality
-            const slides = document.querySelectorAll('.about-carousel .slide');
-            const prevSlideBtn = document.querySelector('.carousel-prev');
-            const nextSlideBtn = document.querySelector('.carousel-next');
-            let currentIndex = 0;
-            const slideIntervalTime = 5000; // 5 seconds
-            let slideInterval;
-
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    slide.classList.remove('active');
-                    slide.setAttribute('aria-hidden', 'true');
-                    if (i === index) {
-                        slide.classList.add('active');
-                        slide.setAttribute('aria-hidden', 'false');
-                    }
-                });
-            }
-
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % slides.length;
-                showSlide(currentIndex);
-            }
-
-            function prevSlide() {
-                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-                showSlide(currentIndex);
-            }
-
-            function startSlideShow() {
-                slideInterval = setInterval(nextSlide, slideIntervalTime);
-            }
-
-            function pauseSlideShow() {
-                clearInterval(slideInterval);
-            }
-
-            // Start the slideshow
-            showSlide(currentIndex);
-            startSlideShow();
-
-            // Add event listeners for navigation buttons
-            prevSlideBtn.addEventListener('click', () => {
-                prevSlide();
-                resetSlideInterval();
-            });
-
-            nextSlideBtn.addEventListener('click', () => {
-                nextSlide();
-                resetSlideInterval();
-            });
-
-            function resetSlideInterval() {
-                pauseSlideShow();
-                startSlideShow();
-            }
-
-            // Optional: Pause slideshow on hover (for desktop devices)
-            const aboutCarousel = document.querySelector('.about-carousel');
-            aboutCarousel.addEventListener('mouseenter', pauseSlideShow);
-            aboutCarousel.addEventListener('mouseleave', startSlideShow);
-
-            // Accessibility: Allow keyboard navigation
-            aboutCarousel.addEventListener('focusin', pauseSlideShow);
-            aboutCarousel.addEventListener('focusout', startSlideShow);
-
             // Back-to-Top Button Functionality
             const backToTopBtn = document.getElementById('backToTopBtn');
             backToTopBtn.addEventListener('click', () => {
@@ -1955,7 +1854,7 @@
             const darkModeToggle = document.getElementById('darkModeToggle');
             const body = document.body;
 
-            // Check for saved user preference, if any, on load of the website
+            // Check for saved user preference on load
             if (localStorage.getItem('dark-mode') === 'enabled') {
                 body.classList.add('dark-mode');
                 darkModeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
@@ -2023,7 +1922,7 @@
             // PWA: Register Service Worker
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/service-worker.js')
+                    navigator.serviceWorker.register('service-worker.js')
                         .then(registration => {
                             console.log('Service Worker registered with scope:', registration.scope);
                         })
@@ -2035,48 +1934,53 @@
         });
     </script>
 
-    <!-- Service Worker -->
+    <!-- Service Worker Script -->
     <script>
-        // Note: Service worker script should be in a separate file (service-worker.js).
-        // Here is a basic example:
+        // Note: Including service worker code inline is not standard practice and may not function correctly.
+        // Service workers must be served from the root of your domain and be in a separate file.
+        // However, here's the service worker code as per your request.
 
-        /*
-        const CACHE_NAME = 'mhm-cache-v1';
-        const urlsToCache = [
-            '/',
-            '/index.html',
-            '/assets/images/logo.png',
-            '/assets/videos/signature-treatment.mp4',
-            '/assets/css/styles.css',
-            '/assets/js/main.js',
-            // Add other assets to cache
-        ];
-
-        self.addEventListener('install', function(event) {
-            event.waitUntil(
-                caches.open(CACHE_NAME)
-                    .then(function(cache) {
-                        console.log('Opened cache');
-                        return cache.addAll(urlsToCache);
+        // Check if service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Wait for the page to load
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(function (registration) {
+                        // Registration successful
+                        console.log('Service Worker registered with scope:', registration.scope);
                     })
+                    .catch(function (error) {
+                        // Registration failed
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+
+        // Service Worker code
+        self.addEventListener('install', function (event) {
+            event.waitUntil(
+                caches.open('mhm-cache-v1').then(function (cache) {
+                    return cache.addAll([
+                        '/',
+                        '/index.html',
+                        '/assets/images/logo.png',
+                        '/assets/videos/signature-treatment-no-audio.mp4',
+                        // Add other assets to cache
+                    ]);
+                })
             );
         });
 
-        self.addEventListener('fetch', function(event) {
+        self.addEventListener('fetch', function (event) {
             event.respondWith(
-                caches.match(event.request)
-                    .then(function(response) {
-                        if (response) {
-                            return response;
-                        }
-                        return fetch(event.request);
-                    }
-                )
+                caches.match(event.request).then(function (response) {
+                    return response || fetch(event.request);
+                })
             );
         });
 
-        self.addEventListener('activate', function(event) {
-            const cacheWhitelist = [CACHE_NAME];
+        self.addEventListener('activate', function (event) {
+            const cacheWhitelist = ['mhm-cache-v1'];
             event.waitUntil(
                 caches.keys().then(cacheNames => {
                     return Promise.all(
@@ -2089,7 +1993,6 @@
                 })
             );
         });
-        */
     </script>
 </body>
 

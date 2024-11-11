@@ -100,3 +100,4 @@ Tools and Libraries: Special thanks to the developers of the tools and libraries
 Community Support: Gratitude to the open-source community for providing invaluable resources and support.
 Live Demo
 Visit the live website here.
+https://selmandemiray.github.io/Buuz_honey_massage_website/#faq
