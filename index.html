@@ -939,52 +939,6 @@
             color: var(--primary-color);
         }
 
-        /* Newsletter Subscription Form */
-        .newsletter {
-            padding: 2.5rem 1rem;
-            background-color: var(--background-color);
-            text-align: center;
-        }
-
-        .newsletter h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .newsletter form {
-            max-width: 500px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .newsletter input[type="email"] {
-            padding: 0.75rem;
-            border: 1px solid var(--secondary-color);
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .newsletter button {
-            padding: 0.75rem;
-            background-color: var(--secondary-color);
-            color: var(--light-color);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            border-radius: 5px;
-            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
-        }
-
-        .newsletter button:hover,
-        .newsletter button:focus {
-            background-color: var(--accent-color);
-            transform: scale(1.05);
-            outline: none;
-        }
-
         /* Back-to-Top Button */
         #backToTopBtn {
             display: none;
@@ -1343,7 +1297,8 @@
                     aria-required="true">
 
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="Your phone number" required aria-required="true">
+                <input type="tel" id="phone" name="phone" placeholder="Your phone number" required
+                    aria-required="true">
 
                 <label for="date">Preferred Date</label>
                 <input type="date" id="date" name="date" required aria-required="true">
@@ -1358,12 +1313,11 @@
 
     <!-- Hero Section with Video Background -->
     <section class="hero" aria-label="Hero Section">
-        <video id="hero-video" muted autoplay playsinline webkit-playsinline x5-playsinline loop preload="auto"
+        <video id="hero-video" muted autoplay playsinline loop preload="auto"
             poster="assets/images/video-poster.jpg" aria-hidden="true">
             <source src="assets/videos/signature-treatment-no-audio.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-
 
         <!-- Overlay to Soften the Video -->
         <div class="video-overlay"></div>
@@ -1373,7 +1327,6 @@
             <a href="services.html" class="btn" role="button">Our Services</a>
         </div>
     </section>
-
 
     <!-- About Section with Slideshow Carousel -->
     <section class="about" aria-labelledby="about-us-heading">
@@ -1420,7 +1373,8 @@
 
                     <p>
                         Your well-being is our utmost priority. Come, unwind with us, and emerge feeling refreshed,
-                        rejuvenated, and reconnected with yourself. The tranquility you seek is closer than you imagine.
+                        rejuvenated, and reconnected with yourself. The tranquility you seek is closer than you
+                        imagine.
                     </p>
                 </div>
 
@@ -1772,67 +1726,6 @@
                     document.removeEventListener(event, once);
                 });
             });
-            // Slideshow Carousel Functionality for "Discover Tranquility" Section
-            const slides = document.querySelectorAll('.about-carousel .slide');
-            const prevSlideBtn = document.querySelector('.carousel-prev');
-            const nextSlideBtn = document.querySelector('.carousel-next');
-            let currentIndex = 0;
-            const slideIntervalTime = 5000; // 5 seconds
-            let slideInterval;
-
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    slide.classList.remove('active');
-                    slide.setAttribute('aria-hidden', 'true');
-                    if (i === index) {
-                        slide.classList.add('active');
-                        slide.setAttribute('aria-hidden', 'false');
-                    }
-                });
-            }
-
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % slides.length;
-                showSlide(currentIndex);
-            }
-
-            function prevSlide() {
-                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-                showSlide(currentIndex);
-            }
-
-            function startSlideShow() {
-                slideInterval = setInterval(nextSlide, slideIntervalTime);
-            }
-
-            function pauseSlideShow() {
-                clearInterval(slideInterval);
-            }
-
-            // Start the slideshow
-            showSlide(currentIndex);
-            startSlideShow();
-
-            // Add event listeners for navigation buttons
-            prevSlideBtn.addEventListener('click', () => {
-                prevSlide();
-                resetSlideInterval();
-            });
-
-            nextSlideBtn.addEventListener('click', () => {
-                nextSlide();
-                resetSlideInterval();
-            });
-
-            function resetSlideInterval() {
-                pauseSlideShow();
-                startSlideShow();
-            }
-
-            // Optional: Pause slideshow on hover (for desktop devices)
-            const aboutCarousel = document.querySelector('.about-carousel');
-            aboutCarousel.addEventListener('mouseenter', pauseSlideShow);
-            aboutCarousel.addEventListener('mouseleave', startSlideShow);
 
             // Function to display a play button if autoplay is prevented
             function showPlayButton() {
@@ -1980,6 +1873,128 @@
                 });
             });
 
+            // Slideshow Carousel Functionality for "Discover Tranquility" Section
+            const slides = document.querySelectorAll('.about-carousel .slide');
+            const prevSlideBtn = document.querySelector('.carousel-prev');
+            const nextSlideBtn = document.querySelector('.carousel-next');
+            let currentIndex = 0;
+            const slideIntervalTime = 5000; // 5 seconds
+            let slideInterval;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    slide.setAttribute('aria-hidden', 'true');
+                    if (i === index) {
+                        slide.classList.add('active');
+                        slide.setAttribute('aria-hidden', 'false');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                showSlide(currentIndex);
+            }
+
+            function startSlideShow() {
+                slideInterval = setInterval(nextSlide, slideIntervalTime);
+            }
+
+            function pauseSlideShow() {
+                clearInterval(slideInterval);
+            }
+
+            // Start the slideshow
+            showSlide(currentIndex);
+            startSlideShow();
+
+            // Add event listeners for navigation buttons
+            prevSlideBtn.addEventListener('click', () => {
+                prevSlide();
+                resetSlideInterval();
+            });
+
+            nextSlideBtn.addEventListener('click', () => {
+                nextSlide();
+                resetSlideInterval();
+            });
+
+            function resetSlideInterval() {
+                pauseSlideShow();
+                startSlideShow();
+            }
+
+            // Optional: Pause slideshow on hover (for desktop devices)
+            const aboutCarousel = document.querySelector('.about-carousel');
+            aboutCarousel.addEventListener('mouseenter', pauseSlideShow);
+            aboutCarousel.addEventListener('mouseleave', startSlideShow);
+
+            // Testimonials Slider Functionality
+            const testimonials = document.querySelectorAll('.testimonial-slider .testimonial');
+            const prevTestimonialBtn = document.getElementById('prevBtn');
+            const nextTestimonialBtn = document.getElementById('nextBtn');
+            let currentTestimonialIndex = 0;
+            const testimonialIntervalTime = 7000; // 7 seconds
+            let testimonialInterval;
+
+            function showTestimonial(index) {
+                testimonials.forEach((testimonial, i) => {
+                    testimonial.classList.remove('active');
+                    if (i === index) {
+                        testimonial.classList.add('active');
+                    }
+                });
+            }
+
+            function nextTestimonial() {
+                currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+                showTestimonial(currentTestimonialIndex);
+            }
+
+            function prevTestimonial() {
+                currentTestimonialIndex = (currentTestimonialIndex - 1 + testimonials.length) % testimonials.length;
+                showTestimonial(currentTestimonialIndex);
+            }
+
+            function startTestimonialSlideShow() {
+                testimonialInterval = setInterval(nextTestimonial, testimonialIntervalTime);
+            }
+
+            function pauseTestimonialSlideShow() {
+                clearInterval(testimonialInterval);
+            }
+
+            // Start the testimonials slideshow
+            showTestimonial(currentTestimonialIndex);
+            startTestimonialSlideShow();
+
+            // Add event listeners for testimonial navigation buttons
+            prevTestimonialBtn.addEventListener('click', () => {
+                prevTestimonial();
+                resetTestimonialInterval();
+            });
+
+            nextTestimonialBtn.addEventListener('click', () => {
+                nextTestimonial();
+                resetTestimonialInterval();
+            });
+
+            function resetTestimonialInterval() {
+                pauseTestimonialSlideShow();
+                startTestimonialSlideShow();
+            }
+
+            // Optional: Pause testimonials slideshow on hover
+            const testimonialSlider = document.querySelector('.testimonial-slider');
+            testimonialSlider.addEventListener('mouseenter', pauseTestimonialSlideShow);
+            testimonialSlider.addEventListener('mouseleave', startTestimonialSlideShow);
+
             // PWA: Register Service Worker
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
@@ -2000,22 +2015,6 @@
         // Note: Including service worker code inline is not standard practice and may not function correctly.
         // Service workers must be served from the root of your domain and be in a separate file.
         // However, here's the service worker code as per your request.
-
-        // Check if service workers are supported
-        if ('serviceWorker' in navigator) {
-            // Wait for the page to load
-            window.addEventListener('load', function () {
-                navigator.serviceWorker.register('service-worker.js')
-                    .then(function (registration) {
-                        // Registration successful
-                        console.log('Service Worker registered with scope:', registration.scope);
-                    })
-                    .catch(function (error) {
-                        // Registration failed
-                        console.log('Service Worker registration failed:', error);
-                    });
-            });
-        }
 
         // Service Worker code
         self.addEventListener('install', function (event) {
