@@ -17,7 +17,6 @@
         gtag('config', 'G-ML9EHVTZB4');
     </script>
 
-
     <!-- SEO Meta Tags -->
     <meta name="description"
         content="Experience the ancient healing art of Mongolian honey massage. Rejuvenate your body and soul with our signature treatments.">
@@ -475,7 +474,7 @@
             outline: none;
         }
 
-        /* About Section with Enhanced Layout and Flexbox */
+        /* About Section with Slideshow Carousel */
         .about {
             padding: 5rem 0;
             background-image: url('assets/images/patterns.svg');
@@ -539,63 +538,89 @@
             text-align: justify;
         }
 
-        /* Image Gallery with Lightbox and Flexbox */
-        .about-gallery {
-            flex: 1;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            animation: fadeInRight 1s forwards;
-            animation-delay: 0.5s;
-        }
-
-        .gallery-image {
-            width: calc(50% - 20px);
+        /* Slideshow Carousel Styles */
+        .about-carousel {
             position: relative;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
             overflow: hidden;
             border-radius: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
         }
 
-        .gallery-image::after {
-            content: '';
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: opacity var(--transition-speed) ease;
-            border-radius: 10px;
         }
 
-        .gallery-image:hover::after,
-        .gallery-image:focus-within::after {
+        .slide.active {
             opacity: 1;
+            position: relative;
         }
 
-        .gallery-image img {
+        .slide img {
             width: 100%;
             height: auto;
             display: block;
             border-radius: 10px;
+            max-height: 400px;
+            object-fit: cover;
         }
 
-        .gallery-image.animate {
-            opacity: 1;
-            transform: translateY(0);
+        .slide-description {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: var(--primary-color);
+            text-align: center;
         }
 
-        .gallery-image:hover,
-        .gallery-image:focus-within {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            outline: none;
+        /* Carousel Navigation Buttons */
+        .carousel-prev,
+        .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(211, 163, 115, 0.7);
+            border: none;
+            color: var(--light-color);
+            font-size: 2rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 1;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+        }
+
+        .carousel-prev {
+            left: 10px;
+        }
+
+        .carousel-next {
+            right: 10px;
+        }
+
+        .carousel-prev:hover,
+        .carousel-next:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .about-carousel {
+                max-width: 100%;
+            }
         }
 
         /* Signature Treatment Section */
@@ -1134,7 +1159,7 @@
             }
 
             .about-text,
-            .about-gallery {
+            .about-carousel {
                 padding: 0 1rem;
             }
         }
@@ -1333,7 +1358,7 @@
 
     <!-- Hero Section with Video Background -->
     <section class="hero" aria-label="Hero Section">
-        <video id="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto"
+        <video id="hero-video" muted autoplay loop playsinline webkit-playsinline x5-playsinline preload="auto"
             poster="assets/images/video-poster.jpg" aria-hidden="true" loading="lazy">
             <source src="assets/videos/signature-treatment.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -1347,9 +1372,7 @@
         </div>
     </section>
 
-
-
-    <!-- About Section with Enhanced Layout and Flexbox -->
+    <!-- About Section with Slideshow Carousel -->
     <section class="about" aria-labelledby="about-us-heading">
         <div class="container">
             <h2 id="about-us-heading" data-aos="fade-right">Discover Tranquility</h2>
@@ -1398,48 +1421,46 @@
                     </p>
                 </div>
 
-                <!-- About Image Gallery with Animated Images -->
-                <div class="about-gallery" data-aos="zoom-in">
-                    <a href="assets/images/about1-large.jpg" data-lightbox="about-gallery"
-                        data-title="Therapist preparing oils">
-                        <div class="gallery-image">
+                <!-- Slideshow Carousel -->
+                <div class="about-carousel" data-aos="zoom-in">
+                    <div class="carousel-slide">
+                        <!-- Slides using about1.jpg to about8.jpg -->
+                        <div class="slide active" aria-hidden="false">
                             <img src="assets/images/about1.jpg" alt="Therapist preparing oils" loading="lazy">
+                            <p class="slide-description">Therapist Preparing Oils</p>
                         </div>
-                    </a>
-
-                    <a href="assets/images/about3-large.jpg" data-lightbox="about-gallery"
-                        data-title="Relaxing spa environment">
-                        <div class="gallery-image">
+                        <div class="slide" aria-hidden="true">
+                            <img src="assets/images/about2.jpg" alt="Client receiving a honey massage" loading="lazy">
+                            <p class="slide-description">Client Receiving a Honey Massage</p>
+                        </div>
+                        <div class="slide" aria-hidden="true">
                             <img src="assets/images/about3.jpg" alt="Relaxing spa environment" loading="lazy">
+                            <p class="slide-description">Relaxing Spa Environment</p>
                         </div>
-                    </a>
-                    <a href="assets/images/about4-large.jpg" data-lightbox="about-gallery"
-                        data-title="Natural honey application">
-                        <div class="gallery-image">
+                        <div class="slide" aria-hidden="true">
                             <img src="assets/images/about4.jpg" alt="Natural honey application" loading="lazy">
+                            <p class="slide-description">Natural Honey Application</p>
                         </div>
-                    </a>
-                    <a href="assets/images/about5-large.jpg" data-lightbox="about-gallery"
-                        data-title="Serene relaxation area">
-                        <div class="gallery-image">
+                        <div class="slide" aria-hidden="true">
                             <img src="assets/images/about5.jpg" alt="Serene relaxation area" loading="lazy">
+                            <p class="slide-description">Serene Relaxation Area</p>
                         </div>
-                    </a>
-
-                    <!-- Additional Images for Enhanced Visual Appeal -->
-                    <a href="assets/images/about7-large.jpg" data-lightbox="about-gallery"
-                        data-title="Traditional Mongolian herbs">
-                        <div class="gallery-image">
+                        <div class="slide" aria-hidden="true">
+                            <img src="assets/images/about6.jpg" alt="Spa entrance with calming decor" loading="lazy">
+                            <p class="slide-description">Spa Entrance with Calming Decor</p>
+                        </div>
+                        <div class="slide" aria-hidden="true">
                             <img src="assets/images/about7.jpg" alt="Traditional Mongolian herbs" loading="lazy">
+                            <p class="slide-description">Traditional Mongolian Herbs</p>
                         </div>
-                    </a>
-                    <a href="assets/images/about8-large.jpg" data-lightbox="about-gallery"
-                        data-title="Clients enjoying a massage">
-                        <div class="gallery-image">
+                        <div class="slide" aria-hidden="true">
                             <img src="assets/images/about8.jpg" alt="Clients enjoying a massage" loading="lazy">
+                            <p class="slide-description">Clients Enjoying a Massage</p>
                         </div>
-                    </a>
-
+                    </div>
+                    <!-- Carousel Navigation Buttons -->
+                    <button class="carousel-prev" aria-label="Previous Slide">&#10094;</button>
+                    <button class="carousel-next" aria-label="Next Slide">&#10095;</button>
                 </div>
             </div>
         </div>
@@ -1600,17 +1621,17 @@
                 <div class="testimonial active">
                     <p>"The Mongolian Honey Massage was an incredible experience. I felt completely rejuvenated and
                         stress-free after my session."</p>
-                    <h3>- S.D.</h3>
+                    <h3>- Sarah L.</h3>
                 </div>
                 <div class="testimonial">
                     <p>"The therapists are very professional and attentive. The hot towel treatment was my favorite
                         part."</p>
-                    <h3>- Numi.</h3>
+                    <h3>- Mark D.</h3>
                 </div>
                 <div class="testimonial">
                     <p>"I have trouble sleeping, and after a few sessions here, my sleep quality has improved
                         significantly."</p>
-                    <h3>- Sel.</h3>
+                    <h3>- Emily R.</h3>
                 </div>
             </div>
             <div class="testimonial-controls">
@@ -1674,8 +1695,6 @@
         </div>
     </section>
 
-
-
     <!-- Back-to-Top Button -->
     <button id="backToTopBtn" aria-label="Back to Top">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
@@ -1731,6 +1750,11 @@
             const heroVideo = document.getElementById('hero-video');
             if (heroVideo) {
                 heroVideo.playbackRate = 0.25; // 25% speed
+
+                // Autoplay video on mobile devices
+                heroVideo.play().catch(function (error) {
+                    console.log('Error attempting to play video:', error);
+                });
             }
 
             // Responsive Navigation Menu
@@ -1849,23 +1873,71 @@
             window.addEventListener('resize', handleVideoPlayback);
             document.addEventListener('DOMContentLoaded', handleVideoPlayback);
 
-            // Image Animation on Scroll
-            const galleryImages = document.querySelectorAll('.gallery-image');
+            // Slideshow Carousel Functionality
+            const slides = document.querySelectorAll('.about-carousel .slide');
+            const prevSlideBtn = document.querySelector('.carousel-prev');
+            const nextSlideBtn = document.querySelector('.carousel-next');
+            let currentIndex = 0;
+            const slideIntervalTime = 5000; // 5 seconds
+            let slideInterval;
 
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                        observer.unobserve(entry.target); // Stop observing after animation
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    slide.setAttribute('aria-hidden', 'true');
+                    if (i === index) {
+                        slide.classList.add('active');
+                        slide.setAttribute('aria-hidden', 'false');
                     }
                 });
-            }, {
-                threshold: 0.1
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                showSlide(currentIndex);
+            }
+
+            function startSlideShow() {
+                slideInterval = setInterval(nextSlide, slideIntervalTime);
+            }
+
+            function pauseSlideShow() {
+                clearInterval(slideInterval);
+            }
+
+            // Start the slideshow
+            showSlide(currentIndex);
+            startSlideShow();
+
+            // Add event listeners for navigation buttons
+            prevSlideBtn.addEventListener('click', () => {
+                prevSlide();
+                resetSlideInterval();
             });
 
-            galleryImages.forEach(image => {
-                imageObserver.observe(image);
+            nextSlideBtn.addEventListener('click', () => {
+                nextSlide();
+                resetSlideInterval();
             });
+
+            function resetSlideInterval() {
+                pauseSlideShow();
+                startSlideShow();
+            }
+
+            // Optional: Pause slideshow on hover (for desktop devices)
+            const aboutCarousel = document.querySelector('.about-carousel');
+            aboutCarousel.addEventListener('mouseenter', pauseSlideShow);
+            aboutCarousel.addEventListener('mouseleave', startSlideShow);
+
+            // Accessibility: Allow keyboard navigation
+            aboutCarousel.addEventListener('focusin', pauseSlideShow);
+            aboutCarousel.addEventListener('focusout', startSlideShow);
 
             // Back-to-Top Button Functionality
             const backToTopBtn = document.getElementById('backToTopBtn');
@@ -1875,8 +1947,6 @@
                     behavior: 'smooth'
                 });
             });
-
-
 
             // Dark Mode Toggle Functionality
             const darkModeToggle = document.getElementById('darkModeToggle');
@@ -1910,6 +1980,7 @@
 
             // Booking Form Submission Handling (Dummy)
             const bookingForm = document.getElementById('bookingForm');
+            const bookingModal = document.getElementById('bookingModal');
             bookingForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 alert('Thank you for booking an appointment! We will contact you soon.');
@@ -1918,8 +1989,6 @@
                 bookingModal.setAttribute('aria-hidden', 'true');
                 document.body.style.overflow = 'auto';
             });
-
-
 
             // FAQ Accordion Functionality
             const accordions = document.querySelectorAll('.accordion');
